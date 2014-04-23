@@ -2,5 +2,5 @@ Router.configure
   layoutTemplate: 'layout'
 
 Router.map ->
-  @route 'home', path: '/'
+  @route 'itinerary', path: '/'
   @route 'card', path: '/card'
