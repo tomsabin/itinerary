@@ -9,6 +9,12 @@ Router.map ->
     waitOn: ->
       Meteor.subscribe('itineraries')
 
+  @route 'newItinerary',
+    path: '/new'
+    data: ->
+      itineraryId = createItinerary()
+      Router.go('/'+itineraryId)
+
   @route 'itinerary',
     path: '/:_id'
     data: ->

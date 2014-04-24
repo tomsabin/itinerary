@@ -7,9 +7,10 @@
   <h1 id='itineraryTitle' contentEditable=true>{{itinerary.title}}</h1>
   <h2 id='itineraryDescription' contentEditable=true>{{itinerary.description}}</h2>
 
-  <br> {{> clearItineraries}}
+  <br> {{> itineraryButtons}}
 </template>
 
-<template name='clearItineraries'>
-  <input id='clearItineraries' type='button' value='reset' />
+<template name='itineraryButtons'>
+  <input id='clearItinerary' type='button' value='reset' />
+  <input id='deleteItinerary' type='button' value='delete' />
 </template>
