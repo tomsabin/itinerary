@@ -18,8 +18,8 @@ Router.map ->
   @route 'itinerary',
     path: '/:_id'
     data: ->
-      elements: Elements.find(parentId: @params._id)
       itinerary: Itineraries.findOne(@params._id)
+      itineraryElements: Elements.find(parentId: @params._id)
     waitOn: -> [
       Meteor.subscribe('singleItinerary', @params._id)
       Meteor.subscribe('elements', @params._id)
