@@ -1,37 +1,45 @@
+wrap = (doc, el) ->
+  """
+<div data-element-id='#{doc._id}'>
+  #{el}
+  <input data-action='removeElement' type='button' value='delete' />
+</div>
+  """
+
 @DividerElement = (doc) ->
-  finalElement: -> '<hr>'
+  finalElement: -> wrap doc, '<hr>'
 
 @TextElement = (doc) ->
   editable: -> doc.editable
   initalElement: ->
-    "<p contentEditable=true data-element-id='#{doc._id}'>#{doc.body}</p>"
+    wrap doc, "<p contentEditable=true>#{doc.body}</p>"
   finalElement: ->
-    "<p>#{doc.body}</p>"
+    wrap doc, "<p>#{doc.body}</p>"
 
 @LinkElement = (doc) ->
   editable: -> doc.editable
   initalElement: ->
-    "<p contentEditable=true data-element-id='#{doc._id}'>#{doc.body}</p>"
+    wrap doc, "<p contentEditable=true>#{doc.body}</p>"
   finalElement: ->
-    "<a href='#{doc.body}'>#{doc.body}</a>"
+    wrap doc, "<a href='#{doc.body}'>#{doc.body}</a>"
 
 @PhotoElement = (doc) ->
   editable: -> doc.editable
   initalElement: ->
-    "<p contentEditable=true data-element-id='#{doc._id}'>#{doc.body}</p>"
+    wrap doc, "<p contentEditable=true>#{doc.body}</p>"
   finalElement: ->
-    "<img src='#{doc.body}' />"
+    wrap doc, "<img src='#{doc.body}' />"
 
 @MapElement = (doc) ->
   editable: -> doc.editable
   initalElement: ->
-    "<p contentEditable=true data-element-id='#{doc._id}'>#{doc.body}</p>"
+    wrap doc, "<p contentEditable=true>#{doc.body}</p>"
   finalElement: ->
-    "Map for: #{doc.body}"
+    wrap doc, "Map for: #{doc.body}"
 
 @DateElement = (doc) ->
   editable: -> doc.editable
   initalElement: ->
-    "<p contentEditable=true data-element-id='#{doc._id}'>#{doc.body}</p>"
+    wrap doc, "<p contentEditable=true>#{doc.body}</p>"
   finalElement: ->
-    "Parsed date for: #{doc.body}"
+    wrap doc, "Parsed date for: #{doc.body}"

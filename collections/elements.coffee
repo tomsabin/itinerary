@@ -44,3 +44,7 @@
 
   attributes.editable = true
   Elements.insert attributes
+
+Meteor.methods
+  deleteElement: (elementId) ->
+    Elements.remove elementId
