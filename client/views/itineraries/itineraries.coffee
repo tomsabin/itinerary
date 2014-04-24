@@ -9,7 +9,7 @@ Template.itineraryButtons.events
   'click #clearItinerary': ->
     if confirm('Are you sure you want to reset all data?')
       Meteor.call('clearItineraryElements', @itinerary._id)
-      Itineraries.update { _id: @itinerary._id }, { $set: defaultItinerariesValues() }
+      Itineraries.update { _id: @itinerary._id }, { $set: DefaultItinerariesValues() }
 
   'click #deleteItinerary': ->
     if confirm('Are you sure you want to delete?')

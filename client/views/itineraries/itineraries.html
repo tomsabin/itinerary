@@ -10,13 +10,6 @@
   <h2 id='itineraryDescription' contentEditable=true>{{itinerary.description}}</h2>
 </template>
 
-<template name='itineraryElements'>
-  {{#each itineraryElements}}
-    {{body}}
-    <br>
-  {{/each}}
-</template>
-
 <template name='itineraryButtons'>
   <input id='addElement' data-element-type='divider' type='button' value='divider' />
   <input id='addElement' data-element-type='date' type='button' value='date' />
