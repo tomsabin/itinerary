@@ -1,4 +1,4 @@
-itinerary
+itineraries
 =========
 
 Plan your days out

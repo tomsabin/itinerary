@@ -1,4 +1,5 @@
 <template name='itinerary'>
+  <a href='{{pathFor "home"}}'>take me home</a><br>
   {{> itineraryHeader}}
 </template>
 
@@ -6,9 +7,9 @@
   <h1 id='itineraryTitle' contentEditable=true>{{itinerary.title}}</h1>
   <h2 id='itineraryDescription' contentEditable=true>{{itinerary.description}}</h2>
 
-  <br> {{> clearItinerary}}
+  <br> {{> clearItineraries}}
 </template>
 
-<template name='clearItinerary'>
-  <input id='clearItinerary' type='button' value='reset' />
+<template name='clearItineraries'>
+  <input id='clearItineraries' type='button' value='reset' />
 </template>

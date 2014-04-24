@@ -1,0 +1,7 @@
+<template name='home'>
+  <h1>home</h1>
+
+  {{#each itineraries}}
+    <a href='{{pathFor "itinerary"}}'>{{title}} - {{description}}</a><br>
+  {{/each}}
+</template>

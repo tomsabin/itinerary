@@ -7,3 +7,4 @@ standard-app-packages
 insecure
 iron-router
 coffeescript
+autopublish
