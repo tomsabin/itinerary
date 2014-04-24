@@ -1,2 +1,2 @@
-Handlebars.registerHelper "itinerary", ->
+Handlebars.registerHelper 'itinerary', ->
   Itinerary.findOne()

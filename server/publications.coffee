@@ -1,0 +1,1 @@
+Meteor.publish 'itinerary', -> Itinerary.find()
