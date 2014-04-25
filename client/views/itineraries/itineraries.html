@@ -1,23 +1,32 @@
 <template name='itinerary'>
-  <a href='{{pathFor "home"}}'>take me home</a><br>
-  {{> itineraryHeader}}
-  {{> itineraryElements}}
-  {{> itineraryButtons}}
+  <div class='itinerary'>
+    {{> itineraryHeader}}
+    {{> itineraryElements}}
+    {{> itineraryButtons}}
+  </div>
 </template>
 
 <template name='itineraryHeader'>
-  <h1 id='itineraryTitle' contentEditable=true>{{itinerary.title}}</h1>
-  <h2 id='itineraryDescription' contentEditable=true>{{itinerary.description}}</h2>
+  <div class='itinerary-titles'>
+    <h1 id='itineraryTitle' class='itinerary-h1' contentEditable=true>{{itinerary.title}}</h1>
+    <h2 id='itineraryDescription' class='itinerary-h2' contentEditable=true>{{itinerary.description}}</h2>
+  </div>
 </template>
 
 <template name='itineraryButtons'>
-  <input id='addElement' data-element-type='divider' type='button' value='divider' />
-  <input id='addElement' data-element-type='date' type='button' value='date' />
-  <input id='addElement' data-element-type='text' type='button' value='text' />
-  <input id='addElement' data-element-type='link' type='button' value='link' />
-  <input id='addElement' data-element-type='photo' type='button' value='photo' />
-  <input id='addElement' data-element-type='map' type='button' value='map' />
-  <br>
-  <input id='clearItinerary' type='button' value='reset' />
-  <input id='deleteItinerary' type='button' value='delete' />
+  <div class='itinerary-buttons'>
+    <div class='element-buttons'>
+      <input id='addElement' class='input-button' data-element-type='divider' type='button' value='divider' />
+      <input id='addElement' class='input-button' data-element-type='date' type='button' value='date' />
+      <input id='addElement' class='input-button' data-element-type='text' type='button' value='text' />
+      <input id='addElement' class='input-button' data-element-type='link' type='button' value='link' />
+      <input id='addElement' class='input-button' data-element-type='photo' type='button' value='photo' />
+      <input id='addElement' class='input-button' data-element-type='map' type='button' value='map' />
+    </div>
+
+    <div class='itinerary-buttons'>
+      <input id='clearItinerary' class='input-button' type='button' value='reset' />
+      <input id='deleteItinerary' class='input-button' type='button' value='delete' />
+    </div>
+  </div>
 </template>
