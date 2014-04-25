@@ -1,10 +1,11 @@
 <template name='itineraryElements'>
-  {{#each itineraryElements}}
-    {{#if editable}}
-      {{{initalElement}}}
-    {{else}}
-      {{{finalElement}}}
-    {{/if}}
-    <br>
-  {{/each}}
+  <div id='elementList'>
+    {{#each itineraryElements}}
+      {{#if editable}}
+        {{{initalElement}}}
+      {{else}}
+        {{{finalElement}}}
+      {{/if}}
+    {{/each}}
+  </div>
 </template>

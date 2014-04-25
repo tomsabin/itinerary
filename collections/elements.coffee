@@ -16,6 +16,14 @@
     doc
 )
 
+@Elements.before.insert (userId, doc) ->
+  highestElement = Elements.findOne({ parentId: doc.parentId },
+                     sort: { position: -1 }
+                     limit: 1
+                   )
+  position = if highestElement? then highestElement.position() else 0
+  doc.position = position + 1
+
 @createElement = (attributes) ->
   typeWhitelist =
     divider: true
