@@ -1,29 +1,25 @@
+.outer-container {
+  @include outer-container;
+}
+
 .layout-main {
+  @include span-columns(6);
+}
 
-  .home {
-    .items-container {
-
-    }
+.home-buttons {
+  .input-button {
+    @include span-columns(6);
   }
-  .itinerary {
+}
 
-    .itinerary-titles {
+.element-buttons {
+  .input-button {
+    @include span-columns(2);
+  }
+}
 
-    }
-    .items-container {
-
-      .item {
-
-      }
-    }
-    .itinerary-buttons {
-
-      .element-buttons {
-
-      }
-      .itinerary-buttons {
-
-      }
-    }
+.itinerary-buttons {
+  .input-button {
+    @include span-columns(3);
   }
 }

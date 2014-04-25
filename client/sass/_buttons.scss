@@ -7,15 +7,20 @@
 .remove-item {
 
 }
-.element-buttons {
-
+.home-buttons {
   .input-button {
 
   }
 }
-.itinerary-buttons {
+.itinerary-buttons-container {
+  .element-buttons {
+    .input-button {
 
-  .input-button {
+    }
+  }
+  .itinerary-buttons {
+    .input-button {
 
+    }
   }
 }
