@@ -38,6 +38,7 @@ Template.itineraryElements.events
 Template.itineraryElements.rendered = ->
   $elementList = $('#elementList')
   $elementList.sortable
+    axis: 'y'
     handle: '.handle'
     placeholder: 'item-placeholder'
     forcePlaceholderSize: '80px'
