@@ -1,42 +1,73 @@
 .items-container {
 
   .item {
+    position: relative;
+    margin: 8px 0;
+    background-color: $item-color;
+    border: 1px solid $item-border-color;
+    border-bottom: 2px solid $item-border-color;
+    border-radius: 3px;
 
+    cursor: default;
+
+    &:hover {
+      background-color: $item-hover-color;
+
+      .remove-item {
+        display: block;
+      }
+    }
+    .item-content-container {
+      display: table;
+      border-spacing: 16px;
+    }
+    .item-content {
+      display: table-cell;
+      margin: 20px;
+      margin-right: 40px;
+    }
+    .remove-item, .handle {
+      color: $grey-7f;
+    }
     .remove-item {
-
+      display: none;
+      position: absolute;
+      top: -8px;
+      left: -6px;
+      cursor: pointer;
     }
     .handle {
-
+      display: table-cell;
+      vertical-align: middle;
+      cursor: move;
     }
-    .hr {
+  }
 
-    }
-    .item-p {
+  .item-divider {
+    background-color: transparent;
+    height: 22px;
+    margin: 9px 0;
+    border: none;
+  }
+  .item-text {
 
-    }
-    .item-a {
+  }
+  .item-link {
 
-    }
-    .item-img {
+  }
+  .item-photo {
 
-    }
-    .editable {
+  }
+  .editable {
+    cursor: text;
+  }
+  .editable-text {
 
-    }
-    .editable-p {
+  }
+  .editable-link {
 
-    }
-    .editable-a {
+  }
+  .editable-photo {
 
-    }
-    .editable-img {
-
-    }
-    .editable-map {
-
-    }
-    .editable-date {
-
-    }
   }
 }

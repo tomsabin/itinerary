@@ -1,5 +1,10 @@
+body {
+  background-color: $body-color;
+}
+
 .outer-container {
   @include outer-container;
+  margin: 0 8px;
 }
 
 .layout-main {

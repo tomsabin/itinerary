@@ -1,9 +1,13 @@
 @import 'bourbon/bourbon';
 @import 'grid_settings';
 @import 'neat/neat';
+@import 'font-awesome/scss/font-awesome';
+$fa-font-path: 'font-awesome/fonts';
 
+@import 'variables';
 @import 'layout';
-@import 'navigation';
 @import 'typography';
 @import 'buttons';
+@import 'navigation';
 @import 'item';
+@import 'homepage';

@@ -1,14 +1,16 @@
 wrap = (doc, el) ->
   """
-<div class='item' data-element-id='#{doc._id}'>
-  #{el}
-  <input class='remove-item' data-action='removeElement' type='button' value='delete' />
-  <div class='handle'>handle</div>
+<div class='item item-#{doc.type}' data-element-id='#{doc._id}'>
+  <i id='removeElement' class='fa fa-times remove-item'></i>
+  <div class='item-content-container'>
+    <div class='item-content'>#{el}</div>
+    <i class='fa fa-sort handle'></i>
+  </div>
 </div>
   """
 
 @DividerElement = (doc) ->
-  finalElement: -> wrap doc, '<hr>'
+  finalElement: -> wrap doc, ''
   position: -> doc.position
 
 @TextElement = (doc) ->
