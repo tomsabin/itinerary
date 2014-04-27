@@ -18,6 +18,7 @@ Template.itineraryButtons.events
       Router.go('/')
 
   'click #addElement': (e) ->
-    createElement
+    elementId = createElement
       type: e.target.getAttribute('data-element-type')
       parentId: @itinerary._id
+    $("div[data-element-id='#{elementId}'] input").focus()

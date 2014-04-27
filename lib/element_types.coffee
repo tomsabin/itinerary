@@ -1,9 +1,9 @@
 wrap = (doc, el) ->
   """
-<div class='item item-#{doc.type}' data-element-id='#{doc._id}'>
+<div class='item item-#{doc.type}'>
   <i id='removeElement' class='fa fa-times remove-item'></i>
   <div class='item-content-container'>
-    <div class='item-content'>#{el}</div>
+    <div class='item-content' data-element-id='#{doc._id}' data-body='#{doc.body}'>#{el}</div>
     <i class='fa fa-sort handle'></i>
   </div>
 </div>
@@ -17,15 +17,15 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<p class='editable editable-p' contentEditable=true>#{doc.body}</p>"
+    wrap doc, "<input class='editable editable-p' placeholder='#{doc.body}'></input>"
   finalElement: ->
-    wrap doc, "<p class='item-p'>#{doc.body}</p>"
+    wrap doc, "<p class='item-p' contentEditable=true>#{doc.body}</p>"
 
 @LinkElement = (doc) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<p class='editable editable-a' contentEditable=true>#{doc.body}</p>"
+    wrap doc, "<input class='editable editable-a' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "<a class='item-a' href='#{doc.body}'>#{doc.body}</a>"
 
@@ -33,7 +33,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<p class='editable editable-img' contentEditable=true>#{doc.body}</p>"
+    wrap doc, "<input class='editable editable-img' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "<img class='item-img' src='#{doc.body}' />"
 
