@@ -19,6 +19,7 @@
     }
     .item-content-container {
       display: table;
+      width: 100%;
       border-spacing: 16px;
     }
     .item-content {
@@ -39,6 +40,7 @@
     .handle {
       display: table-cell;
       vertical-align: middle;
+      text-align: right;
       cursor: move;
     }
   }
