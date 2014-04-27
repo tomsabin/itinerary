@@ -16,8 +16,9 @@ Template.itineraryElements.rendered = ->
     $elementList = $('#elementList')
     $elementList.sortable
       handle: '.handle'
+      placeholder: 'item-placeholder'
+      forcePlaceholderSize: '80px'
       stop: (event, ui) ->
         _.each $(event.target).children('div'), (element, index, list) ->
           Elements.update { _id: element.getAttribute('data-element-id') },
             $set: position: index + 1
-    # $elementList.disableSelection()
