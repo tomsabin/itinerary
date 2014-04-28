@@ -34,7 +34,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<input class='item-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
+    wrap doc, "<input type='text' class='item-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "<img class='item-photo' src='#{doc.body}' />"
 
@@ -42,7 +42,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<input class='item-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
+    wrap doc, "<input type='text' class='item-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "??? Map for: #{doc.body}"
 
