@@ -34,6 +34,7 @@
     position: absolute;
     left: -6px;
     top: -8px;
+    cursor: pointer;
   }
   .handle, .item-action-icon {
     display: table-cell;
@@ -51,9 +52,35 @@
 }
 .item-divider {
   background-color: transparent;
-  height: 22px;
-  margin: 9px 0;
+  height: 32px;
+
   border: none;
+
+
+  &:hover {
+    background-color: transparent;
+
+    .handle {
+      display: block;
+    }
+  }
+  .item-content-container:before {
+    content: '';
+    display: block;
+    border-top: 1px solid $item-border-color;
+  }
+  .remove-item,
+  .handle {
+    top: 8px;
+  }
+  .remove-item {
+    left: 16px;
+  }
+  .handle {
+    display: none;
+    position: absolute;
+    right: 16px;
+  }
 }
 .item-text {
 

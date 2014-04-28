@@ -26,7 +26,7 @@ Template.itineraryElements.events
       else
         e.target.innerText = originalBody
 
-  'keypress': (e) ->
+  keypress: (e) ->
     if e.which is 13
       Elements.update
         _id: getElementId(e)

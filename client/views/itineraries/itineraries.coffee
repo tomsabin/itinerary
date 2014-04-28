@@ -4,6 +4,9 @@ Template.itineraryHeader.events
       Itineraries.update { _id: @itinerary._id }, { $set: title: e.target.innerText }
     else if e.target.id is 'itineraryDescription'
       Itineraries.update { _id: @itinerary._id }, { $set: description: e.target.innerText }
+  keypress: (e) ->
+    if e.which is 13
+      Itineraries.update { _id: @itinerary._id }, { $set: title: e.target.innerText }
 
 Template.itineraryButtons.events
   'click #openElementButtonContainer': ->

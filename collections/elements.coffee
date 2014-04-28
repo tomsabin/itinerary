@@ -46,9 +46,9 @@
     when 'photo'
       attributes.body = 'Upload a photo'
     when 'map'
-      attributes.body = 'Enter an address or some coordinates'
+      attributes.body = 'Enter an address'
     when 'date'
-      attributes.body = 'Specify a date and time'
+      attributes.body = 'Specify a date or time'
 
   attributes.editable = true
   Elements.insert attributes
