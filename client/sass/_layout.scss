@@ -1,22 +1,18 @@
 body {
   background-color: $body-color;
 }
-
 .outer-container {
   @include outer-container;
   padding: 0 8px;
 }
-
 .layout-main {
   @include span-columns(6);
 }
-
 .home-buttons {
   .input-button {
     @include span-columns(6);
   }
 }
-
 .itinerary-buttons {
   .input-button {
     @include span-columns(3);

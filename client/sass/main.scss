@@ -4,8 +4,10 @@
 @import 'font-awesome/scss/font-awesome';
 $fa-font-path: 'font-awesome/fonts';
 
+@import 'global';
 @import 'variables';
 @import 'layout';
+@import 'mixins';
 @import 'typography';
 @import 'buttons';
 @import 'navigation';

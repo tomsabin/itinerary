@@ -1,13 +1,7 @@
-
 .item {
-  position: relative;
-  margin: 8px 0;
-  background-color: $item-color;
-  border: 1px solid $item-border-color;
-  border-bottom: 2px solid $item-border-color;
-  border-radius: 3px;
-
+  @include card($item-color, $item-border-color);
   cursor: default;
+  margin: 8px 0;
 
   &:hover {
     background-color: $item-hover-color;
@@ -26,14 +20,11 @@
     margin: 20px;
     margin-right: 40px;
   }
-  .remove-item, .handle, .add-element {
-    color: $grey-7f;
-  }
   .remove-item {
     display: none;
     position: absolute;
-    top: -8px;
     left: -6px;
+    top: -8px;
     cursor: pointer;
   }
   .handle, .add-element {
@@ -41,7 +32,8 @@
     vertical-align: middle;
     text-align: right;
   }
-  .hande {
+  .handle {
+    padding-right: 3px;
     cursor: move;
   }
 }
@@ -79,23 +71,20 @@
   border: 4px dashed $item-placeholder-border-color;
   margin: -2px 0;
 }
-
 .add-item-container {
   cursor: pointer;
+
   &:hover {
-    background-color: $item-color;
+    background-color: $item-hover-color;
   }
 }
 .element-buttons-table {
+  @include card($item-color, $item-border-color);
   @include span-columns(6);
-  background-color: $item-color;
-  table-layout: fixed;
   display: table;
-  border: 1px solid $item-border-color;
+  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 4px;
-  border-radius: 3px;
-  border-bottom: 2px solid $item-border-color;
   margin-bottom: 8px;
 
   .element-buttons-row {
@@ -104,6 +93,7 @@
     .element-buttons-cell {
       display: table-cell;
       height: 60px;
+
       &:hover {
         background-color: $item-hover-color;
         cursor: pointer;
@@ -117,12 +107,12 @@
 .add-item-link,
 .add-item-photo,
 .add-item-map {
-  text-align: center;
   vertical-align: middle;
+  text-align: center;
+
   &:before {
     font-family: FontAwesome;
     font-size: 1.6em;
-    /*color: $grey-7f;*/
   }
 }
 .add-item-divider:before {

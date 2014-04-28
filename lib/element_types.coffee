@@ -17,9 +17,9 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<input class='editable editable-p' placeholder='#{doc.body}'></input>"
+    wrap doc, "<input class='' placeholder='#{doc.body}'></input>"
   finalElement: ->
-    wrap doc, "<p class='item-p' contentEditable=true>#{doc.body}</p>"
+    wrap doc, "<p class='item-p editable' contentEditable=true>#{doc.body}</p>"
 
 @LinkElement = (doc) ->
   editable: -> doc.editable

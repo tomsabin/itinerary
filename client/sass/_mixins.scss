@@ -1,0 +1,7 @@
+@mixin card($background-colour, $border-colour) {
+  background-color: $background-colour;
+  border: 1px solid $border-colour;
+  border-bottom: 2px solid $border-colour;
+  border-radius: 3px;
+  position: relative;
+}
