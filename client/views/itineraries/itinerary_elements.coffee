@@ -1,10 +1,13 @@
+getElementId = (e) ->
+  e.target.parentElement.parentElement.parentElement.getAttribute('data-element-id')
+
 Template.itineraryElements.events
   focusout: (e) ->
     if e.target.localName is 'input'
       body = e.target.value
       if !!body
         Elements.update
-          _id: e.target.parentElement.getAttribute('data-element-id')
+          _id: getElementId(e)
         ,
           $set:
             body: body
@@ -15,7 +18,7 @@ Template.itineraryElements.events
       body = e.target.innerText
       if !!body
         Elements.update
-          _id: e.target.parentElement.getAttribute('data-element-id')
+          _id: getElementId(e)
         ,
           $set:
             body: body
@@ -26,13 +29,13 @@ Template.itineraryElements.events
   'keypress': (e) ->
     if e.which is 13
       Elements.update
-        _id: e.target.parentElement.getAttribute('data-element-id')
+        _id: getElementId(e)
       ,
         $set:
           body: if (e.target.localName is 'input') then e.target.value else e.target.innerText
           editable: false
 
-  'click #removeElement': (e) ->
+  'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
 
 Template.itineraryElements.rendered = ->

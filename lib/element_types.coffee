@@ -1,9 +1,9 @@
 wrap = (doc, el) ->
   """
-<div class='item item-#{doc.type}'>
-  <i id='removeElement' class='fa fa-times remove-item'></i>
+<div data-element-id='#{doc._id}' class='item item-#{doc.type}'>
+  <i data-action='removeElement' class='fa fa-times remove-item'></i>
   <div class='item-content-container'>
-    <div class='item-content' data-element-id='#{doc._id}' data-body='#{doc.body}'>#{el}</div>
+    <div class='item-content' data-body='#{doc.body}'>#{el}</div>
     <i class='fa fa-sort handle'></i>
   </div>
 </div>
