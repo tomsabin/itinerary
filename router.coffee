@@ -5,7 +5,9 @@ Router.map ->
   @route 'home',
     path: '/'
     data: ->
-      itineraries: Itineraries.find()
+      itineraries: Itineraries.find {},
+                    sort:
+                      created_on: 1
     waitOn: ->
       Meteor.subscribe('itineraries')
 
