@@ -44,7 +44,7 @@
     when 'link'
       attributes.body = 'Link the interwebs'
     when 'photo'
-      attributes.body = 'Upload a photo'
+      attributes.body = 'Link a photo'
     when 'map'
       attributes.body = 'Enter an address'
     when 'date'
@@ -56,6 +56,7 @@
 @updateElement = (elementId, type, body) ->
   attributes = { editable: false }
   switch type
+    # when 'text'
     when 'link'
       markdownLink = /\[([^\]]+)\]\(([^)]+)\)/.exec(body)
       if markdownLink
@@ -64,6 +65,9 @@
       else
         attributes.body = body
         attributes.second_body = 'A link to the interwebs'
+    # when 'photo'
+    # when 'map'
+    # when 'date'
 
   Elements.update { _id: elementId }, { $set: attributes }
 
