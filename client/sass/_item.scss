@@ -10,24 +10,37 @@
       display: block;
     }
   }
-  .item-content-container {
+  .item-content-container,
+  .item-action-container {
     display: table;
-    width: 100%;
     border-spacing: 16px;
+    width: 100%;
+  }
+  .item-action-container {
+    cursor: pointer;
+    &:hover {
+      background-color: $item-hover-color;
+
+      .item-action-text, .item-action-icon {
+        color: black;
+      }
+    }
   }
   .item-content {
     display: table-cell;
     margin: 20px;
     margin-right: 40px;
   }
+  .remove-item, .handle, .item-action-icon {
+    color: $grey-7f;
+  }
   .remove-item {
     display: none;
     position: absolute;
     left: -6px;
     top: -8px;
-    cursor: pointer;
   }
-  .handle, .add-element {
+  .handle, .item-action-icon {
     display: table-cell;
     vertical-align: middle;
     text-align: right;
@@ -36,11 +49,7 @@
     padding-right: 3px;
     cursor: move;
   }
-  .add-element {
-    color: $grey-7f;
-  }
 }
-
 .item-divider {
   background-color: transparent;
   height: 22px;
@@ -74,13 +83,6 @@
   border: 4px dashed $item-placeholder-border-color;
   margin: -2px 0;
 }
-.add-item-container {
-  cursor: pointer;
-
-  &:hover {
-    background-color: $item-hover-color;
-  }
-}
 .element-buttons-table {
   @include card($item-color, $item-border-color);
   @include span-columns(6);
@@ -100,6 +102,10 @@
       &:hover {
         background-color: $item-hover-color;
         cursor: pointer;
+
+        &:before {
+          color: black;
+        }
       }
     }
   }
@@ -116,10 +122,11 @@
   &:before {
     font-family: FontAwesome;
     font-size: 1.6em;
+    color: $grey-7f;
   }
 }
 .add-item-divider:before {
-  content: '\f147';
+  content: '\f141';
 }
 .add-item-date:before {
   content: '\f017';

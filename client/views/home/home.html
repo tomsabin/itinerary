@@ -6,20 +6,22 @@
       {{#each itineraries}}
         <a href='{{pathFor "itinerary"}}'>
           <div class='item' data-itinerary-id='{{_id}}'>
-            <h1 class='item-h1'>{{title}}</h1>
-            <p class='item-p'>{{description}}</p>
+            <div class='item-action-container'>
+              <h1 class='item-h1'>{{title}}</h1>
+              <p class='item-p'>{{description}}</p>
+            </div>
           </div>
         </a>
       {{/each}}
     </div>
 
     <div class='home-buttons'>
-        <div id='newItinerary' class='item add-item-container'>
-          <div class='item-content-container'>
-            <span class='add-item-action-text'>Create itinerary</span>
-            <i class='fa fa-plus add-element'></i>
-          </div>
+      <div id='newItinerary' class='item'>
+        <div class='item-action-container'>
+          <span class='item-action-text'>Create itinerary</span>
+          <i class='fa fa-plus item-action-icon'></i>
         </div>
+      </div>
     </div>
   </div>
 </template>

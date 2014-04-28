@@ -8,13 +8,8 @@ body {
 .layout-main {
   @include span-columns(6);
 }
-.home-buttons {
-  .input-button {
-    @include span-columns(6);
-  }
-}
 .itinerary-buttons {
-  .input-button {
+  .item {
     @include span-columns(3);
   }
 }
