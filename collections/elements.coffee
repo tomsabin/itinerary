@@ -67,7 +67,11 @@
         attributes.second_body = 'A link to the interwebs'
     # when 'photo'
     # when 'map'
-    # when 'date'
+    when 'date'
+      if body.match(/\d{4}-\d{2}-\d{2}/)
+        attributes.body = body.split('-').reverse().join('/')
+      else
+        attributes.body = body
 
   Elements.update { _id: elementId }, { $set: attributes }
 

@@ -24,7 +24,8 @@ a, a:visited {
 .itinerary-h1,
 .item-action-text,
 .item-entry,
-.item-link {
+.item-link,
+.item-date {
   font-family: 'Raleway', 'sans-serif';
 }
 .item-h1,
@@ -52,6 +53,10 @@ a, a:visited {
       color: $link-hover-colour;
     }
   }
+}
+.item-date {
+  font-size: 1.1em;
+  color: $grey-7f;
 }
 
 .editable-p {
