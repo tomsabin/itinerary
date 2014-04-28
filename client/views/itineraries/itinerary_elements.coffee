@@ -1,5 +1,5 @@
 getElementId = (e) ->
-  e.target.parentElement.parentElement.parentElement.getAttribute('data-element-id')
+  e.target.parentElement.parentElement.getAttribute('data-element-id')
 
 Template.itineraryElements.events
   focusout: (e) ->
