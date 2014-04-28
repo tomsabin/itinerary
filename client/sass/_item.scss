@@ -45,6 +45,10 @@
     cursor: move;
   }
 }
+.item-entry {
+  border: none;
+  background-color: transparent;
+}
 .item-divider {
   background-color: transparent;
   height: 22px;
@@ -121,7 +125,7 @@
   }
 }
 .add-item-divider:before {
-  content: '\f141';
+  content: '\f068';
 }
 .add-item-date:before {
   content: '\f017';

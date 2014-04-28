@@ -1,3 +1,4 @@
+# DRY up editable function somehow
 wrap = (doc, el) ->
   """
 <div data-element-id='#{doc._id}' class='item item-#{doc.type}'>
@@ -17,7 +18,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<input class='' placeholder='#{doc.body}'></input>"
+    wrap doc, "<input class='item-entry' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "<p class='item-p editable' contentEditable=true>#{doc.body}</p>"
 
@@ -25,7 +26,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<input class='editable editable-a' placeholder='#{doc.body}'></input>"
+    wrap doc, "<input class='item-entry' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "<a class='item-a' href='#{doc.body}'>#{doc.body}</a>"
 
@@ -33,7 +34,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<input class='editable editable-img' placeholder='#{doc.body}'></input>"
+    wrap doc, "<input class='item-entry' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "<img class='item-img' src='#{doc.body}' />"
 
@@ -41,7 +42,7 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<p class='editable editable-map' contentEditable=true>#{doc.body}</p>"
+    wrap doc, "<input class='item-entry' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "??? Map for: #{doc.body}"
 
@@ -49,6 +50,6 @@ wrap = (doc, el) ->
   editable: -> doc.editable
   position: -> doc.position
   initalElement: ->
-    wrap doc, "<p class='editable editable-date' contentEditable=true>#{doc.body}</p>"
+    wrap doc, "<input class='item-entry' placeholder='#{doc.body}'></input>"
   finalElement: ->
     wrap doc, "??? Parsed date for: #{doc.body}"
