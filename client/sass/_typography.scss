@@ -4,7 +4,6 @@ a, a:visited {
   text-decoration: none;
   color: $font-color;
 }
-
 .layout-main {
   word-wrap: break-word;
 }
@@ -12,21 +11,22 @@ a, a:visited {
 
 }
 .item-h1 {
-
-}
-.item-p {
-
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid $item-border-color;
 }
 .itinerary-h1,
 .itinerary-h2 {
   text-align: center;
   margin: 48px 8px;
 }
+.item-h1,
 .itinerary-h1 {
   font-family: 'Raleway', 'sans-serif';
   font-size: 1.7em;
   line-height: 1.5em;
 }
+.item-p,
 .itinerary-h2 {
   font-family: 'Goudy Bookletter 1911', 'serif';
   font-size: 1.0em;
