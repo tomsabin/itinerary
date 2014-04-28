@@ -53,6 +53,20 @@
   attributes.editable = true
   Elements.insert attributes
 
+@updateElement = (elementId, type, body) ->
+  attributes = { editable: false }
+  switch type
+    when 'link'
+      markdownLink = /\[([^\]]+)\]\(([^)]+)\)/.exec(body)
+      if markdownLink
+        attributes.body = markdownLink[2]
+        attributes.second_body = markdownLink[1]
+      else
+        attributes.body = body
+        attributes.second_body = 'A link to the interwebs'
+
+  Elements.update { _id: elementId }, { $set: attributes }
+
 Meteor.methods
   deleteElement: (elementId) ->
     Elements.remove elementId

@@ -13,8 +13,12 @@
   .item-content-container,
   .item-action-container {
     display: table;
+    table-layout: fixed;
     border-spacing: 16px;
     width: 100%;
+  }
+  .item-content-container {
+    word-wrap: break-word;
   }
   .item-action-container {
     cursor: pointer;
@@ -28,6 +32,7 @@
   }
   .remove-item, .handle, .item-action-icon {
     color: $grey-7f;
+    width: 12px;
   }
   .remove-item {
     display: none;
@@ -53,9 +58,7 @@
 .item-divider {
   background-color: transparent;
   height: 32px;
-
   border: none;
-
 
   &:hover {
     background-color: transparent;

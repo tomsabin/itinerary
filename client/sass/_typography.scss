@@ -21,8 +21,14 @@ a, a:visited {
   margin: 48px 8px;
 }
 .item-h1,
-.itinerary-h1 {
+.itinerary-h1,
+.item-action-text,
+.item-entry,
+.item-link {
   font-family: 'Raleway', 'sans-serif';
+}
+.item-h1,
+.itinerary-h1 {
   font-size: 1.7em;
   line-height: 1.5em;
 }
@@ -33,10 +39,21 @@ a, a:visited {
   line-height: 1.2em;
 }
 .item-action-text, .item-entry {
-  font-family: 'Raleway', 'sans-serif';
   font-size: 1.0em;
   color: $grey-7f;
 }
+.item-link {
+  a {
+    color: $link-colour;
+  }
+
+  &:hover {
+    a {
+      color: $link-hover-colour;
+    }
+  }
+}
+
 .editable-p {
 
 }

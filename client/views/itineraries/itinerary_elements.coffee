@@ -6,23 +6,13 @@ Template.itineraryElements.events
     if e.target.localName is 'input'
       body = e.target.value
       if !!body
-        Elements.update
-          _id: getElementId(e)
-        ,
-          $set:
-            body: body
-            editable: false
+        updateElement(getElementId(e), e.target.getAttribute('data-item-type'), body)
 
     else if e.target.getAttribute('contentEditable')?
       originalBody = e.target.parentElement.getAttribute('data-body')
       body = e.target.innerText
       if !!body
-        Elements.update
-          _id: getElementId(e)
-        ,
-          $set:
-            body: body
-            editable: false
+        updateElement(getElementId(e), e.target.getAttribute('data-item-type'), body)
       else
         e.target.innerText = originalBody
 
