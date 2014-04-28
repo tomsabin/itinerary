@@ -17,12 +17,6 @@ body {
   }
 }
 
-.element-buttons {
-  .input-button {
-    @include span-columns(2);
-  }
-}
-
 .itinerary-buttons {
   .input-button {
     @include span-columns(3);

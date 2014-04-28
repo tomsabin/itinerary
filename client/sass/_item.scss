@@ -1,81 +1,145 @@
-.items-container {
 
-  .item {
-    position: relative;
-    margin: 8px 0;
-    background-color: $item-color;
-    border: 1px solid $item-border-color;
-    border-bottom: 2px solid $item-border-color;
-    border-radius: 3px;
+.item {
+  position: relative;
+  margin: 8px 0;
+  background-color: $item-color;
+  border: 1px solid $item-border-color;
+  border-bottom: 2px solid $item-border-color;
+  border-radius: 3px;
 
-    cursor: default;
+  cursor: default;
 
-    &:hover {
-      background-color: $item-hover-color;
+  &:hover {
+    background-color: $item-hover-color;
 
-      .remove-item {
-        display: block;
-      }
-    }
-    .item-content-container {
-      display: table;
-      width: 100%;
-      border-spacing: 16px;
-    }
-    .item-content {
-      display: table-cell;
-      margin: 20px;
-      margin-right: 40px;
-    }
-    .remove-item, .handle {
-      color: $grey-7f;
-    }
     .remove-item {
-      display: none;
-      position: absolute;
-      top: -8px;
-      left: -6px;
-      cursor: pointer;
-    }
-    .handle {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: right;
-      cursor: move;
+      display: block;
     }
   }
+  .item-content-container {
+    display: table;
+    width: 100%;
+    border-spacing: 16px;
+  }
+  .item-content {
+    display: table-cell;
+    margin: 20px;
+    margin-right: 40px;
+  }
+  .remove-item, .handle, .add-element {
+    color: $grey-7f;
+  }
+  .remove-item {
+    display: none;
+    position: absolute;
+    top: -8px;
+    left: -6px;
+    cursor: pointer;
+  }
+  .handle, .add-element {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+  }
+  .hande {
+    cursor: move;
+  }
+}
 
-  .item-divider {
-    background-color: transparent;
-    height: 22px;
-    margin: 9px 0;
-    border: none;
-  }
-  .item-text {
+.item-divider {
+  background-color: transparent;
+  height: 22px;
+  margin: 9px 0;
+  border: none;
+}
+.item-text {
 
-  }
-  .item-link {
+}
+.item-link {
 
-  }
-  .item-photo {
+}
+.item-photo {
 
-  }
-  .editable {
-    cursor: text;
-  }
-  .editable-text {
+}
+.editable {
+  cursor: text;
+}
+.editable-text {
 
-  }
-  .editable-link {
+}
+.editable-link {
 
-  }
-  .editable-photo {
+}
+.editable-photo {
 
-  }
 }
 .item-placeholder {
   background-color: $item-placeholder-color;
   border-radius: 3px;
   border: 4px dashed $item-placeholder-border-color;
   margin: -2px 0;
+}
+
+.add-item-container {
+  cursor: pointer;
+  &:hover {
+    background-color: $item-color;
+  }
+}
+.element-buttons-table {
+  @include span-columns(6);
+  background-color: $item-color;
+  table-layout: fixed;
+  display: table;
+  border: 1px solid $item-border-color;
+  border-collapse: separate;
+  border-spacing: 4px;
+  border-radius: 3px;
+  border-bottom: 2px solid $item-border-color;
+  margin-bottom: 8px;
+
+  .element-buttons-row {
+    display: table-row;
+
+    .element-buttons-cell {
+      display: table-cell;
+      height: 60px;
+      &:hover {
+        background-color: $item-hover-color;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.add-item-divider,
+.add-item-date,
+.add-item-text,
+.add-item-link,
+.add-item-photo,
+.add-item-map {
+  text-align: center;
+  vertical-align: middle;
+  &:before {
+    font-family: FontAwesome;
+    font-size: 1.6em;
+    /*color: $grey-7f;*/
+  }
+}
+.add-item-divider:before {
+  content: '\f147';
+}
+.add-item-date:before {
+  content: '\f017';
+}
+.add-item-text:before {
+  content: '\f044';
+}
+.add-item-link:before {
+  content: '\f0c1';
+}
+.add-item-photo:before {
+  content: '\f03e';
+}
+.add-item-map:before {
+  content: '\f041';
 }
