@@ -1,3 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway|Goudy+Bookletter+1911);
+
+a, a:visited {
+  text-decoration: none;
+  color: $font-color;
+}
+
 .layout-main {
   word-wrap: break-word;
 }
@@ -10,11 +17,20 @@
 .item-p {
 
 }
+.itinerary-h1,
+.itinerary-h2 {
+  text-align: center;
+  margin: 48px 8px;
+}
 .itinerary-h1 {
-
+  font-family: 'Raleway', 'sans-serif';
+  font-size: 1.7em;
+  line-height: 1.5em;
 }
 .itinerary-h2 {
-
+  font-family: 'Goudy Bookletter 1911', 'serif';
+  font-size: 1.0em;
+  line-height: 1.2em;
 }
 .editable-p {
 
