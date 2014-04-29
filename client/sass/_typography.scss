@@ -7,8 +7,23 @@ a, a:visited {
 .layout-main {
   word-wrap: break-word;
 }
-.home-link {
+.navigation-bar {
+  text-align: center;
+}
+.home-h1 {
+  margin: 64px 0;
+  text-align: center;
+  font-size: 1.6em;
+  line-height: 1.6em;
+  color: $home-title-colour;
 
+  &:before {
+    font-family: FontAwesome;
+    font-size: 1.6em;
+    content: '\f03a\a';
+    white-space: pre;
+    color: $home-icon-colour;
+  }
 }
 .item-h1 {
   padding-bottom: 12px;
@@ -22,6 +37,7 @@ a, a:visited {
   text-align: center;
   padding: 24px 8px;
 }
+.home-h1,
 .item-h1,
 .itinerary-h1,
 .item-action-text,
@@ -29,7 +45,8 @@ a, a:visited {
 .h1-entry,
 .item-link,
 .item-date,
-.item-map-text {
+.item-map-text,
+.navigation-text {
   font-family: 'Raleway', 'sans-serif';
 }
 .item-h1,
@@ -47,7 +64,7 @@ a, a:visited {
 }
 .item-action-text, .item-entry {
   font-size: 1.0em;
-  color: $grey-7f;
+  color: $icon-colour;
 }
 .item-link {
   a {
@@ -62,12 +79,12 @@ a, a:visited {
 }
 .item-date {
   font-size: 1.1em;
-  color: $grey-7f;
+  color: $icon-colour;
 }
 .item-map-text {
   margin-top: 8px;
   text-transform: uppercase;
   text-align: left;
   font-size: 0.7em;
-  color: $grey-7f;
+  color: $icon-colour;
 }

@@ -26,12 +26,12 @@
       background-color: $item-hover-color;
 
       .item-action-text, .item-action-icon {
-        color: black;
+        color: $icon-hover-colour;
       }
     }
   }
   .remove-item, .handle, .item-action-icon {
-    color: $grey-7f;
+    color: $icon-colour;
     width: 12px;
   }
   .remove-item {
@@ -126,7 +126,7 @@
         cursor: pointer;
 
         &:before {
-          color: black;
+          color: $icon-hover-colour;
         }
       }
     }
@@ -144,7 +144,7 @@
   &:before {
     font-family: FontAwesome;
     font-size: 1.6em;
-    color: $grey-7f;
+    color: $icon-colour;
   }
 }
 .add-item-divider:before {

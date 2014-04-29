@@ -1,3 +1,11 @@
-.layout-nav {
+.navigation {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 1.6em;
+  height: 32px;
+  color: $icon-colour;
 
+  &:hover {
+    color: $icon-hover-colour;
+  }
 }
