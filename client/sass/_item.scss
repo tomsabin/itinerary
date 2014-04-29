@@ -49,6 +49,8 @@
   .handle {
     padding-right: 3px;
     cursor: move;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
   }
 }
 .item-entry {
@@ -87,7 +89,8 @@
     right: 16px;
   }
 }
-.item-photo {
+.item-photo,
+.item-map {
   max-width: 100%;
   text-align: center;
 }

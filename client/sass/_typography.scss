@@ -25,7 +25,8 @@ a, a:visited {
 .item-action-text,
 .item-entry,
 .item-link,
-.item-date {
+.item-date,
+.item-map-text {
   font-family: 'Raleway', 'sans-serif';
 }
 .item-h1,
@@ -58,7 +59,13 @@ a, a:visited {
   font-size: 1.1em;
   color: $grey-7f;
 }
-
+.item-map-text {
+  margin-top: 8px;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 0.7em;
+  color: $grey-7f;
+}
 .editable-p {
 
 }

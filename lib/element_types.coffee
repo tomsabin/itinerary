@@ -44,7 +44,9 @@ wrap = (doc, el) ->
   initalElement: ->
     wrap doc, "<input type='text' class='item-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
   finalElement: ->
-    wrap doc, "??? Map for: #{doc.body}"
+    googleMapUrl = "http://maps.google.com/?q=#{doc.body}"
+    staticGoogleMap = "http://maps.googleapis.com/maps/api/staticmap?center=#{doc.body}&markers=color:red|#{doc.body}&zoom=13&size=492x320&sensor=false"
+    wrap doc, "<a href='#{googleMapUrl}'><img class='item-map' src='#{staticGoogleMap}' /></a><div class='item-map-text'>#{doc.body}</div>"
 
 @DateElement = (doc) ->
   editable: -> doc.editable
