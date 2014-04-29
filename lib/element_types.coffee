@@ -1,7 +1,7 @@
 # DRY up editable function somehow
 wrap = (doc, el) ->
   """
-<div data-element-id='#{doc._id}' class='item item-#{doc.type}'>
+<div data-sortable=true data-element-id='#{doc._id}' class='item item-#{doc.type}'>
   <i data-action='removeElement' class='fa fa-times remove-item'></i>
   <div class='item-content-container' data-body='#{doc.body}'>
     #{el}
@@ -9,6 +9,33 @@ wrap = (doc, el) ->
   </div>
 </div>
   """
+
+headerWrap = (doc, el) ->
+  """
+<div data-element-id='#{doc._id}'>
+  <div data-body='#{doc.body}'>
+    #{el}
+  </div>
+</div>
+  """
+
+@TitleElement = (doc) ->
+  body: -> doc.body
+  editable: -> doc.editable
+  position: -> doc.position
+  initalElement: ->
+    headerWrap doc, "<input type='text' class='h1-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
+  finalElement: ->
+    headerWrap doc, "<h1 id='itineraryTitle' class='itinerary-h1' contentEditable=true>#{doc.body}</h1>"
+
+@DescriptionElement = (doc) ->
+  body: -> doc.body
+  editable: -> doc.editable
+  position: -> doc.position
+  initalElement: ->
+    headerWrap doc, "<input type='text' class='h2-entry' data-item-type='#{doc.type}' placeholder='#{doc.body}'></input>"
+  finalElement: ->
+    headerWrap doc, "<h2 id='itineraryDescription' class='itinerary-h2' contentEditable=true>#{doc.body}</h2>"
 
 @DividerElement = (doc) ->
   finalElement: -> wrap doc, ''

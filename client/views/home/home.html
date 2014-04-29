@@ -2,25 +2,21 @@
   <div class='home'>
     <h1>Home</h1>
 
-    <div class='items-container'>
-      {{#each itineraries}}
-        <a href='{{pathFor "itinerary"}}'>
-          <div class='item' data-itinerary-id='{{_id}}'>
-            <div class='item-action-container'>
-              <h1 class='item-h1'>{{title}}</h1>
-              <p class='item-p'>{{description}}</p>
-            </div>
+    {{#each itineraries}}
+      <a href='{{pathFor "itinerary"}}'>
+        <div class='item' data-itinerary-id='{{_id}}'>
+          <div class='item-action-container'>
+            <h1 class='item-h1'>{{title}}</h1>
+            <p class='item-p'>{{description}}</p>
           </div>
-        </a>
-      {{/each}}
-    </div>
-
-    <div class='home-buttons'>
-      <div id='newItinerary' class='item'>
-        <div class='item-action-container'>
-          <span class='item-action-text'>Create itinerary</span>
-          <i class='fa fa-plus item-action-icon'></i>
         </div>
+      </a>
+    {{/each}}
+
+    <div id='newItinerary' class='item'>
+      <div class='item-action-container'>
+        <span class='item-action-text'>Create itinerary</span>
+        <i class='fa fa-plus item-action-icon'></i>
       </div>
     </div>
   </div>

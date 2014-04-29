@@ -1,3 +1,11 @@
+Template.itineraryElements.helpers
+  focusOnTitleElementIfFirstCreated: ->
+    if Session.get('selectTitleElement')
+      element = $('input[data-item-type="title"')
+      if element.length > 0
+        element.focus()
+        Session.set('selectTitleElement', '')
+
 getElementId = (e) ->
   e.target.parentElement.parentElement.getAttribute('data-element-id')
 
@@ -33,6 +41,7 @@ Template.itineraryElements.rendered = ->
   $elementList.sortable
     axis: 'y'
     handle: '.handle'
+    items: 'div[data-sortable="true"]'
     placeholder: 'item-placeholder'
     forcePlaceholderSize: '80px'
     stop: (event, ui) ->

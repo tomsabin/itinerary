@@ -5,3 +5,8 @@
   border-radius: 3px;
   position: relative;
 }
+@mixin input {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+}

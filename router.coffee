@@ -8,8 +8,10 @@ Router.map ->
       itineraries: Itineraries.find {},
                     sort:
                       created_on: 1
-    waitOn: ->
+    waitOn: -> [
       Meteor.subscribe('itineraries')
+      Meteor.subscribe('headerElements')
+    ]
 
   @route 'itinerary',
     path: '/:_id'
