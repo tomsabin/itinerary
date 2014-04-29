@@ -6,22 +6,22 @@ Template.itineraryElements.helpers
         element.focus()
         Session.set('selectTitleElement', '')
 
-getElementId = (e) ->
-  e.target.parentElement.parentElement.getAttribute('data-element-id')
-
 updateElementWithEvent = (e) ->
-  if e? and e.target? and e.target.localName is 'input'
-    originalBody = e.target.parentElement.getAttribute('data-body')
-    body = e.target.value
+  target = e.target
+  if target? and target.localName is 'input'
+    originalBody = target.parentElement.getAttribute('data-body')
+    body = target.value
     if !!body
-      updateElement(getElementId(e), e.target.parentElement.getAttribute('data-item-type'), body)
+      updateElement(
+        target.parentElement.parentElement.getAttribute('data-element-id'),
+        target.parentElement.getAttribute('data-item-type'),
+        body)
     else
-      e.target.value = originalBody
+      target.value = originalBody unless target.localName is 'input'
 
 Template.itineraryElements.events
   focusout: (e) -> updateElementWithEvent(e)
   keypress: (e) -> updateElementWithEvent(e) if e.which is 13
-
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
 
