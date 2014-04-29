@@ -24,5 +24,15 @@ Meteor.methods
       parentId: itineraryId
       headerElement: { $exists: false }
 
+    Elements.update { parentId: itineraryId, type: 'title' },
+      $set:
+        body: 'Itinerary title'
+        editable: true
+
+    Elements.update { parentId: itineraryId, type: 'description' },
+      $set:
+        body: 'A short description'
+        editable: true
+
   removeItineraryElements: (itineraryId) ->
     Elements.remove parentId: itineraryId

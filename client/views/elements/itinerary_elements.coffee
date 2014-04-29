@@ -9,29 +9,18 @@ Template.itineraryElements.helpers
 getElementId = (e) ->
   e.target.parentElement.parentElement.getAttribute('data-element-id')
 
+updateElementWithEvent = (e) ->
+  if e? and e.target? and e.target.localName is 'input'
+    originalBody = e.target.parentElement.getAttribute('data-body')
+    body = e.target.value
+    if !!body
+      updateElement(getElementId(e), e.target.parentElement.getAttribute('data-item-type'), body)
+    else
+      e.target.value = originalBody
+
 Template.itineraryElements.events
-  focusout: (e) ->
-    if e.target.localName is 'input'
-      body = e.target.value
-      if !!body
-        updateElement(getElementId(e), e.target.getAttribute('data-item-type'), body)
-
-    else if e.target.getAttribute('contentEditable')?
-      originalBody = e.target.parentElement.getAttribute('data-body')
-      body = e.target.innerText
-      if !!body
-        updateElement(getElementId(e), e.target.getAttribute('data-item-type'), body)
-      else
-        e.target.innerText = originalBody
-
-  keypress: (e) ->
-    if e.which is 13
-      Elements.update
-        _id: getElementId(e)
-      ,
-        $set:
-          body: if (e.target.localName is 'input') then e.target.value else e.target.innerText
-          editable: false
+  focusout: (e) -> updateElementWithEvent(e)
+  keypress: (e) -> updateElementWithEvent(e) if e.which is 13
 
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))

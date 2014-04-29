@@ -1,4 +1,4 @@
-@Elements = new Meteor.Collection('elements',
+@Elements = new Meteor.Collection 'elements',
   transform: (doc) ->
     switch doc.type
       when 'title'
@@ -18,7 +18,6 @@
       when 'map'
         return new MapElement(doc)
     doc
-)
 
 @Elements.before.insert (userId, doc) ->
   highestElement = Elements.findOne({ parentId: doc.parentId },
@@ -40,11 +39,8 @@
     date: true
 
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
-
   throw new Meteor.Error(422, 'Element type needs a parent') unless attributes.parentId
-
-  unless attributes.type of typeWhitelist
-    throw new Meteor.Error(422, 'Element type needs to be valid')
+  throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
 
   switch attributes.type
     when 'title'
@@ -63,7 +59,7 @@
       attributes.body = 'Specify a date or time'
 
   attributes.editable = true
-  Elements.insert attributes
+  Elements.insert(attributes)
 
 @updateElement = (elementId, type, body) ->
   attributes = { editable: false }
@@ -83,8 +79,8 @@
         attributes.body = body
     else
       attributes.body = body
-  Elements.update { _id: elementId }, { $set: attributes }
+  Elements.update({ _id: elementId }, { $set: attributes })
 
 Meteor.methods
   deleteElement: (elementId) ->
-    Elements.remove elementId
+    Elements.remove(elementId)
