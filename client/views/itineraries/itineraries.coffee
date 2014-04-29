@@ -1,7 +1,13 @@
+openContainer = ->
+  $('#openElementButtonContainer').hide()
+  $('#elementButtonContainer').show()
+closeContainer = ->
+  $('#openElementButtonContainer').show()
+  $('#elementButtonContainer').hide()
+
 Template.itineraryButtons.events
   'click #openElementButtonContainer': ->
-    $('#openElementButtonContainer').hide()
-    $('#elementButtonContainer').show()
+    openContainer()
 
   'click #clearItinerary': ->
     if @itinerary?
@@ -21,11 +27,9 @@ Template.itineraryButtons.events
         type: e.target.getAttribute('data-element-type')
         parentId: @itinerary._id
       $("div[data-element-id='#{elementId}'] input").focus()
-      $('#openElementButtonContainer').show()
-      $('#elementButtonContainer').hide()
+      closeContainer()
 
 Template.itineraryButtons.rendered = ->
-  # $('#window').click ->
-  #   $('#openElementButtonContainer').show()
-  #   $('#elementButtonContainer').hide()
+  $('#window').click ->
+    closeContainer()
   $('#elementButtonContainer').hide()

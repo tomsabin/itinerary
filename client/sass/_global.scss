@@ -6,3 +6,11 @@
     outline: 0;
   }
 }
+#window {
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
