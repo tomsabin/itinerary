@@ -1,5 +1,8 @@
 Router.configure
   layoutTemplate: 'layout'
+  loadingTemplate: 'loading'
+
+Router.onBeforeAction('loading');
 
 Router.map ->
   @route 'home',

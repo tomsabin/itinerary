@@ -1,6 +1,7 @@
 {
   "packages": {
     "iron-router": {},
-    "collection-hooks": {}
+    "collection-hooks": {},
+    "spin": {}
   }
 }

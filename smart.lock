@@ -3,7 +3,8 @@
   "dependencies": {
     "basePackages": {
       "iron-router": {},
-      "collection-hooks": {}
+      "collection-hooks": {},
+      "spin": {}
     },
     "packages": {
       "iron-router": {
@@ -15,6 +16,11 @@
         "git": "https://github.com/matb33/meteor-collection-hooks.git",
         "tag": "v0.6.3",
         "commit": "70f2598bf991cb36effd72aea2555cba96f88355"
+      },
+      "spin": {
+        "git": "https://github.com/SachaG/meteor-spin.git",
+        "tag": "v0.2.2",
+        "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
