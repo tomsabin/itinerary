@@ -37,3 +37,7 @@ Template.itineraryElements.rendered = ->
       _.each $(event.target).children('div'), (element, index, list) ->
         Elements.update { _id: element.getAttribute('data-element-id') },
           $set: position: index + 1
+
+  if Session.get('selectTitleElement')
+    @.$('div[data-item-type="title"] input').focus()
+    Session.set('selectTitleElement', '')
