@@ -19,5 +19,10 @@
   itineraryId
 
 Meteor.methods
-  clearItineraryElements: (itineraryId) ->
+  resetItineraryElements: (itineraryId) ->
+    Elements.remove
+      parentId: itineraryId
+      headerElement: { $exists: false }
+
+  removeItineraryElements: (itineraryId) ->
     Elements.remove parentId: itineraryId
