@@ -2,21 +2,21 @@
   transform: (doc) ->
     switch doc.type
       when 'title'
-        return new TitleElement(doc)
+        _.extend(new Element(doc), Element.prototype, TitleElement.prototype)
       when 'description'
-        return new DescriptionElement(doc)
+        _.extend(new Element(doc), Element.prototype, DescriptionElement.prototype)
       when 'divider'
-        return new DividerElement(doc)
+        _.extend(new Element(doc), Element.prototype, DividerElement.prototype)
       when 'photo'
-        return new PhotoElement(doc)
+        _.extend(new Element(doc), Element.prototype, PhotoElement.prototype)
       when 'text'
-        return new TextElement(doc)
+        _.extend(new Element(doc), Element.prototype, TextElement.prototype)
       when 'link'
-        return new LinkElement(doc)
+        _.extend(new Element(doc), Element.prototype, LinkElement.prototype)
       when 'date'
-        return new DateElement(doc)
+        _.extend(new Element(doc), Element.prototype, DateElement.prototype)
       when 'map'
-        return new MapElement(doc)
+        _.extend(new Element(doc), Element.prototype, MapElement.prototype)
     doc
 
 @Elements.before.insert (userId, doc) ->
@@ -24,7 +24,7 @@
                      sort: { position: -1 }
                      limit: 1
                    )
-  position = if highestElement? then highestElement.position() else 0
+  position = if highestElement? then highestElement.position else 0
   doc.position = position + 1
 
 @createElement = (attributes) ->
