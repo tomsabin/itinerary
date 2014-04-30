@@ -44,6 +44,7 @@ a, a:visited {
 .item-entry,
 .h1-entry,
 .item-link,
+.item-datetime-local,
 .item-date,
 .item-time,
 .item-map-text,
@@ -78,6 +79,7 @@ a, a:visited {
     }
   }
 }
+.item-datetime-local,
 .item-date,
 .item-time {
   font-size: 1.1em;

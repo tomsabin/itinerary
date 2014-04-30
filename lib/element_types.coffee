@@ -1,4 +1,15 @@
 helpers =
+  dateTimeElements:
+    initalElement: (doc) ->
+      element = helpers.createInitialElement(doc)
+      element.setAttribute('type', doc.type)
+      helpers.wrapElement(doc, element)
+    finalElement: (doc) ->
+      element = document.createElement('p')
+      element.setAttribute('class', "item-#{doc.body}")
+      element.innerText = doc.body
+      helpers.wrapElement(doc, element)
+
   createInitialElement: (doc) ->
     element = document.createElement('input')
     element.setAttribute('placeholder', doc.body)
@@ -29,6 +40,7 @@ helpers =
 @Element = (doc) ->
   @doc = doc
 @DescriptionElement = ->
+@DateTimeElement = ->
 @DividerElement = ->
 @PhotoElement = ->
 @TitleElement = ->
@@ -112,24 +124,6 @@ helpers =
     linkElement.insertBefore(divElement, divElement.nextSibling)
     helpers.wrapElement(@, linkElement)
 
-@DateElement.prototype =
-  initalElement: ->
-    element = helpers.createInitialElement(@)
-    element.setAttribute('type', 'date')
-    helpers.wrapElement(@, element)
-  finalElement: ->
-    element = document.createElement('p')
-    element.setAttribute('class', 'item-date')
-    element.innerText = @body
-    helpers.wrapElement(@, element)
-
-@TimeElement.prototype =
-  initalElement: ->
-    element = helpers.createInitialElement(@)
-    element.setAttribute('type', 'time')
-    helpers.wrapElement(@, element)
-  finalElement: ->
-    element = document.createElement('p')
-    element.setAttribute('class', 'item-time')
-    element.innerText = @body
-    helpers.wrapElement(@, element)
+@DateTimeElement.prototype =
+  initalElement: -> helpers.dateTimeElements.initalElement(@)
+  finalElement: -> helpers.dateTimeElements.finalElement(@)

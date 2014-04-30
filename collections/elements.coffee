@@ -5,6 +5,8 @@
         _.extend(new Element(doc), Element.prototype, TitleElement.prototype)
       when 'description'
         _.extend(new Element(doc), Element.prototype, DescriptionElement.prototype)
+      when 'datetime-local'
+        _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
       when 'divider'
         _.extend(new Element(doc), Element.prototype, DividerElement.prototype)
       when 'photo'
@@ -14,9 +16,9 @@
       when 'link'
         _.extend(new Element(doc), Element.prototype, LinkElement.prototype)
       when 'date'
-        _.extend(new Element(doc), Element.prototype, DateElement.prototype)
+        _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
       when 'time'
-        _.extend(new Element(doc), Element.prototype, TimeElement.prototype)
+        _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
       when 'map'
         _.extend(new Element(doc), Element.prototype, MapElement.prototype)
     doc
@@ -31,6 +33,7 @@
 
 @createElement = (attributes) ->
   typeWhitelist =
+    'datetime-local': true
     description: true
     divider: true
     title: true
@@ -48,6 +51,8 @@
   switch attributes.type
     when 'description'
       attributes.body = 'A short description'
+    when 'datetime-local'
+      attributes.body = 'Specify a date and time'
     when 'title'
       attributes.body = 'Itinerary title'
     when 'photo'
@@ -77,6 +82,11 @@
       else
         attributes.body = body
         attributes.second_body = 'A link to the interwebs'
+    when 'datetime-local'
+      if body.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?/)
+        attributes.body = body.split('T').join(" at ")
+      else
+        attributes.body = body
     when 'date'
       if body.match(/\d{4}-\d{2}-\d{2}/)
         attributes.body = body.split('-').reverse().join('/')

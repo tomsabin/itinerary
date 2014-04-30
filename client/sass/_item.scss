@@ -132,6 +132,7 @@
     }
   }
 }
+.add-item-datetime-local,
 .add-item-divider,
 .add-item-date,
 .add-item-time,
@@ -147,6 +148,9 @@
     font-size: 1.6em;
     color: $icon-colour;
   }
+}
+.add-item-datetime-local:before {
+  content: '\f133';
 }
 .add-item-divider:before {
   content: '\f068';
