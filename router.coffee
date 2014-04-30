@@ -9,8 +9,7 @@ Router.map ->
     path: '/'
     data: ->
       itineraries: Itineraries.find {},
-                    sort:
-                      created_on: 1
+                     sort { created_on: 1 }
     waitOn: -> [
       Meteor.subscribe('itineraries')
       Meteor.subscribe('headerElements')
@@ -20,9 +19,8 @@ Router.map ->
     path: '/:_id'
     data: ->
       itinerary: Itineraries.findOne(@params._id)
-      itineraryElements: Elements.find parentId: @params._id,
-                           sort:
-                             position: 1
+      elements: Elements.find { parentId: @params._id },
+                  sort: { position: 1 }
 
     waitOn: -> [
       Meteor.subscribe('singleItinerary', @params._id)

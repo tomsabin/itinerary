@@ -1,4 +1,4 @@
-Template.itineraryElements.helpers
+Template.elements.helpers
   focusOnTitleElementIfFirstCreated: ->
     if Session.get('selectTitleElement')
       element = $('input[data-item-type="title"')
@@ -19,13 +19,13 @@ updateElementWithEvent = (e) ->
     else
       target.value = originalBody unless target.localName is 'input'
 
-Template.itineraryElements.events
+Template.elements.events
   focusout: (e) -> updateElementWithEvent(e)
   keypress: (e) -> updateElementWithEvent(e) if e.which is 13
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
 
-Template.itineraryElements.rendered = ->
+Template.elements.rendered = ->
   $elementList = $('#elementList')
   $elementList.sortable
     axis: 'y'
