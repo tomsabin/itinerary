@@ -44,8 +44,8 @@
     time: true
     map: true
 
+  throw new Meteor.Error(422, 'Element needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
-  throw new Meteor.Error(422, 'Element type needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
 
   switch attributes.type

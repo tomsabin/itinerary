@@ -27,6 +27,6 @@ Template.addElements.events
 
 Template.addElements.rendered = ->
   $('#window').click ->
-    closeContainer()
+    closeContainers()
   $('#dateTimeElementsContainer').hide()
   $('#elementButtonContainer').hide()

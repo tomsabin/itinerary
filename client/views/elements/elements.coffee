@@ -1,11 +1,3 @@
-Template.elements.helpers
-  focusOnTitleElementIfFirstCreated: ->
-    if Session.get('selectTitleElement')
-      element = $('input[data-item-type="title"')
-      if element.length > 0
-        element.focus()
-        Session.set('selectTitleElement', '')
-
 updateElementWithEvent = (e) ->
   findAttribute = (target, attribute) ->
     if target.parentElement.parentElement.getAttribute('data-item-type') is 'map'
