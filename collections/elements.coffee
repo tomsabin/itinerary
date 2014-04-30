@@ -73,6 +73,7 @@
 
 @updateElement = (elementId, type, body) ->
   attributes = { editable: false }
+  attributes.original_body = body if type is 'photo' or 'link'
   switch type
     when 'link'
       markdownLink = /\[([^\]]+)\]\(([^)]+)\)/.exec(body)

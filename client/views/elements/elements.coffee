@@ -27,6 +27,9 @@ Template.elements.events
     Meteor.call('deleteElement', e.target.parentElement.parentElement.getAttribute('data-element-id'))
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
+  'click [data-editable="true"]': (e) ->
+    elementId = e.target.parentElement.getAttribute('data-element-id')
+    Elements.update({ _id: elementId }, { $set: { editable: true } })
 
 Template.elements.rendered = ->
   $elementList = $('#elementList')

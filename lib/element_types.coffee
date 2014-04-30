@@ -16,7 +16,7 @@ helpers =
     element.setAttribute('class', 'item-entry')
     element.setAttribute('type', 'text')
     element
-  wrapElement: (doc, element, isHeaderElement = false) ->
+  wrapElement: (doc, element, isEditable = false, isHeaderElement = false) ->
     outer = document.createElement('div')
     inner = document.createElement('div')
     outer.setAttribute('data-element-id', doc._id)
@@ -30,7 +30,8 @@ helpers =
       iconDelete.setAttribute('class', 'fa fa-times remove-item')
       iconHandle.setAttribute('class', 'fa fa-sort handle')
       outer.setAttribute('data-sortable', true)
-      outer.setAttribute('class', "item item-#{doc.type}")
+      outer.setAttribute('data-editable', true) if isEditable
+      outer.setAttribute('class', "item item-#{doc.type}#{if isEditable then ' editable' else ''}")
       inner.setAttribute('class', 'item-content-container')
       inner.appendChild(iconHandle)
       outer.appendChild(iconDelete)
@@ -59,27 +60,27 @@ helpers =
   initalElement: ->
     element = helpers.createInitialElement(@)
     element.setAttribute('class', 'h1-entry')
-    helpers.wrapElement(@, element, true)
+    helpers.wrapElement(@, element, false, true)
   finalElement: ->
     element = document.createElement('h1')
     element.setAttribute('id', 'itineraryTitle')
     element.setAttribute('class', 'itinerary-h1 editable')
     element.setAttribute('contentEditable', true)
     element.innerText = @body
-    helpers.wrapElement(@, element, true)
+    helpers.wrapElement(@, element, false, true)
 
 @DescriptionElement.prototype =
   initalElement: ->
     element = helpers.createInitialElement(@)
     element.setAttribute('class', 'h2-entry')
-    helpers.wrapElement(@, element, true)
+    helpers.wrapElement(@, element, false, true)
   finalElement: ->
     element = document.createElement('h2')
     element.setAttribute('id', 'itineraryDescription')
     element.setAttribute('class', 'itinerary-h2 editable')
     element.setAttribute('contentEditable', true)
     element.innerText = @body
-    helpers.wrapElement(@, element, true)
+    helpers.wrapElement(@, element, false, true)
 
 @DividerElement.prototype =
   initalElement: -> helpers.wrapElement(@, null)
@@ -97,20 +98,25 @@ helpers =
   initalElement: ->
     element = helpers.createInitialElement(@)
     element.setAttribute('type', 'url')
+    element.setAttribute('value', @original_body) if @original_body?
     helpers.wrapElement(@, element)
   finalElement: ->
     element = document.createElement('a')
     element.setAttribute('class', 'item-link')
     element.setAttribute('href', @body)
     element.innerText = @second_body
-    helpers.wrapElement(@, element)
+    helpers.wrapElement(@, element, true)
 
 @PhotoElement.prototype =
+  initalElement: ->
+    element = helpers.createInitialElement(@)
+    element.setAttribute('value', @original_body) if @original_body?
+    helpers.wrapElement(@, element)
   finalElement: ->
     element = document.createElement('img')
     element.setAttribute('class', 'item-photo')
     element.setAttribute('src', @body)
-    helpers.wrapElement(@, element)
+    helpers.wrapElement(@, element, true)
 
 @MapElement.prototype =
   finalElement: ->
