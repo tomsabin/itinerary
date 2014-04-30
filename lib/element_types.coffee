@@ -6,10 +6,10 @@ helpers =
       helpers.wrapElement(doc, element)
     finalElement: (doc) ->
       element = document.createElement('p')
-      element.setAttribute('class', "item-#{doc.body}")
+      element.setAttribute('class', "item-#{doc.body} editable")
+      element.setAttribute('contentEditable', true)
       element.innerText = doc.body
       helpers.wrapElement(doc, element)
-
   createInitialElement: (doc) ->
     element = document.createElement('input')
     element.setAttribute('placeholder', doc.body)
@@ -20,8 +20,8 @@ helpers =
     outer = document.createElement('div')
     inner = document.createElement('div')
     outer.setAttribute('data-element-id', doc._id)
-    inner.setAttribute('data-item-type', doc.type)
-    inner.setAttribute('data-body', doc.body)
+    outer.setAttribute('data-body', doc.body)
+    outer.setAttribute('data-item-type', doc.type)
     inner.appendChild(element) if element?
     unless isHeaderElement
       iconDelete = document.createElement('i')
@@ -63,7 +63,8 @@ helpers =
   finalElement: ->
     element = document.createElement('h1')
     element.setAttribute('id', 'itineraryTitle')
-    element.setAttribute('class', 'itinerary-h1')
+    element.setAttribute('class', 'itinerary-h1 editable')
+    element.setAttribute('contentEditable', true)
     element.innerText = @body
     helpers.wrapElement(@, element, true)
 
@@ -75,7 +76,8 @@ helpers =
   finalElement: ->
     element = document.createElement('h2')
     element.setAttribute('id', 'itineraryDescription')
-    element.setAttribute('class', 'itinerary-h2')
+    element.setAttribute('class', 'itinerary-h2 editable')
+    element.setAttribute('contentEditable', true)
     element.innerText = @body
     helpers.wrapElement(@, element, true)
 
@@ -86,7 +88,8 @@ helpers =
 @TextElement.prototype =
   finalElement: ->
     element = document.createElement('p')
-    element.setAttribute('class', 'item-text')
+    element.setAttribute('class', 'item-text editable')
+    element.setAttribute('contentEditable', true)
     element.innerText = @body
     helpers.wrapElement(@, element)
 
@@ -117,12 +120,15 @@ helpers =
     imageElement = document.createElement('img')
     imageElement.setAttribute('class', 'item-map')
     imageElement.setAttribute('src', staticGoogleMap)
-    divElement = document.createElement('div')
-    divElement.setAttribute('class', 'item-map-text')
-    divElement.innerText = @body
     linkElement.appendChild(imageElement)
-    linkElement.insertBefore(divElement, divElement.nextSibling)
-    helpers.wrapElement(@, linkElement)
+    divElement = document.createElement('div')
+    divElement.appendChild(linkElement)
+    textElement = document.createElement('p')
+    textElement.setAttribute('class', 'item-map-text editable')
+    textElement.setAttribute('contentEditable', true)
+    textElement.innerText = @body
+    divElement.appendChild(textElement)
+    helpers.wrapElement(@, divElement)
 
 @DateTimeElement.prototype =
   initalElement: -> helpers.dateTimeElements.initalElement(@)
