@@ -22,7 +22,9 @@ updateElementWithEvent = (e) ->
 
 Template.elements.events
   focusout: (e) -> updateElementWithEvent(e)
-  keypress: (e) -> updateElementWithEvent(e) if e.which is 13
+  keydown: (e) -> updateElementWithEvent(e) if e.which is 13 and e.target.localName is 'input'
+  keyup: (e) -> if e.which is 27 and e.target.localName is 'input'
+    Meteor.call('deleteElement', e.target.parentElement.parentElement.getAttribute('data-element-id'))
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
 

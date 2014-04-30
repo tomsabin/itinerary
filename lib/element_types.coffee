@@ -25,9 +25,9 @@ helpers =
     inner.appendChild(element) if element?
     unless isHeaderElement
       iconDelete = document.createElement('i')
+      iconHandle = document.createElement('i')
       iconDelete.setAttribute('data-action', 'removeElement')
       iconDelete.setAttribute('class', 'fa fa-times remove-item')
-      iconHandle = document.createElement('i')
       iconHandle.setAttribute('class', 'fa fa-sort handle')
       outer.setAttribute('data-sortable', true)
       outer.setAttribute('class', "item item-#{doc.type}")
@@ -115,18 +115,18 @@ helpers =
 @MapElement.prototype =
   finalElement: ->
     staticGoogleMap = "http://maps.googleapis.com/maps/api/staticmap?center=#{@body}&markers=color:red|#{@body}&zoom=13&size=492x320&sensor=false"
+    divElement = document.createElement('div')
     linkElement = document.createElement('a')
-    linkElement.setAttribute('href', "http://maps.google.com/?q=#{@body}")
     imageElement = document.createElement('img')
+    textElement = document.createElement('p')
     imageElement.setAttribute('class', 'item-map')
     imageElement.setAttribute('src', staticGoogleMap)
-    linkElement.appendChild(imageElement)
-    divElement = document.createElement('div')
-    divElement.appendChild(linkElement)
-    textElement = document.createElement('p')
+    linkElement.setAttribute('href', "http://maps.google.com/?q=#{@body}")
     textElement.setAttribute('class', 'item-map-text editable')
     textElement.setAttribute('contentEditable', true)
     textElement.innerText = @body
+    linkElement.appendChild(imageElement)
+    divElement.appendChild(linkElement)
     divElement.appendChild(textElement)
     helpers.wrapElement(@, divElement)
 
