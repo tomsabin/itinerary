@@ -134,6 +134,7 @@
 }
 .add-item-divider,
 .add-item-date,
+.add-item-time,
 .add-item-text,
 .add-item-link,
 .add-item-photo,
@@ -152,6 +153,9 @@
 }
 .add-item-date:before {
   content: '\f073';
+}
+.add-item-time:before {
+  content: '\f017';
 }
 .add-item-text:before {
   content: '\f044';

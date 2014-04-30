@@ -35,6 +35,7 @@ helpers =
 @TextElement = ->
 @LinkElement = ->
 @DateElement = ->
+@TimeElement = ->
 @MapElement = ->
 
 @Element.prototype =
@@ -119,5 +120,16 @@ helpers =
   finalElement: ->
     element = document.createElement('p')
     element.setAttribute('class', 'item-date')
+    element.innerText = @body
+    helpers.wrapElement(@, element)
+
+@TimeElement.prototype =
+  initalElement: ->
+    element = helpers.createInitialElement(@)
+    element.setAttribute('type', 'time')
+    helpers.wrapElement(@, element)
+  finalElement: ->
+    element = document.createElement('p')
+    element.setAttribute('class', 'item-time')
     element.innerText = @body
     helpers.wrapElement(@, element)

@@ -1,13 +1,21 @@
 openContainer = ->
   $('#openElementButtonContainer').hide()
   $('#elementButtonContainer').show()
-closeContainer = ->
+closeContainers = ->
   $('#openElementButtonContainer').show()
+  $('#dateTimeElementsContainer').hide()
+  $('#elementButtonContainer').hide()
+openDateTimeElementsContainer = ->
+  $('#openElementButtonContainer').hide()
+  $('#dateTimeElementsContainer').show()
   $('#elementButtonContainer').hide()
 
 Template.addElements.events
   'click #openElementButtonContainer': ->
     openContainer()
+
+  'click #openDateTimeElementsContainer': ->
+    openDateTimeElementsContainer()
 
   'click [data-action="addElement"]': (e) ->
     if @itinerary?
@@ -15,9 +23,10 @@ Template.addElements.events
         type: e.target.getAttribute('data-element-type')
         parentId: @itinerary._id
       $("div[data-element-id='#{elementId}'] input").focus()
-      closeContainer()
+      closeContainers()
 
 Template.addElements.rendered = ->
   $('#window').click ->
     closeContainer()
+  $('#dateTimeElementsContainer').hide()
   $('#elementButtonContainer').hide()

@@ -15,6 +15,8 @@
         _.extend(new Element(doc), Element.prototype, LinkElement.prototype)
       when 'date'
         _.extend(new Element(doc), Element.prototype, DateElement.prototype)
+      when 'time'
+        _.extend(new Element(doc), Element.prototype, TimeElement.prototype)
       when 'map'
         _.extend(new Element(doc), Element.prototype, MapElement.prototype)
     doc
@@ -29,34 +31,37 @@
 
 @createElement = (attributes) ->
   typeWhitelist =
-    title: true
     description: true
     divider: true
+    title: true
+    photo: true
     text: true
     link: true
-    photo: true
-    map: true
     date: true
+    time: true
+    map: true
 
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Element type needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
 
   switch attributes.type
-    when 'title'
-      attributes.body = 'Itinerary title'
     when 'description'
       attributes.body = 'A short description'
+    when 'title'
+      attributes.body = 'Itinerary title'
+    when 'photo'
+      attributes.body = 'Link a photo'
     when 'text'
       attributes.body = 'Add some text'
     when 'link'
       attributes.body = 'Link the interwebs'
-    when 'photo'
-      attributes.body = 'Link a photo'
+    when 'date'
+      attributes.body = 'Specify a date'
+    when 'time'
+      attributes.body = 'Specify a time'
     when 'map'
       attributes.body = 'Enter an address'
-    when 'date'
-      attributes.body = 'Specify a date or time'
 
   attributes.editable = true
   Elements.insert(attributes)

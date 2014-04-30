@@ -45,6 +45,7 @@ a, a:visited {
 .h1-entry,
 .item-link,
 .item-date,
+.item-time,
 .item-map-text,
 .navigation-text {
   font-family: 'Raleway', 'sans-serif';
@@ -77,7 +78,8 @@ a, a:visited {
     }
   }
 }
-.item-date {
+.item-date,
+.item-time {
   font-size: 1.1em;
   color: $icon-colour;
 }
