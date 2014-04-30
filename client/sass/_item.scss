@@ -105,7 +105,7 @@
   border: 4px dashed $item-placeholder-border-color;
   margin: -2px 0;
 }
-.element-buttons-table {
+.buttons-table {
   @include card($item-color, $item-border-color);
   @include span-columns(6);
   display: table;
@@ -114,10 +114,10 @@
   border-spacing: 4px;
   margin-bottom: 8px;
 
-  .element-buttons-row {
+  .buttons-row {
     display: table-row;
 
-    .element-buttons-cell {
+    .buttons-cell {
       display: table-cell;
       height: 60px;
 
