@@ -1,3 +1,3 @@
-Template.itinerary.events
+Template.card.events
   focusin: ->
     showOpeners()

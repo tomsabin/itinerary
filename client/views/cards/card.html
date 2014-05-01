@@ -1,11 +1,6 @@
 <template name='card'>
-  <a href='{{pathFor "itineraries"}}'>
-    <div class='navigation'>
-      <i class='fa fa-home'></i>
-    </div>
-  </a>
-  <div class='card'>
-    {{> elements}}
-    {{> addElement}}
-  </div>
+  {{> navigation}}
+  {{> elements}}
+  {{> addElement}}
+  {{> manager}}
 </template>

@@ -8,7 +8,7 @@ body {
 .layout-main {
   @include span-columns(6);
 }
-.itinerary-buttons {
+.manager-buttons {
   .item {
     @include span-columns(3);
   }

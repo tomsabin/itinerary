@@ -1,31 +1,7 @@
 <template name='itinerary'>
-  <a href='{{pathFor "itineraries"}}'>
-    <div class='navigation'>
-      <i class='fa fa-home'></i>
-    </div>
-  </a>
-  <div class='itinerary'>
-    {{> elements}}
-    {{> itineraryButtons}}
-  </div>
-</template>
-
-<template name='itineraryButtons'>
+  {{> navigation}}
+  {{> elements}}
   {{> addCard}}
   {{> addElement}}
-
-  <div class='itinerary-buttons'>
-    <div id='clearItinerary' class='item'>
-      <div class='item-action-container'>
-        <span class='item-action-text'>Reset</span>
-        <i class='fa fa-refresh item-action-icon'></i>
-      </div>
-    </div>
-    <div id='deleteItinerary' class='item'>
-      <div class='item-action-container'>
-        <span class='item-action-text'>Delete</span>
-        <i class='fa fa-trash-o item-action-icon'></i>
-      </div>
-    </div>
-  </div>
+  {{> manager}}
 </template>
