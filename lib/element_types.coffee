@@ -63,8 +63,7 @@ helpers =
     helpers.wrapElement(@, element, false, true)
   finalElement: ->
     element = document.createElement('h1')
-    element.setAttribute('id', 'itineraryTitle')
-    element.setAttribute('class', 'itinerary-h1 editable')
+    element.setAttribute('class', 'item-title editable')
     element.setAttribute('contentEditable', true)
     element.innerText = @body
     helpers.wrapElement(@, element, false, true)
@@ -76,15 +75,14 @@ helpers =
     helpers.wrapElement(@, element, false, true)
   finalElement: ->
     element = document.createElement('h2')
-    element.setAttribute('id', 'itineraryDescription')
-    element.setAttribute('class', 'itinerary-h2 editable')
+    element.setAttribute('class', 'item-description editable')
     element.setAttribute('contentEditable', true)
     element.innerText = @body
     helpers.wrapElement(@, element, false, true)
 
 @DividerElement.prototype =
   initalElement: -> helpers.wrapElement(@, null)
-  finalElement: -> helpers.wrapElement(@, null)
+  finalElement: -> @initalElement()
 
 @TextElement.prototype =
   finalElement: ->

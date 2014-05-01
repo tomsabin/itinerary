@@ -32,14 +32,14 @@ a, a:visited {
 }
 .h1-entry,
 .h2-entry,
-.itinerary-h1,
-.itinerary-h2 {
+.item-title,
+.item-description {
   text-align: center;
   padding: 24px 8px;
 }
 .home-h1,
 .item-h1,
-.itinerary-h1,
+.item-title,
 .item-action-text,
 .item-entry,
 .h1-entry,
@@ -52,13 +52,13 @@ a, a:visited {
   font-family: 'Raleway', 'sans-serif';
 }
 .item-h1,
-.itinerary-h1,
+.item-title,
 .h1-entry {
   font-size: 1.7em;
   line-height: 1.5em;
 }
 .item-text,
-.itinerary-h2,
+.item-description,
 .h2-entry {
   font-family: 'Goudy Bookletter 1911', 'serif';
   font-size: 1.0em;

@@ -48,25 +48,26 @@
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
 
-  switch attributes.type
-    when 'description'
-      attributes.body = 'A short description'
-    when 'datetime-local'
-      attributes.body = 'Specify a date and time'
-    when 'title'
-      attributes.body = 'Itinerary title'
-    when 'photo'
-      attributes.body = 'Link a photo'
-    when 'text'
-      attributes.body = 'Add some text'
-    when 'link'
-      attributes.body = 'Link the interwebs'
-    when 'date'
-      attributes.body = 'Specify a date'
-    when 'time'
-      attributes.body = 'Specify a time'
-    when 'map'
-      attributes.body = 'Enter an address'
+  unless attributes.body?
+    switch attributes.type
+      when 'description'
+        attributes.body = 'A short description'
+      when 'datetime-local'
+        attributes.body = 'Specify a date and time'
+      when 'title'
+        attributes.body = 'A title'
+      when 'photo'
+        attributes.body = 'Link a photo'
+      when 'text'
+        attributes.body = 'Add some text'
+      when 'link'
+        attributes.body = 'Link the interwebs'
+      when 'date'
+        attributes.body = 'Specify a date'
+      when 'time'
+        attributes.body = 'Specify a time'
+      when 'map'
+        attributes.body = 'Enter an address'
 
   attributes.editable = true
   Elements.insert(attributes)

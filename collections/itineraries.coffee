@@ -8,6 +8,7 @@
 
   createElement
     type: 'title'
+    body: 'Itinerary title'
     parentId: itineraryId
     headerElement: true
 
