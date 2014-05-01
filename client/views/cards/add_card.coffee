@@ -4,7 +4,8 @@ Template.addCard.events
 
   'click [data-action="addCard"]': (e) ->
     if @itinerary?
-      createCard
+      cardId = createCard
         type: e.target.getAttribute('data-card-type')
         parentId: @itinerary._id
-      showOpeners()
+      Session.set('selectTitleElement', true)
+      Router.go('card', _id: cardId)

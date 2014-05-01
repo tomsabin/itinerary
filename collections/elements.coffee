@@ -34,6 +34,7 @@
   doc.position = position + 1
 
 @createElement = (attributes) ->
+  console.log('createElement')
   typeWhitelist =
     'datetime-local': true
     description: true
@@ -73,6 +74,7 @@
   Elements.insert(attributes)
 
 @updateElement = (id, type, body) ->
+  console.log('updateElement')
   attributes = { editable: false }
   attributes.original_body = body if type is 'photo' or 'link'
   switch type
@@ -100,4 +102,5 @@
 
 Meteor.methods
   deleteElement: (id) ->
+    console.log('deleteElement')
     Elements.remove(id)
