@@ -1,23 +1,13 @@
-Template.itinerary.events
-  focusin: ->
-    showOpeners()
+Template.itineraries.helpers
+  title: ->
+    titleElement = Elements.findOne({parentId: this._id, type: 'title'})
+    if titleElement? then titleElement.body else 'Itinerary title'
+  description: ->
+    descriptionElement = Elements.findOne({parentId: this._id, type: 'description'})
+    if descriptionElement? then descriptionElement.body else 'A short description'
 
-Template.itineraryButtons.events
-  'click #clearItinerary': ->
-    showOpeners()
-    if @itinerary?
-      if confirm('Are you sure you want to reset all data?')
-        Meteor.call('resetItineraryElements', @itinerary._id)
-
-  'click #deleteItinerary': ->
-    showOpeners()
-    if @itinerary?
-      if confirm('Are you sure you want to delete?')
-        Meteor.call('removeItineraryElements', @itinerary._id)
-        Itineraries.remove @itinerary._id
-        Router.go('/')
-
-Template.itinerary.rendered = ->
-  $('#window').click ->
-    showOpeners()
-  hideContainers()
+Template.itineraries.events
+  'click #newItinerary': ->
+    itineraryId = createItinerary()
+    Session.set('selectTitleElement', true)
+    Router.go('itinerary', _id: itineraryId)

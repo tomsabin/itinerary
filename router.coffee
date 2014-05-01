@@ -5,7 +5,7 @@ Router.configure
 Router.onBeforeAction('loading');
 
 Router.map ->
-  @route 'home',
+  @route 'itineraries',
     path: '/'
     data: ->
       itineraries: Itineraries.find {},

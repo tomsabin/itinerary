@@ -1,4 +1,4 @@
-Template.addCards.events
+Template.addCard.events
   'click #openCardsContainer': ->
     openCardsContainer()
 

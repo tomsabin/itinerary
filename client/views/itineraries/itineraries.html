@@ -1,30 +1,22 @@
-<template name='itinerary'>
-  <a href='{{pathFor "home"}}'>
-    <div class='navigation'>
-      <i class='fa fa-home'></i>
-    </div>
-  </a>
-  <div class='itinerary'>
-    {{> elements}}
-    {{> itineraryButtons}}
-  </div>
-</template>
+<template name='itineraries'>
+  <div class='home'>
+    <h1 class='home-h1'>Itinera.re</h1>
 
-<template name='itineraryButtons'>
-  {{> addCards}}
-  {{> addElements}}
+    {{#each itineraries}}
+      <a href='{{pathFor "itinerary"}}'>
+        <div class='item' data-itinerary-id='{{_id}}'>
+          <div class='item-action-container'>
+            <h1 class='item-h1'>{{title}}</h1>
+            <p class='item-text'>{{description}}</p>
+          </div>
+        </div>
+      </a>
+    {{/each}}
 
-  <div class='itinerary-buttons'>
-    <div id='clearItinerary' class='item'>
+    <div id='newItinerary' class='item'>
       <div class='item-action-container'>
-        <span class='item-action-text'>Reset</span>
-        <i class='fa fa-refresh item-action-icon'></i>
-      </div>
-    </div>
-    <div id='deleteItinerary' class='item'>
-      <div class='item-action-container'>
-        <span class='item-action-text'>Delete</span>
-        <i class='fa fa-trash-o item-action-icon'></i>
+        <span class='item-action-text'>Create itinerary</span>
+        <i class='fa fa-plus item-action-icon'></i>
       </div>
     </div>
   </div>

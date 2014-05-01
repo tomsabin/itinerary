@@ -1,4 +1,4 @@
-Template.addElements.events
+Template.addElement.events
   'click #openElementButtonContainer': ->
     openElementsContainer()
 
