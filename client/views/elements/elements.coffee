@@ -1,6 +1,6 @@
 updateElementWithEvent = (e) ->
   findAttribute = (target, attribute) ->
-    if target.parentElement.parentElement.getAttribute('data-item-type') is 'map'
+    if target.parentElement.parentElement.parentElement.getAttribute('data-item-type') is 'map' and target.localName isnt 'input'
       target.parentElement.parentElement.parentElement.getAttribute(attribute)
     else
       target.parentElement.parentElement.getAttribute(attribute)
