@@ -1,8 +1,8 @@
 <template name='itinerary'>
   <a href='{{pathFor "home"}}'>
-    <nav class='navigation'>
+    <div class='navigation'>
       <i class='fa fa-home'></i>
-    </nav>
+    </div>
   </a>
   <div class='itinerary'>
     {{> elements}}
@@ -11,6 +11,7 @@
 </template>
 
 <template name='itineraryButtons'>
+  {{> addCards}}
   {{> addElements}}
 
   <div class='itinerary-buttons'>

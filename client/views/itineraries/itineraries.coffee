@@ -10,3 +10,8 @@ Template.itineraryButtons.events
         Meteor.call('removeItineraryElements', @itinerary._id)
         Itineraries.remove @itinerary._id
         Router.go('/')
+
+Template.itinerary.rendered = ->
+  $('#window').click ->
+    showOpeners()
+  hideContainers()
