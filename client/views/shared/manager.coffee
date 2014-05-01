@@ -14,8 +14,8 @@ Template.manager.events
         Meteor.call('deleteItinerary', @itinerary._id)
         Router.go('/')
       if @card?
-        Meteor.call('deleteCard', @card._id)
-        Router.go('/')#needs to go back to itinerary
+        Meteor.call('deleteCard', @card._id, @card.elementId)
+        Router.go('itinerary', _id: @card.parentId)
 
 Template.manager.rendered = ->
   $('#window').click ->

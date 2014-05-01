@@ -10,7 +10,7 @@
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
   cardId = Cards.insert({})
-  attributes.elementId = createElement
+  createElement
     type: 'title'
     body: 'Card title'
     parentId: cardId
@@ -19,7 +19,7 @@
     type: 'description'
     parentId: cardId
     headerElement: true
-  createElement
+  attributes.elementId = createElement
     type: 'card'
     body: cardId
     parentId: attributes.parentId
@@ -49,9 +49,7 @@ Meteor.methods
         editable: true
     #somewhere needs to be default bodys
 
-  deleteCard: (id) ->
-    console.log('deleteCard', id)
-    siblingElement = Cards.findOne(id).elementId
-    Elements.remove(siblingElement)
+  deleteCard: (id, siblingElementId) ->
+    Elements.remove(siblingElementId)
     Elements.remove(parentId: id)
     Cards.remove(id)

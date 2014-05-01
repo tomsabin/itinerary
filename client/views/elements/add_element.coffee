@@ -6,9 +6,11 @@ Template.addElement.events
     openDateTimeElementsContainer()
 
   'click [data-action="addElement"]': (e) ->
-    if @itinerary?
+    parentId = @itinerary._id if @itinerary?
+    parentId = @card._id if @card?
+    if parentId?
       elementId = createElement
         type: e.target.getAttribute('data-element-type')
-        parentId: @itinerary._id
+        parentId: parentId
       $("div[data-element-id='#{elementId}'] input").focus()
       showOpeners()
