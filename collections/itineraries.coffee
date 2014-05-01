@@ -7,7 +7,7 @@
   id = Itineraries.insert({})
   createElement
     type: 'title'
-    body: 'Itinerary title'
+    body: defaults.itinerary.title
     parentId: id
     headerElement: true
   createElement
@@ -27,11 +27,11 @@ Meteor.methods
       headerElement: { $exists: false }
     Elements.update { parentId: id, type: 'title' },
       $set:
-        body: 'Itinerary title'
+        body: defaults.itinerary.title
         editable: true
     Elements.update { parentId: id, type: 'description' },
       $set:
-        body: 'A short description'
+        body: defaults.element.description
         editable: true
 
   deleteItinerary: (id) ->

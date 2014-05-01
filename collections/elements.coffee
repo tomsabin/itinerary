@@ -53,23 +53,23 @@
   unless attributes.body?
     switch attributes.type
       when 'description'
-        attributes.body = 'A short description'
+        attributes.body = defaults.element.description
       when 'datetime-local'
-        attributes.body = 'Specify a date and time'
+        attributes.body = defaults.element.datetime
       when 'title'
-        attributes.body = 'A title'
+        attributes.body = defaults.element.title
       when 'photo'
-        attributes.body = 'Link a photo'
+        attributes.body = defaults.element.photo
       when 'text'
-        attributes.body = 'Add some text'
+        attributes.body = defaults.element.text
       when 'link'
-        attributes.body = 'Link the interwebs'
+        attributes.body = defaults.element.link
       when 'date'
-        attributes.body = 'Specify a date'
+        attributes.body = defaults.element.date
       when 'time'
-        attributes.body = 'Specify a time'
+        attributes.body = defaults.element.time
       when 'map'
-        attributes.body = 'Enter an address'
+        attributes.body = defaults.element.map
   attributes.editable = true
   Elements.insert(attributes)
 

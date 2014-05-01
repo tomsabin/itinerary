@@ -12,7 +12,7 @@
   cardId = Cards.insert({})
   createElement
     type: 'title'
-    body: 'Card title'
+    body: defaults.card.title
     parentId: cardId
     headerElement: true
   createElement
@@ -24,8 +24,8 @@
     body: cardId
     parentId: attributes.parentId
     cardType: attributes.type
-    cardTitle: 'Card title'
-    cardDescription: 'A short description'
+    cardTitle: defaults.card.title
+    cardDescription: defaults.element.description
   Cards.update(cardId, attributes)
   cardId
 
@@ -41,13 +41,12 @@ Meteor.methods
       headerElement: { $exists: false }
     Elements.update { parentId: id, type: 'title' },
       $set:
-        body: 'Card title'
+        body: defaults.card.title
         editable: true
     Elements.update { parentId: id, type: 'description' },
       $set:
-        body: 'A short description'
+        body: defaults.element.description
         editable: true
-    #somewhere needs to be default bodys
 
   deleteCard: (id, siblingElementId) ->
     Elements.remove(siblingElementId)
