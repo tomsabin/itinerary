@@ -46,11 +46,9 @@
     time: true
     card: true
     map: true
-
   throw new Meteor.Error(422, 'Element needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
-
   unless attributes.body?
     switch attributes.type
       when 'description'
@@ -71,11 +69,10 @@
         attributes.body = 'Specify a time'
       when 'map'
         attributes.body = 'Enter an address'
-
   attributes.editable = true
   Elements.insert(attributes)
 
-@updateElement = (elementId, type, body) ->
+@updateElement = (id, type, body) ->
   attributes = { editable: false }
   attributes.original_body = body if type is 'photo' or 'link'
   switch type
@@ -99,8 +96,8 @@
         attributes.body = body
     else
       attributes.body = body
-  Elements.update({ _id: elementId }, { $set: attributes })
+  Elements.update({ _id: id }, { $set: attributes })
 
 Meteor.methods
-  deleteElement: (elementId) ->
-    Elements.remove(elementId)
+  deleteElement: (id) ->
+    Elements.remove(id)
