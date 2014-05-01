@@ -3,7 +3,6 @@
   doc.created_on = new Date().getTime()
 
 @createItinerary = ->
-  console.log('createItinerary')
   id = Itineraries.insert({})
   createElement
     type: 'title'
@@ -18,7 +17,6 @@
 
 Meteor.methods
   resetItinerary: (id) ->
-    console.log('resetItinerary')
     Cards.find(parentId: id).forEach (card) ->
       Elements.remove(parentId: card._id)
     Cards.remove(parentId: id)
@@ -35,7 +33,6 @@ Meteor.methods
         editable: true
 
   deleteItinerary: (id) ->
-    console.log('deleteItinerary')
     Cards.find(parentId: id).forEach (card) ->
       Elements.remove(parentId: card._id)
     Cards.remove(parentId: id)

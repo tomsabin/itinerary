@@ -1,7 +1,6 @@
 @Cards = new Meteor.Collection('cards')
 
 @createCard = (attributes) ->
-  console.log(createCard)
   typeWhitelist =
     accommodation: true
     travel: true
@@ -30,12 +29,9 @@
   cardId
 
 @updateCardType = (id, type) ->
-  console.log('updateCardType')
-  console.log(id, type)
 
 Meteor.methods
   resetCard: (id) ->
-    console.log('resetCard')
     Elements.remove
       parentId: id
       headerElement: { $exists: false }
