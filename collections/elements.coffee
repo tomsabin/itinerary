@@ -19,6 +19,8 @@
         _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
       when 'time'
         _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
+      when 'card'
+        _.extend(new Element(doc), Element.prototype, CardElement.prototype)
       when 'map'
         _.extend(new Element(doc), Element.prototype, MapElement.prototype)
     doc
@@ -42,6 +44,7 @@
     link: true
     date: true
     time: true
+    card: true
     map: true
 
   throw new Meteor.Error(422, 'Element needs a parent') unless attributes.parentId

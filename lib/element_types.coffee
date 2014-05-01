@@ -16,25 +16,30 @@ helpers =
     element.setAttribute('class', 'item-entry')
     element.setAttribute('type', 'text')
     element
-  wrapElement: (doc, element, isEditable = false, isHeaderElement = false) ->
+  wrapElement: (doc, element, isRemovable = true, isSortable = true, isEditable = false, isHeaderElement = false) ->
     outer = document.createElement('div')
     inner = document.createElement('div')
     outer.setAttribute('data-element-id', doc._id)
-    outer.setAttribute('data-body', doc.body)
+    outer.setAttribute('data-body', doc.body) if doc.body?
     outer.setAttribute('data-item-type', doc.type)
     inner.appendChild(element) if element?
-    unless isHeaderElement
+    if isRemovable
       iconDelete = document.createElement('i')
-      iconHandle = document.createElement('i')
       iconDelete.setAttribute('data-action', 'removeElement')
       iconDelete.setAttribute('class', 'fa fa-times remove-item')
+      outer.appendChild(iconDelete)
+    if isSortable
+      iconHandle = document.createElement('i')
       iconHandle.setAttribute('class', 'fa fa-sort handle')
       outer.setAttribute('data-sortable', true)
-      outer.setAttribute('data-editable', true) if isEditable
-      outer.setAttribute('class', "item item-#{doc.type}#{if isEditable then ' editable' else ''}")
-      inner.setAttribute('class', 'item-content-container')
       inner.appendChild(iconHandle)
-      outer.appendChild(iconDelete)
+    if isEditable
+      outer.setAttribute('data-editable', true)
+      outer.setAttribute('class', "item item-#{doc.type} editable")
+    else
+      outer.setAttribute('class', "item item-#{doc.type}") unless isHeaderElement
+    unless isHeaderElement
+      inner.setAttribute('class', "item-content-container")
     outer.appendChild(inner)
     outer.outerHTML
 
@@ -49,6 +54,7 @@ helpers =
 @LinkElement = ->
 @DateElement = ->
 @TimeElement = ->
+@CardElement = ->
 @MapElement = ->
 
 @Element.prototype =
@@ -60,25 +66,25 @@ helpers =
   initalElement: ->
     element = helpers.createInitialElement(@)
     element.setAttribute('class', 'h1-entry')
-    helpers.wrapElement(@, element, false, true)
+    helpers.wrapElement(@, element, false, false, false, true)
   finalElement: ->
     element = document.createElement('h1')
     element.setAttribute('class', 'item-title editable')
     element.setAttribute('contentEditable', true)
     element.innerText = @body
-    helpers.wrapElement(@, element, false, true)
+    helpers.wrapElement(@, element, false, false, false, true)
 
 @DescriptionElement.prototype =
   initalElement: ->
     element = helpers.createInitialElement(@)
     element.setAttribute('class', 'h2-entry')
-    helpers.wrapElement(@, element, false, true)
+    helpers.wrapElement(@, element, false, false, false, true)
   finalElement: ->
     element = document.createElement('h2')
     element.setAttribute('class', 'item-description editable')
     element.setAttribute('contentEditable', true)
     element.innerText = @body
-    helpers.wrapElement(@, element, false, true)
+    helpers.wrapElement(@, element, false, false, false, true)
 
 @DividerElement.prototype =
   initalElement: -> helpers.wrapElement(@, null)
@@ -103,7 +109,7 @@ helpers =
     element.setAttribute('class', 'item-link')
     element.setAttribute('href', @body)
     element.innerText = @second_body
-    helpers.wrapElement(@, element, true)
+    helpers.wrapElement(@, element, true, true, true)
 
 @PhotoElement.prototype =
   initalElement: ->
@@ -114,7 +120,7 @@ helpers =
     element = document.createElement('img')
     element.setAttribute('class', 'item-photo')
     element.setAttribute('src', @body)
-    helpers.wrapElement(@, element, true)
+    helpers.wrapElement(@, element, true, true, true)
 
 @MapElement.prototype =
   finalElement: ->
@@ -133,6 +139,31 @@ helpers =
     divElement.appendChild(linkElement)
     divElement.appendChild(textElement)
     helpers.wrapElement(@, divElement)
+
+@CardElement.prototype =
+  initalElement: ->
+    outer = document.createElement('div')
+    linkElement = document.createElement('a')
+    element = document.createElement('div')
+    titleElement = document.createElement('h1')
+    descriptionElement = document.createElement('p')
+    iconHandle = document.createElement('i')
+    outer.setAttribute('data-sortable', true)
+    outer.setAttribute('class', "item item-#{@type}")
+    linkElement.setAttribute('href', @body)
+    element.setAttribute('class', 'item-action-container')
+    titleElement.setAttribute('class', 'item-h1')
+    titleElement.innerText = @cardTitle
+    descriptionElement.setAttribute('class', "item-text item-card-#{@cardType}")
+    descriptionElement.innerText = @cardDescription
+    iconHandle.setAttribute('class', 'fa fa-sort handle')
+    element.appendChild(titleElement)
+    element.appendChild(descriptionElement)
+    element.appendChild(iconHandle)
+    linkElement.appendChild(element)
+    outer.appendChild(linkElement)
+    outer.outerHTML
+  finalElement: -> @initalElement()
 
 @DateTimeElement.prototype =
   initalElement: -> helpers.dateTimeElements.initalElement(@)

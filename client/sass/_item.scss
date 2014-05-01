@@ -176,12 +176,28 @@
 .add-item-map:before {
   content: '\f041';
 }
+.item-card-accommodation:before,
 .add-card-accommodation:before {
   content: '\f015';
 }
+.item-card-travel:before,
 .add-card-travel:before {
   content: '\f018';
 }
+.item-card-event:before,
 .add-card-event:before {
   content: '\f145';
+}
+.item-card {
+  &:hover {
+    .item-text:before {
+      color: $icon-hover-colour;
+    }
+  }
+  .item-text:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    color: $icon-colour;
+    margin-right: 8px;
+  }
 }

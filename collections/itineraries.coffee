@@ -21,6 +21,9 @@
 
 Meteor.methods
   resetItineraryElements: (itineraryId) ->
+    Cards.find(parentId: itineraryId).forEach (card) ->
+      Elements.remove(parentId: card._id)
+    Cards.remove(parentId: itineraryId)
     Elements.remove
       parentId: itineraryId
       headerElement: { $exists: false }
@@ -36,4 +39,7 @@ Meteor.methods
         editable: true
 
   removeItineraryElements: (itineraryId) ->
-    Elements.remove parentId: itineraryId
+    Cards.find(parentId: itineraryId).forEach (card) ->
+      Elements.remove(parentId: card._id)
+    Cards.remove(parentId: itineraryId)
+    Elements.remove(parentId: itineraryId)
