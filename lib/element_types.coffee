@@ -150,7 +150,7 @@ helpers =
     iconHandle = document.createElement('i')
     outer.setAttribute('data-sortable', true)
     outer.setAttribute('class', "item item-#{@type}")
-    linkElement.setAttribute('href', @body)
+    linkElement.setAttribute('href', "/card/#{@body}")
     element.setAttribute('class', 'item-action-container')
     titleElement.setAttribute('class', 'item-h1')
     titleElement.innerText = @cardTitle

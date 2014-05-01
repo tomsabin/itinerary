@@ -15,6 +15,17 @@ Router.map ->
       Meteor.subscribe('headerElements')
     ]
 
+  @route 'card',
+    path: '/card/:_id'
+    data: ->
+      card: Cards.findOne(@params._id)
+      elements: Elements.find { parentId: @params._id },
+                  sort: { position: 1 }
+    waitOn: -> [
+      Meteor.subscribe('card', @params._id)
+      Meteor.subscribe('elements', @params._id)
+    ]
+
   @route 'itinerary',
     path: '/:_id'
     data: ->
@@ -23,6 +34,6 @@ Router.map ->
                   sort: { position: 1 }
 
     waitOn: -> [
-      Meteor.subscribe('singleItinerary', @params._id)
+      Meteor.subscribe('itinerary', @params._id)
       Meteor.subscribe('elements', @params._id)
     ]
