@@ -1,10 +1,10 @@
 .item {
-  @include card($item-color, $item-border-color);
+  @include card($item-colour, $item-border-colour);
   cursor: default;
   margin: 8px 0;
 
   &:hover {
-    background-color: $item-hover-color;
+    background-color: $item-hover-colour;
 
     .remove-item {
       display: block;
@@ -23,7 +23,7 @@
   .item-action-container {
     cursor: pointer;
     &:hover {
-      background-color: $item-hover-color;
+      background-color: $item-hover-colour;
 
       .item-action-text, .item-action-icon {
         color: $icon-hover-colour;
@@ -76,7 +76,7 @@
   .item-content-container:before {
     content: '';
     display: block;
-    border-top: 1px solid $item-border-color;
+    border-top: 1px solid $item-border-colour;
   }
   .remove-item,
   .handle {
@@ -100,13 +100,13 @@
   cursor: text;
 }
 .item-placeholder {
-  background-color: $item-placeholder-color;
+  background-color: $item-placeholder-colour;
   border-radius: 3px;
-  border: 4px dashed $item-placeholder-border-color;
+  border: 4px dashed $item-placeholder-border-colour;
   margin: -2px 0;
 }
 .buttons-table {
-  @include card($item-color, $item-border-color);
+  @include card($item-colour, $item-border-colour);
   @include span-columns(6);
   display: table;
   table-layout: fixed;
@@ -122,7 +122,7 @@
       height: 60px;
 
       &:hover {
-        background-color: $item-hover-color;
+        background-color: $item-hover-colour;
         cursor: pointer;
 
         &:before {
@@ -140,9 +140,9 @@
 .add-item-link,
 .add-item-photo,
 .add-item-map,
-.add-card-accommodation,
-.add-card-travel,
-.add-card-event {
+.card-accommodation,
+.card-travel,
+.card-event {
   vertical-align: middle;
   text-align: center;
 
@@ -176,16 +176,13 @@
 .add-item-map:before {
   content: '\f041';
 }
-.item-card-accommodation:before,
-.add-card-accommodation:before {
+.card-accommodation:before {
   content: '\f015';
 }
-.item-card-travel:before,
-.add-card-travel:before {
+.card-travel:before {
   content: '\f018';
 }
-.item-card-event:before,
-.add-card-event:before {
+.card-event:before {
   content: '\f145';
 }
 .item-card {

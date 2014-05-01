@@ -2,7 +2,7 @@
 
 a, a:visited {
   text-decoration: none;
-  color: $font-color;
+  color: $font-colour;
 }
 .layout-main {
   word-wrap: break-word;
@@ -28,7 +28,7 @@ a, a:visited {
 .item-h1 {
   padding-bottom: 12px;
   margin-bottom: 12px;
-  border-bottom: 1px solid $item-border-color;
+  border-bottom: 1px solid $item-border-colour;
 }
 .h1-entry,
 .h2-entry,
