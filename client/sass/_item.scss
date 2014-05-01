@@ -1,7 +1,6 @@
 .item {
   @include card($item-color, $item-border-color);
   cursor: default;
-  float: left;
   margin: 8px 0;
 
   &:hover {
@@ -109,7 +108,6 @@
 .buttons-table {
   @include card($item-color, $item-border-color);
   @include span-columns(6);
-  float: left;
   display: table;
   table-layout: fixed;
   border-collapse: separate;
