@@ -34,41 +34,10 @@
   doc.position = position + 1
 
 @createElement = (attributes) ->
-  typeWhitelist =
-    'datetime-local': true
-    description: true
-    divider: true
-    title: true
-    photo: true
-    text: true
-    link: true
-    date: true
-    time: true
-    card: true
-    map: true
   throw new Meteor.Error(422, 'Element needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
-  throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
-  unless attributes.body?
-    switch attributes.type
-      when 'description'
-        attributes.body = defaults.element.description
-      when 'datetime-local'
-        attributes.body = defaults.element.datetime
-      when 'title'
-        attributes.body = defaults.element.title
-      when 'photo'
-        attributes.body = defaults.element.photo
-      when 'text'
-        attributes.body = defaults.element.text
-      when 'link'
-        attributes.body = defaults.element.link
-      when 'date'
-        attributes.body = defaults.element.date
-      when 'time'
-        attributes.body = defaults.element.time
-      when 'map'
-        attributes.body = defaults.element.map
+  throw new Meteor.Error(422, 'Element type needs to be valid') unless _.contains(defaults.element.types, attributes.type)
+  attributes.body = defaults.element[attributes.type] unless attributes.body?
   attributes.editable = true
   Elements.insert(attributes)
 

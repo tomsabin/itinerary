@@ -3,9 +3,12 @@
     title: 'Itinerary title'
   card:
     title: 'Card title'
+    types: ['accommodation', 'travel', 'event']
   element:
+    types: ['datetime-local', 'description', 'divider', 'title',
+            'photo', 'text', 'link', 'date', 'time', 'card', 'map']
     description: 'A short description'
-    datetime: 'Specify a date and time'
+    'datetime-local': 'Specify a date and time'
     title: 'A title'
     photo: 'Link a photo'
     text: 'Add some text'

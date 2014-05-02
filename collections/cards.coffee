@@ -1,13 +1,9 @@
 @Cards = new Meteor.Collection('cards')
 
 @createCard = (attributes) ->
-  typeWhitelist =
-    accommodation: true
-    travel: true
-    event: true
-  throw new Meteor.Error(422, 'Element needs a parent') unless attributes.parentId
-  throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
-  throw new Meteor.Error(422, 'Element type needs to be valid') unless attributes.type of typeWhitelist
+  throw new Meteor.Error(422, 'Card needs a parent') unless attributes.parentId
+  throw new Meteor.Error(422, 'Card type needs to be declared') unless attributes.type
+  throw new Meteor.Error(422, 'Card type needs to be valid') unless _.contains(defaults.card.types, attributes.type)
   cardId = Cards.insert({})
   createElement
     type: 'title'
