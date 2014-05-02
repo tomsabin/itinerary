@@ -7,9 +7,6 @@ a, a:visited {
 .layout-main {
   word-wrap: break-word;
 }
-.navigation-bar {
-  text-align: center;
-}
 .home-h1 {
   margin: 64px 0;
   text-align: center;
@@ -48,7 +45,8 @@ a, a:visited {
 .item-date,
 .item-time,
 .item-map-text,
-.navigation-text {
+.navigation-text,
+.page-not-found {
   font-family: 'Raleway', 'sans-serif';
 }
 .item-h1,
@@ -96,4 +94,16 @@ a, a:visited {
   text-align: left;
   font-size: 0.7em;
   color: $icon-colour;
+}
+.page-not-found {
+  padding: 40px 0;
+  font-size: 8em;
+  text-align: center;
+  color: $page-not-found-colour;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
 }

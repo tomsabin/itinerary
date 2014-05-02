@@ -37,3 +37,6 @@ Router.map ->
       Meteor.subscribe('itinerary', @params._id)
       Meteor.subscribe('elements', @params._id)
     ]
+
+   @route('notFound', { path: '*' });
+
