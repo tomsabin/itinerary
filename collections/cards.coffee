@@ -19,9 +19,11 @@
 @updateCardType = (card, type) ->
   card.type = type
   Cards.update(card._id, card)
+  updateSiblingElement(card._id, 'type', type)
 
 @updateSiblingElement = (id, type, body) ->
   sibling = Elements.findOne(body: id, type: 'card')
+  sibling.cardType = body if type is 'type'
   sibling.cardTitle = body if type is 'title'
   sibling.cardDescription = body if type is 'description'
   Elements.update(sibling._id, sibling)

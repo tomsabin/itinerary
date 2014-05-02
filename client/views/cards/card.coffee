@@ -7,7 +7,7 @@ Template.card.types = ->
 
 Template.card.type = ->
   divElement = document.createElement('div')
-  divElement.setAttribute('class', "buttons-cell card-#{@type}")
+  divElement.setAttribute('class', "buttons-cell")
   divElement.setAttribute('data-card-type', @type)
   divElement.setAttribute('data-selected', true) if @selected
   divElement.outerHTML

@@ -140,9 +140,9 @@
 .add-item-link,
 .add-item-photo,
 .add-item-map,
-.card-accommodation,
-.card-travel,
-.card-event {
+[data-card-type=accommodation],
+[data-card-type=travel],
+[data-card-type=event] {
   vertical-align: middle;
   text-align: center;
 
@@ -176,13 +176,13 @@
 .add-item-map:before {
   content: '\f041';
 }
-.card-accommodation:before {
+[data-card-type=accommodation]:before {
   content: '\f015';
 }
-.card-travel:before {
+[data-card-type=travel]:before {
   content: '\f018';
 }
-.card-event:before {
+[data-card-type=event]:before {
   content: '\f145';
 }
 .item-card {

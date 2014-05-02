@@ -155,7 +155,8 @@ helpers =
     element.setAttribute('class', 'item-action-container')
     titleElement.setAttribute('class', 'item-h1')
     titleElement.innerText = @cardTitle
-    descriptionElement.setAttribute('class', "item-text card-#{@cardType}")
+    descriptionElement.setAttribute('class', 'item-text')
+    descriptionElement.setAttribute('data-card-type', @cardType)
     descriptionElement.innerText = @cardDescription
     iconHandle.setAttribute('class', 'fa fa-sort handle')
     element.appendChild(titleElement)
