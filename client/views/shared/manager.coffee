@@ -12,7 +12,7 @@ Template.manager.events
     if confirm('Are you sure you want to delete?')
       if @itinerary?
         Meteor.call('deleteItinerary', @itinerary._id)
-        Router.go('/')
+        Router.go('itineraries')
       if @card?
         Meteor.call('deleteCard', @card._id, @card.elementId)
         Router.go('itinerary', _id: @card.parentId)

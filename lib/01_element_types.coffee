@@ -160,7 +160,7 @@ helpers =
     outer.setAttribute('data-sortable', true)
     outer.setAttribute('data-element-id', @_id)
     outer.setAttribute('class', "item item-#{@type}")
-    linkElement.setAttribute('href', "/card/#{@body}")
+    linkElement.setAttribute('href', Router.path('card', _id: this.body))
     element.setAttribute('class', 'item-action-container')
     titleElement.setAttribute('class', 'item-h1')
     titleElement.textContent = @cardTitle
