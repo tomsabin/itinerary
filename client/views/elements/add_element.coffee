@@ -1,10 +1,6 @@
 Template.addElement.events
-  'click #openElementButtonContainer': ->
-    openElementsContainer()
-
-  'click #openDateTimeElementsContainer': ->
-    openDateTimeElementsContainer()
-
+  'click #openElementButtonContainer': -> openElementsContainer()
+  'click #openDateTimeElementsContainer': -> openDateTimeElementsContainer()
   'click [data-action="addElement"]': (e) ->
     parentId = @itinerary._id if @itinerary?
     parentId = @card._id if @card?

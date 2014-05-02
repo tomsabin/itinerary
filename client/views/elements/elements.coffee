@@ -26,15 +26,16 @@ updateElementWithEvent = (e) ->
         target.value =  originalBody
 
 Template.elements.events
-  focusout: (e) -> updateElementWithEvent(e)
-  keydown: (e) -> updateElementWithEvent(e) if e.which is 13 and e.target.localName is 'input'
-  keyup: (e) -> if e.which is 27 and e.target.localName is 'input'
-    Meteor.call('deleteElement', e.target.parentElement.parentElement.getAttribute('data-element-id'))
+  'click [data-editable="true"]': (e) ->
+    Elements.update { _id: e.target.parentElement.getAttribute('data-element-id') },
+                     $set: editable: true
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
-  'click [data-editable="true"]': (e) ->
-    elementId = e.target.parentElement.getAttribute('data-element-id')
-    Elements.update({ _id: elementId }, { $set: { editable: true } })
+  'keydown': (e) -> if e.which is 13 and e.target.localName is 'input'
+    updateElementWithEvent(e)
+  'keyup': (e) -> if e.which is 27 and e.target.localName is 'input'
+    Meteor.call('deleteElement', e.target.parentElement.parentElement.getAttribute('data-element-id'))
+  'focusout': (e) -> updateElementWithEvent(e)
 
 Template.elements.rendered = ->
   $elementList = $('#elementList')

@@ -35,6 +35,8 @@
     time:
       body: 'Specify a time'
       prototype: DateTimeElement.prototype
+    card:
+      prototype: CardElement.prototype
     map:
       body: 'Enter an address'
       prototype: MapElement.prototype
