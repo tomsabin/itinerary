@@ -157,6 +157,7 @@ helpers =
     descriptionElement = document.createElement('p')
     iconHandle = document.createElement('i')
     outer.setAttribute('data-sortable', true)
+    outer.setAttribute('data-element-id', @_id)
     outer.setAttribute('class', "item item-#{@type}")
     linkElement.setAttribute('href', "/card/#{@body}")
     element.setAttribute('class', 'item-action-container')
