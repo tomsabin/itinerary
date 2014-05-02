@@ -1,4 +1,3 @@
-#duplicated
 Template.itinerary.events
-  focusin: ->
-    showOpeners()
+  'click #back': ->
+    Router.go('itineraries')

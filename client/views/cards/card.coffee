@@ -15,11 +15,9 @@ Template.card.type = ->
 @card = (card) -> @card = card
 
 Template.card.events
-  'click #backToItinerary': ->
+  'click #back': ->
     Router.go('itinerary', _id: card.parentId)
   'click [data-card-type]': (e) ->
     updateCardType(card, e.target.getAttribute('data-card-type'))
-  focusin: ->
-    showOpeners()
 
 Template.card.rendered = -> card(@data.card)
