@@ -7,7 +7,7 @@ updateElementWithEvent = (e) ->
 
   target = e.target
   if target? and target.localName is 'input' or target.getAttribute('contentEditable')?
-    body = if target.localName is 'input' then target.value else target.innerText
+    body = if target.localName is 'input' then target.value else target.textContent
     if !!body
       updateElement(
         findAttribute(target, 'data-element-id'),
@@ -21,7 +21,7 @@ updateElementWithEvent = (e) ->
     else
       originalBody = findAttribute(target, 'data-body')
       if target.getAttribute('contentEditable')?
-        target.innerText = originalBody
+        target.textContent = originalBody
       else unless target.localName is 'input'
         target.value =  originalBody
       else if target.getAttribute('type') is 'datetime-local' or 'date' or 'time'

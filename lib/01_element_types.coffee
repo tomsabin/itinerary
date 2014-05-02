@@ -9,12 +9,12 @@ helpers =
       divElement = document.createElement('p')
       dateElement = document.createElement('p')
       dateElement.setAttribute('class', "item-#{doc.body}")
-      dateElement.innerText = doc.body
+      dateElement.textContent = doc.body
       divElement.appendChild(dateElement)
       if doc.second_body?
         timeElement = document.createElement('p')
         timeElement.setAttribute('class', 'item-datetime-time')
-        timeElement.innerText = doc.second_body
+        timeElement.textContent = doc.second_body
         divElement.appendChild(timeElement)
       helpers.wrapElement(doc, divElement, true, true, true)
   createInitialElement: (doc) ->
@@ -79,7 +79,7 @@ helpers =
     element = document.createElement('h1')
     element.setAttribute('class', 'item-title editable')
     element.setAttribute('contentEditable', true)
-    element.innerText = @body
+    element.textContent = @body
     helpers.wrapElement(@, element, false, false, false, true)
 
 @DescriptionElement.prototype =
@@ -91,7 +91,7 @@ helpers =
     element = document.createElement('h2')
     element.setAttribute('class', 'item-description editable')
     element.setAttribute('contentEditable', true)
-    element.innerText = @body
+    element.textContent = @body
     helpers.wrapElement(@, element, false, false, false, true)
 
 @DividerElement.prototype =
@@ -103,7 +103,7 @@ helpers =
     element = document.createElement('p')
     element.setAttribute('class', 'item-text editable')
     element.setAttribute('contentEditable', true)
-    element.innerText = @body
+    element.textContent = @body
     helpers.wrapElement(@, element)
 
 @LinkElement.prototype =
@@ -116,7 +116,7 @@ helpers =
     element = document.createElement('a')
     element.setAttribute('class', 'item-link')
     element.setAttribute('href', @body)
-    element.innerText = @second_body
+    element.textContent = @second_body
     helpers.wrapElement(@, element, true, true, true)
 
 @PhotoElement.prototype =
@@ -142,7 +142,7 @@ helpers =
     linkElement.setAttribute('href', "http://maps.google.com/?q=#{@body}")
     textElement.setAttribute('class', 'item-map-text editable')
     textElement.setAttribute('contentEditable', true)
-    textElement.innerText = @body
+    textElement.textContent = @body
     linkElement.appendChild(imageElement)
     divElement.appendChild(linkElement)
     divElement.appendChild(textElement)
@@ -161,10 +161,10 @@ helpers =
     linkElement.setAttribute('href', "/card/#{@body}")
     element.setAttribute('class', 'item-action-container')
     titleElement.setAttribute('class', 'item-h1')
-    titleElement.innerText = @cardTitle
+    titleElement.textContent = @cardTitle
     descriptionElement.setAttribute('class', 'item-text')
     descriptionElement.setAttribute('data-card-type', @cardType)
-    descriptionElement.innerText = @cardDescription
+    descriptionElement.textContent = @cardDescription
     iconHandle.setAttribute('class', 'fa fa-sort handle')
     element.appendChild(titleElement)
     element.appendChild(descriptionElement)
