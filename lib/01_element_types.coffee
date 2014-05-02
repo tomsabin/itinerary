@@ -46,6 +46,7 @@ helpers =
     else
       outer.setAttribute('class', "item item-#{doc.type}") unless isHeaderElement
     if isHeaderElement
+      outer.setAttribute('data-deletable', false)
       outer.setAttribute('data-belongs-to', doc.belongsTo)
       outer.setAttribute('data-parent-id', doc.parentId)
     else
