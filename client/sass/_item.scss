@@ -191,11 +191,17 @@
       color: $icon-hover-colour;
     }
   }
-  .item-text:before {
-    display: inline-block;
-    font-family: FontAwesome;
-    color: $icon-colour;
-    margin-right: 8px;
+  .item-text {
+    vertical-align: baseline;
+    text-align: left;
+
+    &:before {
+      display: inline-block;
+      font-family: FontAwesome;
+      font-size: 1em;
+      color: $icon-colour;
+      margin-right: 8px;
+    }
   }
 }
 .card-type-table {
