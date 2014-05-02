@@ -24,7 +24,7 @@ updateElementWithEvent = (e) ->
         target.textContent = originalBody
       else unless target.localName is 'input'
         target.value =  originalBody
-      else if target.getAttribute('type') is 'datetime-local' or 'date' or 'time'
+      else if _.contains(['datetime-local', 'date', 'time'], target.getAttribute('type'))
         id = e.target.parentElement.parentElement.getAttribute('data-element-id')
         Elements.update({ _id: id }, { $set: editable: false }) unless /specify a/i.test(originalBody)
 
