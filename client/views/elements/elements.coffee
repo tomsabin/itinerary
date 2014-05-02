@@ -24,6 +24,9 @@ updateElementWithEvent = (e) ->
         target.innerText = originalBody
       else unless target.localName is 'input'
         target.value =  originalBody
+      else if target.getAttribute('type') is 'datetime-local' or 'date' or 'time'
+        id = e.target.parentElement.parentElement.getAttribute('data-element-id')
+        Elements.update({ _id: id }, { $set: editable: false }) unless /specify a/i.test(originalBody)
 
 Template.elements.events
   'click [data-editable="true"]': (e) ->

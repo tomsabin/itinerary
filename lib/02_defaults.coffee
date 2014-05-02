@@ -1,4 +1,8 @@
 @defaults =
+  dateformats:
+    datetime: "dddd Do MMMM - h:mm a"
+    date: "dddd Do MMMM"
+    time: "h:mm a"
   itinerary:
     type: 'itinerary'
     title: 'Itinerary title'

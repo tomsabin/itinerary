@@ -3,13 +3,20 @@ helpers =
     initalElement: (doc) ->
       element = helpers.createInitialElement(doc)
       element.setAttribute('type', doc.type)
+      element.setAttribute('value', @original_body) if @original_body?
       helpers.wrapElement(doc, element)
     finalElement: (doc) ->
-      element = document.createElement('p')
-      element.setAttribute('class', "item-#{doc.body} editable")
-      element.setAttribute('contentEditable', true)
-      element.innerText = doc.body
-      helpers.wrapElement(doc, element)
+      divElement = document.createElement('p')
+      dateElement = document.createElement('p')
+      dateElement.setAttribute('class', "item-#{doc.body}")
+      dateElement.innerText = doc.body
+      divElement.appendChild(dateElement)
+      if doc.second_body?
+        timeElement = document.createElement('p')
+        timeElement.setAttribute('class', 'item-datetime-time')
+        timeElement.innerText = doc.second_body
+        divElement.appendChild(timeElement)
+      helpers.wrapElement(doc, divElement, true, true, true)
   createInitialElement: (doc) ->
     element = document.createElement('input')
     element.setAttribute('placeholder', doc.body)

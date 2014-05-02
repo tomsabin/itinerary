@@ -2,6 +2,7 @@
   "packages": {
     "iron-router": {},
     "collection-hooks": {},
-    "spin": {}
+    "spin": {},
+    "moment": {}
   }
 }

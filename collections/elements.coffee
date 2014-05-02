@@ -43,7 +43,7 @@
 
 @updateElement = (id, type, body) ->
   attributes = { editable: false }
-  attributes.original_body = body if type is 'photo' or 'link'
+  attributes.original_body = body if type is 'photo' or 'link' or 'datetime-local' or 'date' or 'time'
   switch type
     when 'link'
       markdownLink = /\[([^\]]+)\]\(([^)]+)\)/.exec(body)
@@ -55,12 +55,21 @@
         attributes.second_body = 'A link to the interwebs'
     when 'datetime-local'
       if body.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?/)
-        attributes.body = body.split('T').join(" at ")
+        attributes.body = moment(body).format(defaults.dateformats.date)
+        attributes.second_body = moment(body).format(defaults.dateformats.time)
+      else if moment(body).isValid()
+        attributes.body = moment(body).format(defaults.dateformats.datetime)
       else
         attributes.body = body
     when 'date'
-      if body.match(/\d{4}-\d{2}-\d{2}/)
-        attributes.body = body.split('-').reverse().join('/')
+      if moment(body).isValid()
+        attributes.body = moment(body).format(defaults.dateformats.date)
+      else
+        attributes.body = body
+    when 'time'
+      formattableTime = moment("#{moment().format('YYYY-MM-DD')}T#{body}") # :(
+      if moment(formattableTime).isValid()
+        attributes.body = formattableTime.format(defaults.dateformats.time)
       else
         attributes.body = body
     else

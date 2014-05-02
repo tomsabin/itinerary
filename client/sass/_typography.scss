@@ -85,6 +85,11 @@ a, a:visited {
   font-size: 1.1em;
   color: $icon-colour;
 }
+.item-datetime-time {
+  margin-top: 12px;
+  border-top: 1px solid $item-border-colour;
+  padding-top: 12px;
+}
 .item-map-text {
   margin-top: 8px;
   text-transform: uppercase;

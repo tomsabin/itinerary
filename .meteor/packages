@@ -9,3 +9,4 @@ iron-router
 coffeescript
 collection-hooks
 spin
+moment
