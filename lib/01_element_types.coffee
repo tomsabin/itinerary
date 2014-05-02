@@ -55,8 +55,6 @@ helpers =
 @TitleElement = ->
 @TextElement = ->
 @LinkElement = ->
-@DateElement = ->
-@TimeElement = ->
 @CardElement = ->
 @MapElement = ->
 
