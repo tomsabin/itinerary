@@ -5,17 +5,7 @@
   throw new Meteor.Error(422, 'Card type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Card type needs to be valid') unless _.contains(defaults.card.types, attributes.type)
   cardId = Cards.insert({})
-  createElement
-    type: 'title'
-    body: defaults.card.title
-    parentId: cardId
-    belongsTo: 'card'
-    headerElement: true
-  createElement
-    type: 'description'
-    parentId: cardId
-    belongsTo: 'card'
-    headerElement: true
+  createHeaderElements(cardId, defaults.card)
   attributes.elementId = createElement
     type: 'card'
     body: cardId

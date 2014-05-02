@@ -41,6 +41,19 @@
   attributes.editable = true
   Elements.insert(attributes)
 
+@createHeaderElements = (parentId, parent) ->
+  createElement
+    type: 'title'
+    body: parent.title
+    parentId: parentId
+    belongsTo: 'itinerary'
+    headerElement: true
+  createElement
+    type: 'description'
+    parentId: parentId
+    belongsTo: 'itinerary'
+    headerElement: true
+
 @updateElement = (id, type, body) ->
   attributes = { editable: false }
   attributes.original_body = body if type is 'photo' or 'link'
