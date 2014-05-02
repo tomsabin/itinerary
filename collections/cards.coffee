@@ -28,7 +28,9 @@
   Cards.update(cardId, attributes)
   cardId
 
-@updateCardType = (id, type) ->
+@updateCardType = (card, type) ->
+  card.type = type
+  Cards.update(card._id, card)
 
 Meteor.methods
   resetCard: (id) ->

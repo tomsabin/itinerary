@@ -198,3 +198,11 @@
     margin-right: 8px;
   }
 }
+.card-type-table {
+  [data-selected=true] {
+    background-color: $item-hover-colour;
+    &:before {
+      color: $icon-hover-colour;
+    }
+  }
+}

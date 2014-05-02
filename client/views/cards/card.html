@@ -1,7 +1,13 @@
 <template name='card'>
   {{> navigation}}
-  want to select different types here
   {{> elements}}
   {{> addElement}}
+  <div class='buttons-table card-type-table'>
+    <div class='buttons-row'>
+      {{#each types}}
+        {{{type}}}
+      {{/each}}
+    </div>
+  </div>
   {{> manager}}
 </template>
