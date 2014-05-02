@@ -9,24 +9,13 @@
 
 Meteor.methods
   resetItinerary: (id) ->
-    Cards.find(parentId: id).forEach (card) ->
-      Elements.remove(parentId: card._id)
+    Cards.find(parentId: id).forEach (card) -> Elements.remove(parentId: card._id)
     Cards.remove(parentId: id)
-    Elements.remove
-      parentId: id
-      headerElement: { $exists: false }
-    Elements.update { parentId: id, type: 'title' },
-      $set:
-        body: defaults.itinerary.title
-        editable: true
-    Elements.update { parentId: id, type: 'description' },
-      $set:
-        body: defaults.element.description
-        editable: true
+    Elements.remove(parentId: id, headerElement: { $exists: false })
+    resetHeaderElements(id, defaults.itinerary)
 
   deleteItinerary: (id) ->
-    Cards.find(parentId: id).forEach (card) ->
-      Elements.remove(parentId: card._id)
+    Cards.find(parentId: id).forEach (card) -> Elements.remove(parentId: card._id)
     Cards.remove(parentId: id)
     Elements.remove(parentId: id)
     Itineraries.remove(id)

@@ -46,13 +46,23 @@
     type: 'title'
     body: parent.title
     parentId: parentId
-    belongsTo: 'itinerary'
+    belongsTo: parent.type
     headerElement: true
   createElement
     type: 'description'
     parentId: parentId
-    belongsTo: 'itinerary'
+    belongsTo: parent.type
     headerElement: true
+
+@resetHeaderElements = (parentId, parent) ->
+  Elements.update { parentId: parentId, type: 'title' },
+    $set:
+      body: parent.title
+      editable: true
+  Elements.update { parentId: parentId, type: 'description' },
+    $set:
+      body: defaults.element.description
+      editable: true
 
 @updateElement = (id, type, body) ->
   attributes = { editable: false }
@@ -81,5 +91,4 @@
   Elements.update({ _id: id }, { $set: attributes })
 
 Meteor.methods
-  deleteElement: (id) ->
-    Elements.remove(id)
+  deleteElement: (id) -> Elements.remove(id)

@@ -1,7 +1,9 @@
 @defaults =
   itinerary:
+    type: 'itinerary'
     title: 'Itinerary title'
   card:
+    type: 'card'
     title: 'Card title'
     types: ['accommodation', 'travel', 'event']
   element:

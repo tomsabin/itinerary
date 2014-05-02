@@ -4,17 +4,17 @@
   throw new Meteor.Error(422, 'Card needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Card type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Card type needs to be valid') unless _.contains(defaults.card.types, attributes.type)
-  cardId = Cards.insert({})
-  createHeaderElements(cardId, defaults.card)
+  id = Cards.insert({})
+  createHeaderElements(id, defaults.card)
   attributes.elementId = createElement
     type: 'card'
-    body: cardId
+    body: id
     parentId: attributes.parentId
     cardType: attributes.type
     cardTitle: defaults.card.title
     cardDescription: defaults.element.description
-  Cards.update(cardId, attributes)
-  cardId
+  Cards.update(id, attributes)
+  id
 
 @updateCardType = (card, type) ->
   card.type = type
@@ -28,17 +28,8 @@
 
 Meteor.methods
   resetCard: (id) ->
-    Elements.remove
-      parentId: id
-      headerElement: { $exists: false }
-    Elements.update { parentId: id, type: 'title' },
-      $set:
-        body: defaults.card.title
-        editable: true
-    Elements.update { parentId: id, type: 'description' },
-      $set:
-        body: defaults.element.description
-        editable: true
+    Elements.remove(parentId: id, headerElement: { $exists: false })
+    resetHeaderElements(id, defaults.card)
     updateSiblingElement(id, 'title', defaults.card.title)
     updateSiblingElement(id, 'description', defaults.element.description)
 
