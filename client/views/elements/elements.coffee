@@ -27,8 +27,11 @@ updateElementWithEvent = (e) ->
 
 Template.elements.events
   'click [data-editable="true"]': (e) ->
-    Elements.update { _id: e.target.parentElement.getAttribute('data-element-id') },
-                     $set: editable: true
+    id = e.target.parentElement.getAttribute('data-element-id')
+    Elements.update({ _id: id }, { $set: editable: true })
+    $("[data-element-id=#{id}] input").waitUntilExists ->
+      $("[data-element-id='#{id}'] input").focus()
+
   'click [data-action="removeElement"]': (e) ->
     Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
   'keydown': (e) -> if e.which is 13 and e.target.localName is 'input'
