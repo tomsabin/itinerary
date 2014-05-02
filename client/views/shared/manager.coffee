@@ -18,6 +18,8 @@ Template.manager.events
         Router.go('itinerary', _id: @card.parentId)
 
 Template.manager.rendered = ->
+  $(document).keyup (e) ->
+    showOpeners() if e.which is 27
   $('#window').click ->
     showOpeners()
   hideContainers()
