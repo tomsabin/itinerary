@@ -9,12 +9,32 @@
   element:
     types: ['datetime-local', 'description', 'divider', 'title',
             'photo', 'text', 'link', 'date', 'time', 'card', 'map']
-    description: 'A short description'
-    'datetime-local': 'Specify a date and time'
-    title: 'A title'
-    photo: 'Link a photo'
-    text: 'Add some text'
-    link: 'Link the interwebs'
-    date: 'Specify a date'
-    time: 'Specify a time'
-    map: 'Enter an address'
+    'datetime-local':
+      body: 'Specify a date and time'
+      prototype: DateTimeElement.prototype
+    description:
+      body: 'A short description'
+      prototype: DescriptionElement.prototype
+    divider:
+      prototype: DividerElement.prototype
+    title:
+      body: 'A title'
+      prototype: TitleElement.prototype
+    photo:
+      body: 'Link a photo'
+      prototype: PhotoElement.prototype
+    text:
+      body: 'Add some text'
+      prototype: TextElement.prototype
+    link:
+      body: 'Link the interwebs'
+      prototype: LinkElement.prototype
+    date:
+      body: 'Specify a date'
+      prototype: DateTimeElement.prototype
+    time:
+      body: 'Specify a time'
+      prototype: DateTimeElement.prototype
+    map:
+      body: 'Enter an address'
+      prototype: MapElement.prototype

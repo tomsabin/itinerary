@@ -4,7 +4,7 @@ Template.itineraries.helpers
     if titleElement? then titleElement.body else defaults.itinerary.title
   description: ->
     descriptionElement = Elements.findOne(parentId: this._id, type: 'description')
-    if descriptionElement? then descriptionElement.body else defaults.element.description
+    if descriptionElement? then descriptionElement.body else defaults.element.description.body
 
 Template.itineraries.events
   'click #newItinerary': ->

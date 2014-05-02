@@ -1,29 +1,6 @@
 @Elements = new Meteor.Collection 'elements',
   transform: (doc) ->
-    switch doc.type
-      when 'title'
-        _.extend(new Element(doc), Element.prototype, TitleElement.prototype)
-      when 'description'
-        _.extend(new Element(doc), Element.prototype, DescriptionElement.prototype)
-      when 'datetime-local'
-        _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
-      when 'divider'
-        _.extend(new Element(doc), Element.prototype, DividerElement.prototype)
-      when 'photo'
-        _.extend(new Element(doc), Element.prototype, PhotoElement.prototype)
-      when 'text'
-        _.extend(new Element(doc), Element.prototype, TextElement.prototype)
-      when 'link'
-        _.extend(new Element(doc), Element.prototype, LinkElement.prototype)
-      when 'date'
-        _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
-      when 'time'
-        _.extend(new Element(doc), Element.prototype, DateTimeElement.prototype)
-      when 'card'
-        _.extend(new Element(doc), Element.prototype, CardElement.prototype)
-      when 'map'
-        _.extend(new Element(doc), Element.prototype, MapElement.prototype)
-    doc
+    _.extend(new Element(doc), Element.prototype, defaults.element[doc.type].prototype)
 
 @Elements.before.insert (userId, doc) ->
   highestElement = Elements.findOne({ parentId: doc.parentId },
@@ -37,7 +14,7 @@
   throw new Meteor.Error(422, 'Element needs a parent') unless attributes.parentId
   throw new Meteor.Error(422, 'Element type needs to be declared') unless attributes.type
   throw new Meteor.Error(422, 'Element type needs to be valid') unless _.contains(defaults.element.types, attributes.type)
-  attributes.body = defaults.element[attributes.type] unless attributes.body?
+  attributes.body = defaults.element[attributes.type].body unless attributes.body?
   attributes.editable = true
   Elements.insert(attributes)
 
@@ -61,7 +38,7 @@
       editable: true
   Elements.update { parentId: parentId, type: 'description' },
     $set:
-      body: defaults.element.description
+      body: defaults.element.description.body
       editable: true
 
 @updateElement = (id, type, body) ->

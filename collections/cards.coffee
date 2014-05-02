@@ -12,7 +12,7 @@
     parentId: attributes.parentId
     cardType: attributes.type
     cardTitle: defaults.card.title
-    cardDescription: defaults.element.description
+    cardDescription: defaults.element.description.body
   Cards.update(id, attributes)
   id
 
@@ -31,7 +31,7 @@ Meteor.methods
     Elements.remove(parentId: id, headerElement: { $exists: false })
     resetHeaderElements(id, defaults.card)
     updateSiblingElement(id, 'title', defaults.card.title)
-    updateSiblingElement(id, 'description', defaults.element.description)
+    updateSiblingElement(id, 'description', defaults.element.description.body)
 
   deleteCard: (id, siblingElementId) ->
     Elements.remove(siblingElementId)
