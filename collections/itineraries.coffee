@@ -8,10 +8,12 @@
     type: 'title'
     body: defaults.itinerary.title
     parentId: id
+    belongsTo: 'itinerary'
     headerElement: true
   createElement
     type: 'description'
     parentId: id
+    belongsTo: 'itinerary'
     headerElement: true
   id
 

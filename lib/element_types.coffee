@@ -38,8 +38,11 @@ helpers =
       outer.setAttribute('class', "item item-#{doc.type} editable")
     else
       outer.setAttribute('class', "item item-#{doc.type}") unless isHeaderElement
-    unless isHeaderElement
-      inner.setAttribute('class', "item-content-container")
+    if isHeaderElement
+      outer.setAttribute('data-belongs-to', doc.belongsTo)
+      outer.setAttribute('data-parent-id', doc.parentId)
+    else
+      inner.setAttribute('class', 'item-content-container')
     outer.appendChild(inner)
     outer.outerHTML
 

@@ -24,6 +24,7 @@ Router.map ->
     waitOn: -> [
       Meteor.subscribe('card', @params._id)
       Meteor.subscribe('elements', @params._id)
+      Meteor.subscribe('siblingElement', @params._id)
     ]
 
   @route 'itinerary',

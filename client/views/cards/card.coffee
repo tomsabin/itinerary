@@ -12,7 +12,7 @@ Template.card.type = ->
   divElement.setAttribute('data-selected', true) if @selected
   divElement.outerHTML
 
-@card = (card) -> @card = card
+@setCard = (card) -> @card = card
 
 Template.card.events
   'click #back': ->
@@ -20,4 +20,4 @@ Template.card.events
   'click [data-card-type]': (e) ->
     updateCardType(card, e.target.getAttribute('data-card-type'))
 
-Template.card.rendered = -> card(@data.card)
+Template.card.rendered = -> setCard(@data.card)

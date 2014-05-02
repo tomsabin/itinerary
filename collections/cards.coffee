@@ -13,10 +13,12 @@
     type: 'title'
     body: defaults.card.title
     parentId: cardId
+    belongsTo: 'card'
     headerElement: true
   createElement
     type: 'description'
     parentId: cardId
+    belongsTo: 'card'
     headerElement: true
   attributes.elementId = createElement
     type: 'card'
@@ -32,6 +34,12 @@
   card.type = type
   Cards.update(card._id, card)
 
+@updateSiblingElement = (id, type, body) ->
+  sibling = Elements.findOne(body: id, type: 'card')
+  sibling.cardTitle = body if type is 'title'
+  sibling.cardDescription = body if type is 'description'
+  Elements.update(sibling._id, sibling)
+
 Meteor.methods
   resetCard: (id) ->
     Elements.remove
@@ -45,6 +53,8 @@ Meteor.methods
       $set:
         body: defaults.element.description
         editable: true
+    updateSiblingElement(id, 'title', defaults.card.title)
+    updateSiblingElement(id, 'description', defaults.element.description)
 
   deleteCard: (id, siblingElementId) ->
     Elements.remove(siblingElementId)

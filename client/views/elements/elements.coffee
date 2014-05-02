@@ -13,6 +13,11 @@ updateElementWithEvent = (e) ->
         findAttribute(target, 'data-element-id'),
         findAttribute(target, 'data-item-type'),
         body)
+      if findAttribute(target, 'data-belongs-to') is 'card'
+        updateSiblingElement(
+          findAttribute(target, 'data-parent-id'),
+          findAttribute(target, 'data-item-type'),
+          body)
     else
       originalBody = findAttribute(target, 'data-body')
       if target.getAttribute('contentEditable')?
