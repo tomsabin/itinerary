@@ -1,3 +1,22 @@
 <template name="login">
-  {{> loginButtons}}
+  <form>
+    <input type="text" id="loginUsername" placeholder="Username" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <input type="submit" id="submitLogin" value="Login" />
+  </form>
+  <div id="error-message"></div>
+</template>
+
+<template name="register">
+  <form>
+    <input type="text" id="registrationUsername" placeholder="Username" />
+    <input type="password" id="registrationPassword" placeholder="Password" />
+    <input type="password" id="registrationPasswordConfirmation" placeholder="Password (again)" />
+    <input type="submit" id="submitRegistration" value="Register" />
+  </form>
+  <div id="error-message"></div>
+</template>
+
+<template name="logout">
+  <input type="button" id="logoutUser" value="Logout" />
 </template>
