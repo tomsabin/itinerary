@@ -17,12 +17,14 @@
   id
 
 @updateCardType = (card, type) ->
+  throw new Meteor.Error(422, 'Card type needs to be valid') unless _.contains(defaults.card.types, type)
   card.type = type
   Cards.update(card._id, card)
   updateSiblingElement(card._id, 'type', type)
 
 @updateSiblingElement = (id, type, body) ->
   sibling = Elements.findOne(body: id, type: 'card')
+  throw new Meteor.Error(422, 'Sibling element not found') unless sibling?
   sibling.cardType = body if type is 'type'
   sibling.cardTitle = body if type is 'title'
   sibling.cardDescription = body if type is 'description'

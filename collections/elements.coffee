@@ -42,8 +42,9 @@
       editable: true
 
 @updateElement = (id, type, body) ->
+  throw new Meteor.Error(422, 'Element type needs to be valid') unless _.contains(defaults.element.types, type)
   attributes = { editable: false }
-  attributes.original_body = body if type is 'photo' or 'link' or 'datetime-local' or 'date' or 'time'
+  attributes.original_body = body if _.contains(['photo', 'link', 'datetime-local', 'date', 'time'], type)
   switch type
     when 'link'
       markdownLink = /\[([^\]]+)\]\(([^)]+)\)/.exec(body)
