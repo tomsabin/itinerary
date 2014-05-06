@@ -1,6 +1,7 @@
 Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
+  notFoundTemplate: 'notFound'
 
 Router.onBeforeAction('loading');
 
@@ -15,18 +16,6 @@ Router.map ->
       Meteor.subscribe('headerElements')
     ]
 
-  @route 'card',
-    path: '/c/:_id'
-    data: ->
-      card: Cards.findOne(@params._id)
-      elements: Elements.find { parentId: @params._id },
-                  sort: { position: 1 }
-    waitOn: -> [
-      Meteor.subscribe('card', @params._id)
-      Meteor.subscribe('elements', @params._id)
-      Meteor.subscribe('siblingElement', @params._id)
-    ]
-
   @route 'itinerary',
     path: '/i/:_id'
     data: ->
@@ -38,4 +27,14 @@ Router.map ->
       Meteor.subscribe('elements', @params._id)
     ]
 
-   @route('notFound', { path: '*' });
+  @route 'card',
+    path: '/c/:_id'
+    data: ->
+      card: Cards.findOne(@params._id)
+      elements: Elements.find { parentId: @params._id },
+                  sort: { position: 1 }
+    waitOn: -> [
+      Meteor.subscribe('card', @params._id)
+      Meteor.subscribe('elements', @params._id)
+      Meteor.subscribe('siblingElement', @params._id)
+    ]
