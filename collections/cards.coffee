@@ -17,15 +17,12 @@
   id
 
 @updateCardType = (card, type) ->
-  # must specify a valid type
   card.type = type
   Cards.update(card._id, card)
   updateSiblingElement(card._id, 'type', type)
 
 @updateSiblingElement = (id, type, body) ->
-  # must be valid type
   sibling = Elements.findOne(body: id, type: 'card')
-  # error if not found element
   sibling.cardType = body if type is 'type'
   sibling.cardTitle = body if type is 'title'
   sibling.cardDescription = body if type is 'description'

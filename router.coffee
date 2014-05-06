@@ -26,9 +26,6 @@ Router.map ->
       Meteor.subscribe('elements', @params._id)
       Meteor.subscribe('siblingElement', @params._id)
     ]
-    # need to return something falsey here?
-    # notFoundTemplate or something to redirect to 'notFound'
-
 
   @route 'itinerary',
     path: '/i/:_id'
@@ -42,4 +39,3 @@ Router.map ->
     ]
 
    @route('notFound', { path: '*' });
-
