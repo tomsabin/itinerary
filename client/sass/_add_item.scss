@@ -1,0 +1,105 @@
+.buttons-table {
+  @include card($item-colour, $item-border-colour);
+  display: table;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 4px;
+  margin-bottom: 8px;
+
+  .buttons-row {
+    display: table-row;
+
+    .buttons-cell {
+      display: table-cell;
+      height: 60px;
+
+      &:hover {
+        background-color: $item-hover-colour;
+        cursor: pointer;
+
+        &:before {
+          color: $icon-hover-colour;
+        }
+      }
+    }
+  }
+}
+.add-item-datetime-local,
+.add-item-divider,
+.add-item-date,
+.add-item-time,
+.add-item-text,
+.add-item-link,
+.add-item-photo,
+.add-item-map,
+[data-card-type=accommodation],
+[data-card-type=travel],
+[data-card-type=event] {
+  vertical-align: middle;
+  text-align: center;
+
+  &:before {
+    @include icon-font-and-color;
+    font-size: 1.6em;
+  }
+}
+.add-item-datetime-local:before {
+  content: '\f133';
+}
+.add-item-divider:before {
+  content: '\f068';
+}
+.add-item-date:before {
+  content: '\f073';
+}
+.add-item-time:before {
+  content: '\f017';
+}
+.add-item-text:before {
+  content: '\f044';
+}
+.add-item-link:before {
+  content: '\f0c1';
+}
+.add-item-photo:before {
+  content: '\f03e';
+}
+.add-item-map:before {
+  content: '\f041';
+}
+[data-card-type=accommodation]:before {
+  content: '\f015';
+}
+[data-card-type=travel]:before {
+  content: '\f018';
+}
+[data-card-type=event]:before {
+  content: '\f145';
+}
+.item-card {
+  &:hover {
+    .item-text:before {
+      color: $icon-hover-colour;
+    }
+  }
+  .item-text {
+    vertical-align: baseline;
+    text-align: left;
+
+    &:before {
+      @include icon-font-and-color;
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 1em;
+    }
+  }
+}
+.card-type-table {
+  [data-selected=true] {
+    background-color: $item-hover-colour;
+
+    &:before {
+      color: $icon-hover-colour;
+    }
+  }
+}

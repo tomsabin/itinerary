@@ -74,7 +74,7 @@ helpers =
 @TitleElement.prototype =
   initalElement: ->
     element = helpers.createInitialElement(@)
-    element.setAttribute('class', 'h1-entry')
+    element.setAttribute('class', 'title-entry')
     helpers.wrapElement(@, element, false, false, false, true)
   finalElement: ->
     element = document.createElement('h1')
@@ -86,7 +86,7 @@ helpers =
 @DescriptionElement.prototype =
   initalElement: ->
     element = helpers.createInitialElement(@)
-    element.setAttribute('class', 'h2-entry')
+    element.setAttribute('class', 'description-entry')
     helpers.wrapElement(@, element, false, false, false, true)
   finalElement: ->
     element = document.createElement('h2')
@@ -162,7 +162,7 @@ helpers =
     outer.setAttribute('class', "item item-#{@type}")
     linkElement.setAttribute('href', Router.path('card', _id: this.body))
     element.setAttribute('class', 'item-action-container')
-    titleElement.setAttribute('class', 'item-h1')
+    titleElement.setAttribute('class', 'item-card-title')
     titleElement.textContent = @cardTitle
     descriptionElement.setAttribute('class', 'item-text')
     descriptionElement.setAttribute('data-card-type', @cardType)

@@ -42,7 +42,9 @@
       editable: true
 
 @updateElement = (id, type, body) ->
+  # need to specify a valid type
   attributes = { editable: false }
+  # test the following, should be using include/contains?
   attributes.original_body = body if type is 'photo' or 'link' or 'datetime-local' or 'date' or 'time'
   switch type
     when 'link'

@@ -5,8 +5,20 @@
   border-radius: 3px;
   position: relative;
 }
-@mixin input {
+@mixin reset-input-type {
   border: none;
   background-color: transparent;
   width: 100%;
+}
+@mixin not-selectable {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+@mixin icon-font-and-color {
+  font-family: FontAwesome;
+  color: $icon-colour;
 }

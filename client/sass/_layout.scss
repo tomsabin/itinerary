@@ -5,7 +5,8 @@ body {
   @include outer-container;
   padding: 0 8px;
 }
-.layout-main {
+.layout-main,
+.buttons-table {
   @include span-columns(6);
 }
 .manager-buttons {
