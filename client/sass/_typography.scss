@@ -6,6 +6,8 @@ a, a:visited {
   word-wrap: break-word;
 }
 .home-title,
+.item-itinerary-title,
+.item-card-title,
 .item-title,
 .item-action-text,
 .item-entry,
@@ -39,6 +41,8 @@ a, a:visited {
     color: $home-icon-colour;
   }
 }
+.item-itinerary-title,
+.item-card-title,
 .item-title,
 .title-entry {
   font-size: 1.7em;
