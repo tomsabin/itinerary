@@ -8,12 +8,14 @@ helpers =
     finalElement: (doc) ->
       divElement = document.createElement('p')
       dateElement = document.createElement('p')
-      dateElement.setAttribute('class', "item-#{doc.body}")
+      dateElement.setAttribute('class', "item-#{doc.type}")
+      dateElement.setAttribute('data-inline-editable', true)
       dateElement.textContent = doc.body
       divElement.appendChild(dateElement)
       if doc.second_body?
         timeElement = document.createElement('p')
         timeElement.setAttribute('class', 'item-datetime-time')
+        timeElement.setAttribute('data-inline-editable', true)
         timeElement.textContent = doc.second_body
         divElement.appendChild(timeElement)
       helpers.wrapElement(doc, divElement, true, true, true)
