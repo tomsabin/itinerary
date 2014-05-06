@@ -16,8 +16,10 @@
   Cards.update(id, attributes)
   id
 
-@updateCardType = (card, type) ->
+@updateCardType = (id, type) ->
   throw new Meteor.Error(422, 'Card type needs to be valid') unless _.contains(defaults.card.types, type)
+  card = Cards.findOne(id)
+  throw new Meteor.Error(422, 'Card not found') unless card?
   card.type = type
   Cards.update(card._id, card)
   updateSiblingElement(card._id, 'type', type)
