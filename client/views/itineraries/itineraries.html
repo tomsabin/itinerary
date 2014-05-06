@@ -1,13 +1,13 @@
 <template name="itineraries">
   <div class="home">
-    <h1 class="home-title">Itinera.re</h1>
+    {{> title}}
 
     {{#each itineraries}}
       <a href="{{pathFor 'itinerary'}}">
         <div class="item item-itinerary" data-itinerary-id="{{_id}}">
           <div class="item-action-container">
-            <h1 class="item-itinerary-title">{{title}}</h1>
-            <p class="item-text">{{description}}</p>
+            <h1 class="item-itinerary-title">{{itineraryTitle}}</h1>
+            <p class="item-text">{{itineraryDescription}}</p>
           </div>
         </div>
       </a>
