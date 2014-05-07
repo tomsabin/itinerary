@@ -1,5 +1,5 @@
 .buttons-table {
-  @include card($item-colour, $item-border-colour);
+  @include card;
   display: table;
   table-layout: fixed;
   border-collapse: separate;

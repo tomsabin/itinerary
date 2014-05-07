@@ -9,7 +9,7 @@ body {
 .buttons-table {
   @include span-columns(6);
 }
-.manager-buttons {
+.two-buttons {
   .item {
     @include span-columns(3);
   }

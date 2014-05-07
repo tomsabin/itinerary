@@ -1,4 +1,4 @@
-@mixin card($background-colour, $border-colour) {
+@mixin card($background-colour: $item-colour, $border-colour: $item-border-colour) {
   background-color: $background-colour;
   border: 1px solid $border-colour;
   border-bottom: 2px solid $border-colour;
