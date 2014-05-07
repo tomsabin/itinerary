@@ -18,11 +18,9 @@
   $('#elementButtonContainer').hide()
   $('#dateTimeElementsContainer').show()
 
-@hideLoginRegistrationOpeners = ->
-  $('#showLoginForm').hide()
-  $('#showRegistrationForm').hide()
-@showLoginRegistrationOpeners = ->
-  $('#showLoginForm').show()
-  $('#showRegistrationForm').show()
-  $('#loginForm').hide()
-  $('#registrationForm').hide()
+@showFormOpeners = ->
+  $('#formOpeners').show()
+  $('#form').hide()
+@openForm = ->
+  $('#formOpeners').hide()
+  $('#form').show()
