@@ -17,3 +17,12 @@
 @openDateTimeElementsContainer = ->
   $('#elementButtonContainer').hide()
   $('#dateTimeElementsContainer').show()
+
+@hideLoginRegistrationOpeners = ->
+  $('#showLoginForm').hide()
+  $('#showRegistrationForm').hide()
+@showLoginRegistrationOpeners = ->
+  $('#showLoginForm').show()
+  $('#showRegistrationForm').show()
+  $('#loginForm').hide()
+  $('#registrationForm').hide()

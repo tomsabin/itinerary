@@ -6,6 +6,7 @@ a, a:visited {
   word-wrap: break-word;
 }
 .home-title,
+.text-divider,
 .item-itinerary-title,
 .item-card-title,
 .item-title,
@@ -23,7 +24,8 @@ a, a:visited {
 }
 .item-text,
 .item-description,
-.description-entry {
+.description-entry,
+.error-message {
   font-family: $secondary-font;
 }
 .home-title {
@@ -41,6 +43,36 @@ a, a:visited {
     color: $home-icon-colour;
   }
 }
+.error-message {
+  text-align: center;
+  padding: 8px;
+
+  &:before {
+    @include icon-font-and-color;
+    margin-right: 8px;
+    font-size: 1em;
+    display: inline-block;
+    content: "\f06a"
+  }
+}
+.text-divider {
+  @include not-selectable;
+  text-align: center;
+  display: table;
+  padding: 20px 0;
+  width: 100%;
+  color: $home-title-colour;
+
+  &:before,
+  &:after {
+    display: table-cell;
+    border-top: 1px solid $home-icon-colour;
+    position: relative;
+    content: "";
+    width: 40%;
+    top: 0.5em;
+  }
+}
 .item-itinerary-title,
 .item-card-title,
 .item-title,
@@ -55,7 +87,9 @@ a, a:visited {
   line-height: 1.2em;
 }
 .item-entry,
-.item-action-text {
+.item-action-text,
+.item-button {
+  text-align: left;
   font-size: 1.0em;
   color: $icon-colour;
 }

@@ -1,39 +1,59 @@
 Meteor.autorun ->
+  Session.set('formError', '')
   if Meteor.user() and Router.current().route.name is 'landingPage'
     Router.go('itineraries')
 
+Template.accounts.events
+  'click #showLoginForm': (e) ->
+    hideLoginRegistrationOpeners()
+    $('#registrationForm').hide()
+    $('#loginForm').show()
+    $('#loginUsername').focus()
+  'click #showRegistrationForm': (e) ->
+    hideLoginRegistrationOpeners()
+    $('#registrationForm').show()
+    $('#loginForm').hide()
+    $('#registrationUsername').focus()
+
+Template.accounts.errorMessage = ->
+  Session.get('formError')
+
+Template.accounts.rendered = ->
+  showLoginRegistrationOpeners()
+  $('#window, .home-title').click ->
+    Session.set('formError', '')
+    showLoginRegistrationOpeners()
+
 Template.login.events
-  'click #submitLogin': (e, t) ->
+  'submit form': (e, t) ->
+    Session.set('formError', '')
     e.preventDefault()
-    username = t.find('#loginUsername').value
-    password = t.find('#loginPassword').value
-
-    Meteor.loginWithPassword username, password, (error) ->
-      if error
-        console.log(error)
-        $('#error-message').html(error.reason)
-      else
-        Router.go('itineraries')
-
-Template.register.events
-  'click #submitRegistration': (e, t) ->
-    e.preventDefault()
-    password = t.find('#registrationPassword').value
-    passwordConfirmation = t.find('#registrationPasswordConfirmation').value
-    if password isnt passwordConfirmation
-      $('#error-message').html('Passwords much match')
-    else if !password or !passwordConfirmation
-      $('#error-message').html('Please enter a password')
-    else
-      Accounts.createUser
-        username: t.find('#registrationUsername').value
-        password: password,
+    if !!t.find('#loginUsername').value
+      Meteor.loginWithPassword(
+        t.find('#loginUsername').value,
+        t.find('#loginPassword').value,
         (error) ->
           if error
-            console.log(error)
-            $('#error-message').html(error.reason)
+            Session.set('formError', error.reason)
           else
-            Router.go('itineraries')
+            Router.go('itineraries'))
+
+Template.register.events
+  'submit form': (e, t) ->
+    Session.set('formError', '')
+    e.preventDefault()
+    if !!t.find('#registrationUsername').value
+      try
+        Accounts.createUser
+          username: t.find('#registrationUsername').value
+          password: t.find('#registrationPassword').value,
+          (error) ->
+            if error
+              Session.set('formError', error.reason)
+            else
+              Router.go('itineraries')
+      catch error
+        Session.set('formError', 'Please enter a password') if error.message is 'Must set options.password'
 
 Template.logout.events
   'click #logoutUser': -> Meteor.logout()

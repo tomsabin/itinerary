@@ -1,22 +1,107 @@
+<template name="accounts">
+  {{#unless currentUser}}
+    <div class="two-buttons">
+      <div id="showLoginForm" class="item">
+        <div class="item-action-container">
+          <span class="item-action-text">Sign in</span>
+          <i class="fa fa-sign-in item-action-icon"></i>
+        </div>
+      </div>
+
+      <div id="showRegistrationForm" class="item">
+        <div class="item-action-container">
+          <span class="item-action-text">Sign up</span>
+          <i class="fa fa-user item-action-icon"></i>
+        </div>
+      </div>
+    </div>
+
+    {{#if errorMessage}}
+      <div class="error-message">{{errorMessage}}</div>
+    {{/if}}
+
+    <div id="loginForm">
+      {{> login}}
+    </div>
+
+    <div id="registrationForm">
+      {{> register}}
+    </div>
+
+  {{else}}
+    {{> logout}}
+  {{/unless}}
+</template>
+
 <template name="login">
-  <form>
-    <input type="text" id="loginUsername" placeholder="Username" />
-    <input type="password" id="loginPassword" placeholder="Password" />
-    <input type="submit" id="submitLogin" value="Login" />
+  <form name="loginForm">
+    <div class="item">
+      <div class="item-content-container">
+        <input type="text" id="loginUsername" placeholder="Username" class="item-entry" />
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-content-container">
+        <input type="password" id="loginPassword" placeholder="Password" class="item-entry" />
+      </div>
+    </div>
+
+    <button type="submit" for="loginForm" class="item item-button">
+      <div class="item-action-container">
+        <span class="item-action-text">Sign in</span>
+        <i class="fa fa-sign-in item-action-icon"></i>
+      </div>
+    </button>
   </form>
-  <div id="error-message"></div>
+
+  <div class="text-divider">or</div>
+
+  <div id="showRegistrationForm" class="item">
+    <div class="item-action-container">
+      <span class="item-action-text">Create an account</span>
+      <i class="fa fa-user item-action-icon"></i>
+    </div>
+  </div>
 </template>
 
 <template name="register">
-  <form>
-    <input type="text" id="registrationUsername" placeholder="Username" />
-    <input type="password" id="registrationPassword" placeholder="Password" />
-    <input type="password" id="registrationPasswordConfirmation" placeholder="Password (again)" />
-    <input type="submit" id="submitRegistration" value="Register" />
+  <form name="registrationForm">
+    <div class="item">
+      <div class="item-content-container">
+        <input type="text" id="registrationUsername" placeholder="Username" class="item-entry" />
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-content-container">
+        <input type="password" id="registrationPassword" placeholder="Password" class="item-entry" />
+      </div>
+    </div>
+
+    <button type="submit" for="registrationForm" class="item item-button">
+      <div class="item-action-container">
+        <span class="item-action-text">Create account</span>
+        <i class="fa fa-user item-action-icon"></i>
+      </div>
+    </button>
   </form>
-  <div id="error-message"></div>
+
+  <div class="text-divider">or</div>
+
+  <div id="showLoginForm" class="item">
+    <div class="item-action-container">
+      <span class="item-action-text">Sign in</span>
+      <i class="fa fa-sign-in item-action-icon"></i>
+    </div>
+  </div>
 </template>
 
 <template name="logout">
-  <input type="button" id="logoutUser" value="Logout" />
+  <div id="logoutUser" class="item">
+    <div class="item-action-container">
+      <span class="item-action-text">Sign out</span>
+      <i class="fa fa-sign-out item-action-icon"></i>
+    </div>
+  </div>
 </template>
