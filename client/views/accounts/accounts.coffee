@@ -5,11 +5,13 @@ Meteor.autorun ->
 
 Template.accounts.events
   'click #showLoginForm': (e) ->
+    Session.set('formError', '')
     hideLoginRegistrationOpeners()
     $('#registrationForm').hide()
     $('#loginForm').show()
     $('#loginUsername').focus()
   'click #showRegistrationForm': (e) ->
+    Session.set('formError', '')
     hideLoginRegistrationOpeners()
     $('#registrationForm').show()
     $('#loginForm').hide()
