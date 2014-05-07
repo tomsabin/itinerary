@@ -1,6 +1,17 @@
 @Itineraries = new Meteor.Collection('itineraries')
-@Itineraries.before.insert (userId, doc) ->
+
+Itineraries.before.insert (userId, doc) ->
+  throw new Meteor.Error(401, 'You need to login first to be able to perform that') unless userId
+  doc.user_id = userId
   doc.created_on = new Date().getTime()
+
+Itineraries.allow
+  fetch: ['user_id']
+  insert: (userId, doc) -> userId and doc.user_id is userId
+
+Itineraries.deny
+  update: -> true
+  remove: -> true
 
 @createItinerary = ->
   id = Itineraries.insert({})
@@ -9,12 +20,24 @@
 
 Meteor.methods
   resetItinerary: (id) ->
+    user = Meteor.user()
+    throw new Meteor.Error(401, 'You need to login first to be able to perform that') unless user
+    itinerary = Itineraries.findOne(id)
+    throw new Meteor.Error(404, 'Itinerary was not found') unless itinerary
+    throw new Meteor.Error(403, 'Itinerary does not belong to you') unless user._id is itinerary.user_id
+
     Cards.find(parentId: id).forEach (card) -> Elements.remove(parentId: card._id)
     Cards.remove(parentId: id)
     Elements.remove(parentId: id, headerElement: { $exists: false })
     resetHeaderElements(id, defaults.itinerary)
 
   deleteItinerary: (id) ->
+    user = Meteor.user()
+    throw new Meteor.Error(401, 'You need to login first to be able to perform that') unless user
+    itinerary = Itineraries.findOne(id)
+    throw new Meteor.Error(404, 'Itinerary was not found') unless itinerary
+    throw new Meteor.Error(403, 'Itinerary does not belong to you') unless user._id is itinerary.user_id
+
     Cards.find(parentId: id).forEach (card) -> Elements.remove(parentId: card._id)
     Cards.remove(parentId: id)
     Elements.remove(parentId: id)
