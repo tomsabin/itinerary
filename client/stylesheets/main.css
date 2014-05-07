@@ -2260,15 +2260,16 @@ a, a:visited {
   font-family: "Raleway", "sans-serif";
 }
 
-/* line 28, ../sass/_typography.scss */
+/* line 29, ../sass/_typography.scss */
 .item-text,
 .item-description,
 .description-entry,
-.error-message {
+.error-message,
+.signed-in-as {
   font-family: "Goudy Bookletter 1911", "serif";
 }
 
-/* line 31, ../sass/_typography.scss */
+/* line 32, ../sass/_typography.scss */
 .home-title {
   margin: 64px 0;
   text-align: center;
@@ -2276,7 +2277,7 @@ a, a:visited {
   line-height: 1.6em;
   color: #7f7f7f;
 }
-/* line 38, ../sass/_typography.scss */
+/* line 39, ../sass/_typography.scss */
 .home-title:before {
   font-family: FontAwesome;
   font-size: 1.6em;
@@ -2285,23 +2286,9 @@ a, a:visited {
   color: #d9d9d9;
 }
 
-/* line 46, ../sass/_typography.scss */
-.error-message {
-  text-align: center;
-  padding: 8px;
-}
-/* line 50, ../sass/_typography.scss */
-.error-message:before {
-  font-family: FontAwesome;
-  color: #7f7f7f;
-  margin-right: 8px;
-  font-size: 1em;
-  display: inline-block;
-  content: "\f06a";
-}
-
-/* line 58, ../sass/_typography.scss */
-.text-divider {
+/* line 48, ../sass/_typography.scss */
+.text-divider,
+.signed-in-as {
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -2309,12 +2296,16 @@ a, a:visited {
   user-select: none;
   cursor: default;
   text-align: center;
-  display: table;
   padding: 20px 0;
-  width: 100%;
   color: #7f7f7f;
 }
-/* line 67, ../sass/_typography.scss */
+
+/* line 54, ../sass/_typography.scss */
+.text-divider {
+  display: table;
+  width: 100%;
+}
+/* line 59, ../sass/_typography.scss */
 .text-divider:before, .text-divider:after {
   display: table-cell;
   border-top: 1px solid #d9d9d9;
@@ -2324,7 +2315,45 @@ a, a:visited {
   top: 0.5em;
 }
 
+/* line 69, ../sass/_typography.scss */
+.error-message,
+.signed-in-as {
+  text-align: center;
+}
+/* line 72, ../sass/_typography.scss */
+.error-message:before,
+.signed-in-as:before {
+  font-family: FontAwesome;
+  color: #7f7f7f;
+  margin-right: 4px;
+  font-size: 1em;
+  display: inline-block;
+}
+
 /* line 79, ../sass/_typography.scss */
+#logoutUser:hover ~ .signed-in-as {
+  color: black;
+}
+/* line 82, ../sass/_typography.scss */
+#logoutUser:hover ~ .signed-in-as:before {
+  color: black;
+}
+
+/* line 86, ../sass/_typography.scss */
+.error-message {
+  padding: 8px;
+}
+/* line 89, ../sass/_typography.scss */
+.error-message:before {
+  content: "\f06a";
+}
+
+/* line 93, ../sass/_typography.scss */
+.signed-in-as:before {
+  content: "\f007";
+}
+
+/* line 100, ../sass/_typography.scss */
 .item-itinerary-title,
 .item-card-title,
 .item-title,
@@ -2333,7 +2362,7 @@ a, a:visited {
   line-height: 1.5em;
 }
 
-/* line 85, ../sass/_typography.scss */
+/* line 106, ../sass/_typography.scss */
 .item-text,
 .item-description,
 .description-entry {
@@ -2341,7 +2370,7 @@ a, a:visited {
   line-height: 1.2em;
 }
 
-/* line 91, ../sass/_typography.scss */
+/* line 112, ../sass/_typography.scss */
 .item-entry,
 .item-action-text,
 .item-button {
@@ -2350,7 +2379,7 @@ a, a:visited {
   color: #7f7f7f;
 }
 
-/* line 99, ../sass/_typography.scss */
+/* line 120, ../sass/_typography.scss */
 .title-entry,
 .description-entry,
 .item-title,
@@ -2359,7 +2388,7 @@ a, a:visited {
   padding: 24px 8px;
 }
 
-/* line 104, ../sass/_typography.scss */
+/* line 125, ../sass/_typography.scss */
 .item-itinerary-title,
 .item-card-title {
   padding: 0;
@@ -2369,7 +2398,7 @@ a, a:visited {
   text-align: left;
 }
 
-/* line 113, ../sass/_typography.scss */
+/* line 134, ../sass/_typography.scss */
 .item-datetime-local,
 .item-date,
 .item-time {
@@ -2377,14 +2406,14 @@ a, a:visited {
   color: #7f7f7f;
 }
 
-/* line 117, ../sass/_typography.scss */
+/* line 138, ../sass/_typography.scss */
 .item-datetime-time {
   margin-top: 12px;
   border-top: 1px solid #d9d9d9;
   padding-top: 12px;
 }
 
-/* line 122, ../sass/_typography.scss */
+/* line 143, ../sass/_typography.scss */
 .item-map-text {
   margin-top: 8px;
   text-transform: uppercase;
@@ -2393,17 +2422,17 @@ a, a:visited {
   color: #7f7f7f;
 }
 
-/* line 129, ../sass/_typography.scss */
+/* line 150, ../sass/_typography.scss */
 .item-link a {
   color: #4dbce9;
 }
 
-/* line 132, ../sass/_typography.scss */
+/* line 153, ../sass/_typography.scss */
 .item-link:hover a {
   color: #26ade4;
 }
 
-/* line 135, ../sass/_typography.scss */
+/* line 156, ../sass/_typography.scss */
 .page-not-found {
   -moz-user-select: -moz-none;
   -khtml-user-select: none;

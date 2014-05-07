@@ -21,6 +21,9 @@
     </div>
   {{else}}
     {{> logout}}
+    <div class="signed-in-as">
+      {{currentUser.username}}
+    </div>
   {{/unless}}
 </template>
 

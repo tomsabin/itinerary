@@ -25,7 +25,8 @@ a, a:visited {
 .item-text,
 .item-description,
 .description-entry,
-.error-message {
+.error-message,
+.signed-in-as {
   font-family: $secondary-font;
 }
 .home-title {
@@ -43,25 +44,16 @@ a, a:visited {
     color: $home-icon-colour;
   }
 }
-.error-message {
-  text-align: center;
-  padding: 8px;
-
-  &:before {
-    @include icon-font-and-color;
-    margin-right: 8px;
-    font-size: 1em;
-    display: inline-block;
-    content: "\f06a"
-  }
-}
-.text-divider {
+.text-divider,
+.signed-in-as {
   @include not-selectable;
   text-align: center;
-  display: table;
   padding: 20px 0;
-  width: 100%;
   color: $home-title-colour;
+}
+.text-divider {
+  display: table;
+  width: 100%;
 
   &:before,
   &:after {
@@ -73,6 +65,35 @@ a, a:visited {
     top: 0.5em;
   }
 }
+.error-message,
+.signed-in-as {
+  text-align: center;
+
+  &:before {
+    @include icon-font-and-colour;
+    margin-right: 4px;
+    font-size: 1em;
+    display: inline-block;
+  }
+}
+#logoutUser:hover ~ .signed-in-as {
+  color: $icon-hover-colour;
+
+  &:before {
+    color: $icon-hover-colour;
+  }
+}
+.error-message {
+  padding: 8px;
+
+  &:before {
+    content: "\f06a"
+  }
+}
+.signed-in-as:before {
+  content: "\f007"
+}
+
 .item-itinerary-title,
 .item-card-title,
 .item-title,

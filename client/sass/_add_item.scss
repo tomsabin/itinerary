@@ -39,7 +39,7 @@
   text-align: center;
 
   &:before {
-    @include icon-font-and-color;
+    @include icon-font-and-colour;
     font-size: 1.6em;
   }
 }
@@ -87,7 +87,7 @@
     text-align: left;
 
     &:before {
-      @include icon-font-and-color;
+      @include icon-font-and-colour;
       display: inline-block;
       margin-right: 8px;
       font-size: 1em;
