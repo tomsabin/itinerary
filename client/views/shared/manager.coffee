@@ -11,8 +11,8 @@ Template.manager.events
     showOpeners()
     if confirm('Are you sure you want to delete?')
       if @itinerary?
-        Meteor.call('deleteItinerary', @itinerary._id)
-        Router.go('itineraries')
+        Itineraries.remove @itinerary._id, (error) ->
+          Router.go('itineraries') unless error
       if @card?
         Meteor.call('deleteCard', @card._id, @card.elementId)
         Router.go('itinerary', _id: @card.parent_id)

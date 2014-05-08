@@ -8,6 +8,6 @@ Template.itineraries.helpers
 
 Template.itineraries.events
   'click #newItinerary': ->
-    itineraryId = createItinerary()
+    itineraryId = Itineraries.insert({})
     Session.set('selectTitleElement', true)
     Router.go('itinerary', _id: itineraryId)
