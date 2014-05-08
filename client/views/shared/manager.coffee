@@ -14,8 +14,10 @@ Template.manager.events
         Itineraries.remove @itinerary._id, (error) ->
           Router.go('itineraries') unless error
       if @card?
-        Meteor.call('deleteCard', @card._id, @card.elementId)
-        Router.go('itinerary', _id: @card.parent_id)
+        parentId = @card.parent_id
+        Cards.remove @card._id, (error) ->
+          console.log (error)
+          Router.go('itinerary', _id: parentId) unless error
 
 Template.manager.rendered = ->
   $(document).keyup (e) ->

@@ -9,7 +9,13 @@ Cards.before.insert (userId, doc) ->
 
 Cards.allow
   insert: (userId, doc) -> userId and doc.user_id is userId
-  remove: (userId, doc) -> userId and doc.user_id is userId
+  remove: (userId, doc) ->
+    isOwner = userId and doc.user_id is userId
+    if isOwner
+      Elements.remove(doc.element_id)
+      Elements.remove(parent_id: doc._id)
+      Cards.remove(doc._id)
+    isOwner
   update: (userId, doc, fields, modifier) ->
     isOwner = userId and doc.user_id is userId
     hasValidFields = not _.difference(fields, defaults.card.valid_attributes).length
@@ -51,9 +57,3 @@ Meteor.methods
     resetHeaderElements(id, defaults.card)
     updateSiblingElement(id, 'title', defaults.card.title)
     updateSiblingElement(id, 'description', defaults.element.description.body)
-
-  deleteCard: (id, siblingElementId) ->
-    validateOwner('Card', id, Meteor.user())
-    Elements.remove(siblingElementId)
-    Elements.remove(parent_id: id)
-    Cards.remove(id)
