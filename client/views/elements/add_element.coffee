@@ -7,6 +7,6 @@ Template.addElement.events
     if parentId?
       elementId = createElement
         type: e.target.getAttribute('data-element-type')
-        parentId: parentId
+        parent_id: parentId
       $("div[data-element-id='#{elementId}'] input").focus()
       showOpeners()

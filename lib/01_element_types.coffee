@@ -49,8 +49,8 @@ helpers =
       outer.setAttribute('class', "item item-#{doc.type}") unless isHeaderElement
     if isHeaderElement
       outer.setAttribute('data-deletable', false)
-      outer.setAttribute('data-belongs-to', doc.belongsTo)
-      outer.setAttribute('data-parent-id', doc.parentId)
+      outer.setAttribute('data-belongs-to', doc.belongs_to)
+      outer.setAttribute('data-parent-id', doc.parent_id)
     else
       inner.setAttribute('class', 'item-content-container')
     outer.appendChild(inner)
@@ -165,10 +165,10 @@ helpers =
     linkElement.setAttribute('href', Router.path('card', _id: this.body))
     element.setAttribute('class', 'item-action-container')
     titleElement.setAttribute('class', 'item-card-title')
-    titleElement.textContent = @cardTitle
+    titleElement.textContent = @card_title
     descriptionElement.setAttribute('class', 'item-text')
-    descriptionElement.setAttribute('data-card-type', @cardType)
-    descriptionElement.textContent = @cardDescription
+    descriptionElement.setAttribute('data-card-type', @card_type)
+    descriptionElement.textContent = @card_description
     iconHandle.setAttribute('class', 'fa fa-sort handle')
     element.appendChild(titleElement)
     element.appendChild(descriptionElement)

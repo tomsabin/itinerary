@@ -15,7 +15,7 @@ Template.manager.events
         Router.go('itineraries')
       if @card?
         Meteor.call('deleteCard', @card._id, @card.elementId)
-        Router.go('itinerary', _id: @card.parentId)
+        Router.go('itinerary', _id: @card.parent_id)
 
 Template.manager.rendered = ->
   $(document).keyup (e) ->

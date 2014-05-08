@@ -26,9 +26,9 @@ Meteor.methods
     throw new Meteor.Error(404, 'Itinerary was not found') unless itinerary
     throw new Meteor.Error(403, 'Itinerary does not belong to you') unless user._id is itinerary.user_id
 
-    Cards.find(parentId: id).forEach (card) -> Elements.remove(parentId: card._id)
-    Cards.remove(parentId: id)
-    Elements.remove(parentId: id, headerElement: { $exists: false })
+    Cards.find(parent_id: id).forEach (card) -> Elements.remove(parent_id: card._id)
+    Cards.remove(parent_id: id)
+    Elements.remove(parent_id: id, header_element: { $exists: false })
     resetHeaderElements(id, defaults.itinerary)
 
   deleteItinerary: (id) ->
@@ -38,7 +38,7 @@ Meteor.methods
     throw new Meteor.Error(404, 'Itinerary was not found') unless itinerary
     throw new Meteor.Error(403, 'Itinerary does not belong to you') unless user._id is itinerary.user_id
 
-    Cards.find(parentId: id).forEach (card) -> Elements.remove(parentId: card._id)
-    Cards.remove(parentId: id)
-    Elements.remove(parentId: id)
+    Cards.find(parent_id: id).forEach (card) -> Elements.remove(parent_id: card._id)
+    Cards.remove(parent_id: id)
+    Elements.remove(parent_id: id)
     Itineraries.remove(id)

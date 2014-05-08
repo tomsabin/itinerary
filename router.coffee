@@ -29,7 +29,7 @@ Router.map ->
     path: '/i/:_id'
     data: ->
       itinerary: Itineraries.findOne(@params._id)
-      elements: Elements.find { parentId: @params._id },
+      elements: Elements.find { parent_id: @params._id },
                   sort: { position: 1 }
     waitOn: -> [
       Meteor.subscribe('itinerary', @params._id)
@@ -40,7 +40,7 @@ Router.map ->
     path: '/c/:_id'
     data: ->
       card: Cards.findOne(@params._id)
-      elements: Elements.find { parentId: @params._id },
+      elements: Elements.find { parent_id: @params._id },
                   sort: { position: 1 }
     waitOn: -> [
       Meteor.subscribe('card', @params._id)

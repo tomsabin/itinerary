@@ -6,6 +6,6 @@ Template.addCard.events
     if @itinerary?
       cardId = createCard
         type: e.target.getAttribute('data-card-type')
-        parentId: @itinerary._id
+        parent_id: @itinerary._id
       Session.set('selectTitleElement', true)
       Router.go('card', _id: cardId)

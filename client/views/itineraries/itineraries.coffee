@@ -1,9 +1,9 @@
 Template.itineraries.helpers
   itineraryTitle: ->
-    titleElement = Elements.findOne(parentId: this._id, type: 'title')
+    titleElement = Elements.findOne(parent_id: this._id, type: 'title')
     if titleElement? then titleElement.body else defaults.itinerary.title
   itineraryDescription: ->
-    descriptionElement = Elements.findOne(parentId: this._id, type: 'description')
+    descriptionElement = Elements.findOne(parent_id: this._id, type: 'description')
     if descriptionElement? then descriptionElement.body else defaults.element.description.body
 
 Template.itineraries.events

@@ -3,7 +3,7 @@
     _.extend(new Element(doc), Element.prototype, defaults.element[doc.type].prototype)
 
 @Elements.before.insert (userId, doc) ->
-  highestElement = Elements.findOne({ parentId: doc.parentId },
+  highestElement = Elements.findOne({ parent_id: doc.parent_id },
                      sort: { position: -1 }
                      limit: 1
                    )
@@ -22,21 +22,21 @@
   createElement
     type: 'title'
     body: parent.title
-    parentId: parentId
-    belongsTo: parent.type
-    headerElement: true
+    parent_id: parentId
+    belongs_to: parent.type
+    header_element: true
   createElement
     type: 'description'
-    parentId: parentId
-    belongsTo: parent.type
-    headerElement: true
+    parent_id: parentId
+    belongs_to: parent.type
+    header_element: true
 
 @resetHeaderElements = (parentId, parent) ->
-  Elements.update { parentId: parentId, type: 'title' },
+  Elements.update { parent_id: parentId, type: 'title' },
     $set:
       body: parent.title
       editable: true
-  Elements.update { parentId: parentId, type: 'description' },
+  Elements.update { parent_id: parentId, type: 'description' },
     $set:
       body: defaults.element.description.body
       editable: true
