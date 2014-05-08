@@ -11,6 +11,10 @@
     title: 'Card title'
     types: ['accommodation', 'travel', 'event']
   element:
+    valid_attributes: ['user_id', 'parent_id', 'body', 'second_body',
+                       'original_body', 'type', 'position', 'belongs_to',
+                       'header_element', 'editable', 'card_type', 'card_title',
+                       'card_description']
     types: ['datetime-local', 'description', 'divider', 'title',
             'photo', 'text', 'link', 'date', 'time', 'card', 'map']
     'datetime-local':

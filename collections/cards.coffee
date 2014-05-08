@@ -6,7 +6,7 @@
   throw new Meteor.Error(422, 'Card type needs to be valid') unless _.contains(defaults.card.types, attributes.type)
   id = Cards.insert({})
   createHeaderElements(id, defaults.card)
-  attributes.element_id = createElement
+  attributes.element_id = Elements.insert
     type: 'card'
     body: id
     parent_id: attributes.parent_id
