@@ -46,24 +46,14 @@ Cards.allow
 
 Meteor.methods
   resetCard: (id) ->
-    user = Meteor.user()
-    throw new Meteor.Error(401, 'You need to login first to be able to perform that') unless user
-    card = Cards.findOne(id)
-    throw new Meteor.Error(404, 'Card was not found') unless card
-    throw new Meteor.Error(403, 'Card does not belong to you') unless user._id is card.user_id
-
+    validateOwner('Card', id, Meteor.user())
     Elements.remove(parent_id: id, header_element: { $exists: false })
     resetHeaderElements(id, defaults.card)
     updateSiblingElement(id, 'title', defaults.card.title)
     updateSiblingElement(id, 'description', defaults.element.description.body)
 
   deleteCard: (id, siblingElementId) ->
-    user = Meteor.user()
-    throw new Meteor.Error(401, 'You need to login first to be able to perform that') unless user
-    card = Cards.findOne(id)
-    throw new Meteor.Error(404, 'Card was not found') unless card
-    throw new Meteor.Error(403, 'Card does not belong to you') unless user._id is card.user_id
-
+    validateOwner('Card', id, Meteor.user())
     Elements.remove(siblingElementId)
     Elements.remove(parent_id: id)
     Cards.remove(id)

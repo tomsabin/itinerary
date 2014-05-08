@@ -86,9 +86,5 @@ Elements.allow
 
 Meteor.methods
   deleteElement: (id) ->
-    user = Meteor.user()
-    throw new Meteor.Error(401, 'You need to login first to be able to perform that') unless user
-    element = Elements.findOne(id)
-    throw new Meteor.Error(404, 'Element was not found') unless element
-    throw new Meteor.Error(403, 'Element does not belong to you') unless user._id is element.user_id
+    validateOwner('Element', id, Meteor.user())
     Elements.remove(id)
