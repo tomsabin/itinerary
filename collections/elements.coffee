@@ -86,8 +86,3 @@ Elements.allow
     else
       attributes.body = body
   Elements.update({ _id: id }, { $set: attributes })
-
-Meteor.methods
-  deleteElement: (id) ->
-    validateOwner('Element', id, Meteor.user())
-    Elements.remove(id)

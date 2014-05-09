@@ -38,12 +38,12 @@ Template.elements.events
   'click [data-editable="true"]': (e) ->
     toggleElementEditable e.target.parentElement.getAttribute('data-element-id')
   'click [data-action="removeElement"]': (e) ->
-    Meteor.call('deleteElement', e.target.parentElement.getAttribute('data-element-id'))
+    Elements.remove(e.target.parentElement.getAttribute('data-element-id'))
   'keydown': (e) -> if e.which is 13 and e.target.localName is 'input'
     updateElementWithEvent(e)
   'keyup': (e) -> if e.which is 27 and e.target.localName is 'input'
     parent = e.target.parentElement.parentElement
-    Meteor.call('deleteElement', parent.getAttribute('data-element-id')) unless parent.getAttribute('data-deletable')
+    Elements.remove(parent.getAttribute('data-element-id')) unless parent.getAttribute('data-deletable')
   'focusout': (e) -> updateElementWithEvent(e)
 
 Template.elements.rendered = ->
