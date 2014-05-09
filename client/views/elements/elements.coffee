@@ -30,8 +30,7 @@ updateElementWithEvent = (e) ->
 
 toggleElementEditable = (id) ->
   Elements.update({ _id: id }, { $set: editable: true })
-  $("[data-element-id='#{id}'] input").waitUntilExists ->
-    $("[data-element-id='#{id}'] input").focus()
+  $("[data-element-id='#{id}'] input").waitUntilExists -> @focus()
 
 Template.elements.events
   'click [data-inline-editable="true"]': (e) ->
@@ -61,5 +60,6 @@ Template.elements.rendered = ->
           $set: position: index + 1
 
   if Session.get('selectTitleElement')
-    @.$('div[data-item-type="title"] input').focus()
-    Session.set('selectTitleElement', '')
+    $('div[data-item-type="title"] input').waitUntilExists ->
+      Session.set('selectTitleElement', '')
+      @focus()
