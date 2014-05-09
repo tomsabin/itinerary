@@ -1,8 +1,19 @@
 {
+  "meteor": {
+    "tag": "v0.8.0"
+  },
   "packages": {
-    "iron-router": {},
-    "collection-hooks": {},
-    "spin": {},
-    "moment": {}
+    "iron-router": {
+      "tag": "v0.7.1"
+    },
+    "collection-hooks": {
+      "tag": "v0.6.3"
+    },
+    "spin": {
+      "tag": "v0.2.2"
+    },
+    "moment": {
+      "tag": "v2.6.0"
+    }
   }
 }
