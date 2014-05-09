@@ -1,2 +1,2 @@
-Handlebars.registerHelper 'documentOwner', ->
-  @user_id is Meteor.userId()
+Handlebars.registerHelper 'documentOwner', (doc = @) ->
+  doc.user_id is Meteor.userId()

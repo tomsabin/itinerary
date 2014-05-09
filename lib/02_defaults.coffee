@@ -15,7 +15,7 @@
   element:
     valid_insert_attributes: ['_id', 'user_id', 'type', 'parent_id',
                               'belongs_to', 'body', 'editable', 'position',
-                              'initalElement', 'finalElement']
+                              'initalElement', 'finalElement', 'uneditableElement']
     valid_editable_attributes: ['body', 'second_body', 'original_body', 'position', 'editable',
                                 'card_type', 'card_title', 'card_description']
     types: ['datetime-local', 'description', 'divider', 'title',

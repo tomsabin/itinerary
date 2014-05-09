@@ -2,10 +2,14 @@
   <script src="jquery.ui.touch-punch.min.js"></script>
   <div id="elementList" class="items-container">
     {{#each elements}}
-      {{#if editable}}
-        {{{initalElement}}}
+      {{#if documentOwner doc}}
+        {{#if editable}}
+          {{{initalElement}}}
+        {{else}}
+          {{{finalElement}}}
+        {{/if}}
       {{else}}
-        {{{finalElement}}}
+        {{{uneditableElement}}}
       {{/if}}
     {{/each}}
   </div>

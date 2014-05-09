@@ -1,9 +1,7 @@
 <template name="itinerary">
-  {{#with doc}}
-    {{#if documentOwner}}
-      {{> navigation}}
-    {{/if}}
-  {{/with}}
+  {{#if documentOwner doc}}
+    {{> navigation}}
+  {{/if}}
 
   {{> elements}}
 

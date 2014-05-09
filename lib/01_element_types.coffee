@@ -19,6 +19,19 @@ helpers =
         timeElement.textContent = doc.second_body
         divElement.appendChild(timeElement)
       helpers.wrapElement(doc, divElement, true, true, true)
+    uneditableElement: (doc) ->
+      divElement = document.createElement('p')
+      dateElement = document.createElement('p')
+      dateElement.setAttribute('class', "item-#{doc.type}")
+      dateElement.textContent = doc.body
+      divElement.appendChild(dateElement)
+      if doc.second_body?
+        timeElement = document.createElement('p')
+        timeElement.setAttribute('class', 'item-datetime-time')
+        timeElement.textContent = doc.second_body
+        divElement.appendChild(timeElement)
+      helpers.wrapElement(doc, divElement, false, false)
+
   createInitialElement: (doc) ->
     element = document.createElement('input')
     element.setAttribute('placeholder', doc.body)
@@ -84,6 +97,11 @@ helpers =
     element.setAttribute('contentEditable', true)
     element.textContent = @body
     helpers.wrapElement(@, element, false, false, false, true)
+  uneditableElement: ->
+    element = document.createElement('h1')
+    element.setAttribute('class', 'item-title')
+    element.textContent = @body
+    helpers.wrapElement(@, element, false, false, false, true)
 
 @DescriptionElement.prototype =
   initalElement: ->
@@ -96,10 +114,16 @@ helpers =
     element.setAttribute('contentEditable', true)
     element.textContent = @body
     helpers.wrapElement(@, element, false, false, false, true)
+  uneditableElement: ->
+    element = document.createElement('h2')
+    element.setAttribute('class', 'item-description')
+    element.textContent = @body
+    helpers.wrapElement(@, element, false, false, false, true)
 
 @DividerElement.prototype =
   initalElement: -> helpers.wrapElement(@, null)
   finalElement: -> @initalElement()
+  uneditableElement: -> helpers.wrapElement(@, null, false, false)
 
 @TextElement.prototype =
   finalElement: ->
@@ -108,6 +132,11 @@ helpers =
     element.setAttribute('contentEditable', true)
     element.textContent = @body
     helpers.wrapElement(@, element)
+  uneditableElement: ->
+    element = document.createElement('p')
+    element.setAttribute('class', 'item-text')
+    element.textContent = @body
+    helpers.wrapElement(@, element, false, false)
 
 @LinkElement.prototype =
   initalElement: ->
@@ -121,6 +150,12 @@ helpers =
     element.setAttribute('href', @body)
     element.textContent = @second_body
     helpers.wrapElement(@, element, true, true, true)
+  uneditableElement: ->
+    element = document.createElement('a')
+    element.setAttribute('class', 'item-link')
+    element.setAttribute('href', @body)
+    element.textContent = @second_body
+    helpers.wrapElement(@, element, false, false)
 
 @PhotoElement.prototype =
   initalElement: ->
@@ -132,6 +167,11 @@ helpers =
     element.setAttribute('class', 'item-photo')
     element.setAttribute('src', @body)
     helpers.wrapElement(@, element, true, true, true)
+  uneditableElement: ->
+    element = document.createElement('img')
+    element.setAttribute('class', 'item-photo')
+    element.setAttribute('src', @body)
+    helpers.wrapElement(@, element, false, false)
 
 @MapElement.prototype =
   finalElement: ->
@@ -150,6 +190,21 @@ helpers =
     divElement.appendChild(linkElement)
     divElement.appendChild(textElement)
     helpers.wrapElement(@, divElement)
+  uneditableElement: ->
+    staticGoogleMap = "http://maps.googleapis.com/maps/api/staticmap?center=#{@body}&markers=color:red|#{@body}&zoom=13&size=492x320&sensor=false"
+    divElement = document.createElement('div')
+    linkElement = document.createElement('a')
+    imageElement = document.createElement('img')
+    textElement = document.createElement('p')
+    imageElement.setAttribute('class', 'item-map')
+    imageElement.setAttribute('src', staticGoogleMap)
+    linkElement.setAttribute('href', "http://maps.google.com/?q=#{@body}")
+    textElement.setAttribute('class', 'item-map-text')
+    textElement.textContent = @body
+    linkElement.appendChild(imageElement)
+    divElement.appendChild(linkElement)
+    divElement.appendChild(textElement)
+    helpers.wrapElement(@, divElement, false, false)
 
 @CardElement.prototype =
   initalElement: ->
@@ -177,7 +232,28 @@ helpers =
     outer.appendChild(linkElement)
     outer.outerHTML
   finalElement: -> @initalElement()
+  uneditableElement: ->
+    outer = document.createElement('div')
+    linkElement = document.createElement('a')
+    element = document.createElement('div')
+    titleElement = document.createElement('h1')
+    descriptionElement = document.createElement('p')
+    outer.setAttribute('data-element-id', @_id)
+    outer.setAttribute('class', "item item-#{@type}")
+    linkElement.setAttribute('href', Router.path('card', _id: this.body))
+    element.setAttribute('class', 'item-action-container')
+    titleElement.setAttribute('class', 'item-card-title')
+    titleElement.textContent = @card_title
+    descriptionElement.setAttribute('class', 'item-text')
+    descriptionElement.setAttribute('data-card-type', @card_type)
+    descriptionElement.textContent = @card_description
+    element.appendChild(titleElement)
+    element.appendChild(descriptionElement)
+    linkElement.appendChild(element)
+    outer.appendChild(linkElement)
+    outer.outerHTML
 
 @DateTimeElement.prototype =
   initalElement: -> helpers.dateTimeElements.initalElement(@)
   finalElement: -> helpers.dateTimeElements.finalElement(@)
+  uneditableElement: -> helpers.dateTimeElements.uneditableElement(@)
