@@ -1,4 +1,13 @@
-@import url(http://fonts.googleapis.com/css?family=Raleway|Goudy+Bookletter+1911);
+/*@import url(http://fonts.googleapis.com/css?family=Raleway|Goudy+Bookletter+1911);*/
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('fonts/Raleway-Regular.ttf');
+}
+@font-face {
+  font-family: 'Goudy Bookletter 1911';
+  src: url('fonts/GoudyBookletter1911.ttf');
+}
 
 $primary-font: 'Raleway', 'sans-serif';
 $secondary-font: 'Goudy Bookletter 1911', 'serif';

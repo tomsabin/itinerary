@@ -26,7 +26,8 @@ a, a:visited {
 .item-description,
 .description-entry,
 .error-message,
-.signed-in-as {
+.signed-in-as,
+.home-text {
   font-family: $secondary-font;
 }
 .home-title {
@@ -43,6 +44,12 @@ a, a:visited {
     white-space: pre;
     color: $home-icon-colour;
   }
+}
+.home-text {
+  text-align: center;
+  padding: 20px;
+  padding-top: 0;
+  padding-bottom: 80px;
 }
 .text-divider,
 .signed-in-as {
