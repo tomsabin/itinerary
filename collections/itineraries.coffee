@@ -7,9 +7,10 @@ Itineraries.before.insert (userId, doc) ->
 Itineraries.allow
   insert: (userId, doc) ->
     isOwner = userId and doc.user_id is userId
-    if isOwner
+    hasValidAttributes = not _.difference(Object.keys(doc), defaults.itinerary.valid_insert_attributes).length
+    if hasValidAttributes and isOwner
       createHeaderElements(doc._id, defaults.itinerary)
-    isOwner
+    hasValidAttributes and isOwner
   remove: (userId, doc) ->
     isOwner = userId and doc.user_id is userId
     if isOwner

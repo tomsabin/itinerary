@@ -4,6 +4,7 @@
     date: "dddd Do MMMM"
     time: "h:mm a"
   itinerary:
+    valid_insert_attributes: ['_id', 'user_id', 'created_on']
     type: 'itinerary'
     title: 'Itinerary title'
   card:
