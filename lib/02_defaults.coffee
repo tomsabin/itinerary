@@ -1,7 +1,7 @@
 @defaults =
   dateformats:
-    datetime: 'dddd Do MMMM - h:mm a'
-    date: 'dddd Do MMMM'
+    datetime: 'dddd Do MMMM YYYY - h:mm a'
+    date: 'dddd Do MMMM YYYY'
     time: 'h:mm a'
   itinerary:
     valid_insert_attributes: ['_id', 'user_id', 'document_type', 'created_on']
