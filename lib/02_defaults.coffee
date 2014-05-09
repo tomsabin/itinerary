@@ -7,7 +7,7 @@
     type: 'itinerary'
     title: 'Itinerary title'
   card:
-    valid_attributes: ['user_id', 'parent_id', 'element_id', 'type']
+    valid_insert_attributes: ['_id', 'user_id', 'parent_id', 'type']
     type: 'card'
     title: 'Card title'
     types: ['accommodation', 'travel', 'event']
