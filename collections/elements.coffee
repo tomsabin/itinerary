@@ -6,7 +6,6 @@ Elements.before.update (userId, doc) ->
   validateElement(userId, doc)
 
 Elements.before.insert (userId, doc) ->
-  validateElement(userId, doc)
   doc.body = defaults.element[doc.type].body unless doc.body?
   doc.user_id = userId
   doc.editable = true
@@ -18,7 +17,14 @@ Elements.before.insert (userId, doc) ->
   doc.position = position + 1
 
 Elements.allow
-  insert: (userId, doc) -> userId and doc.user_id is userId
+  insert: (userId, doc) ->
+    isOwner = userId and doc.user_id is userId
+    parent = Itineraries.findOne(doc.parent_id) if doc.belongs_to is 'itinerary'
+    parent = Cards.findOne(doc.parent_id) if doc.belongs_to is 'card'
+    isParentOwner = parent.user_id is userId
+    hasValidFields = not _.difference(Object.keys(doc), defaults.element.valid_insert_attributes).length
+    hasValidType = _.contains(defaults.element.types, doc.type)
+    hasValidType and hasValidFields and isParentOwner and isOwner
   remove: (userId, doc) -> userId and doc.user_id is userId
   update: (userId, doc, fields, modifier) ->
     isOwner = userId and doc.user_id is userId

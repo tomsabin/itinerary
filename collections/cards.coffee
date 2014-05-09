@@ -7,8 +7,8 @@ Cards.allow
   insert: (userId, doc) ->
     isOwner = userId and doc.user_id is userId
     isParentOwner = Itineraries.findOne(doc.parent_id).user_id is userId
-    hasValidAttributes = not _.difference(Object.keys(doc), defaults.card.valid_insert_attributes).length
-    if hasValidAttributes and isParentOwner and isOwner
+    hasValidFields = not _.difference(Object.keys(doc), defaults.card.valid_insert_attributes).length
+    if hasValidFields and isParentOwner and isOwner
       createHeaderElements(doc._id, defaults.card)
       elementId = Elements.insert
         type: 'card'
@@ -17,8 +17,9 @@ Cards.allow
         card_type: doc.type
         card_title: defaults.card.title
         card_description: defaults.element.description.body
+        belongs_to: 'card'
       doc.element_id = elementId
-    hasValidAttributes and isParentOwner and isOwner
+    hasValidFields and isParentOwner and isOwner
   remove: (userId, doc) ->
     isOwner = userId and doc.user_id is userId
     if isOwner

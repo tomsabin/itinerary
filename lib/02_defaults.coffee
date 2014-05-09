@@ -1,8 +1,8 @@
 @defaults =
   dateformats:
-    datetime: "dddd Do MMMM - h:mm a"
-    date: "dddd Do MMMM"
-    time: "h:mm a"
+    datetime: 'dddd Do MMMM - h:mm a'
+    date: 'dddd Do MMMM'
+    time: 'h:mm a'
   itinerary:
     valid_insert_attributes: ['_id', 'user_id', 'created_on']
     type: 'itinerary'
@@ -13,6 +13,9 @@
     title: 'Card title'
     types: ['accommodation', 'travel', 'event']
   element:
+    valid_insert_attributes: ['_id', 'user_id', 'parent_id', 'type',
+                              'belongs_to', 'body', 'editable', 'position',
+                              'initalElement', 'finalElement']
     valid_attributes: ['user_id', 'parent_id', 'body', 'second_body',
                        'original_body', 'type', 'position', 'belongs_to',
                        'header_element', 'editable', 'card_type', 'card_title',
