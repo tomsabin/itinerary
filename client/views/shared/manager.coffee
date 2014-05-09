@@ -16,7 +16,6 @@ Template.manager.events
       if @card?
         parentId = @card.parent_id
         Cards.remove @card._id, (error) ->
-          console.log (error)
           Router.go('itinerary', _id: parentId) unless error
 
 Template.manager.rendered = ->
