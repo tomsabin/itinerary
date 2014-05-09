@@ -32,16 +32,18 @@ Cards.allow
     onlyUpdateType = not _.difference(fields, ['type']).length
     hasValidType = _.contains(defaults.card.types, modifier.$set.type)
     if hasValidType and onlyUpdateType and isOwner
-      updateSiblingElement(doc._id, 'type', doc.type)
+      updateSiblingElement(doc._id, 'type', modifier.$set.type)
     hasValidType and onlyUpdateType and isOwner
 
 @updateSiblingElement = (id, type, body) ->
   validateOwner('Card', id, Meteor.user())
   sibling = Elements.findOne(body: id, type: 'card')
   throw new Meteor.Error(404, 'Sibling element not found') unless sibling?
-  Elements.update { _id: sibling._id }, { $set: card_type: body } if type is 'type'
-  Elements.update { _id: sibling._id }, { $set: card_title: body } if type is 'title'
-  Elements.update { _id: sibling._id }, { $set: card_description: body } if type is 'description'
+  attributes = {}
+  attributes.card_type = body if type is 'type'
+  attributes.card_title = body if type is 'title'
+  attributes.card_description = body if type is 'description'
+  Elements.update { _id: sibling._id }, { $set: attributes }
 
 Meteor.methods
   resetCard: (id) ->
