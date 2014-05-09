@@ -16,7 +16,7 @@ Template.card.type = ->
 
 Template.card.events
   'click #back': ->
-    Router.go('itinerary', _id: @card.parent_id)
+    Router.go('itinerary', _id: @doc.parent_id)
   'click [data-card-type]': (e) ->
     Cards.update { _id: e.target.parentElement.getAttribute('data-card-id') },
       $set: type: e.target.getAttribute('data-card-type')

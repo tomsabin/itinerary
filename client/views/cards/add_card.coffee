@@ -3,10 +3,10 @@ Template.addCard.events
     openCardsContainer()
 
   'click [data-action="addCard"]': (e) ->
-    if @itinerary?
-      cardId = Cards.insert
+    if @?
+      Cards.insert
         type: e.target.getAttribute('data-card-type')
-        parent_id: @itinerary._id,
-        (error) -> unless error
+        parent_id: @_id,
+        (error, id) -> unless error
           Session.set('selectTitleElement', true)
-          Router.go('card', _id: cardId)
+          Router.go('card', _id: id)

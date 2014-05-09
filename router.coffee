@@ -26,7 +26,7 @@ Router.map ->
   @route 'itinerary',
     path: '/i/:_id'
     data: ->
-      itinerary: Itineraries.findOne(@params._id)
+      doc: Itineraries.findOne(@params._id)
       elements: Elements.find { parent_id: @params._id },
                   sort: { position: 1 }
     waitOn: -> [
@@ -37,7 +37,7 @@ Router.map ->
   @route 'card',
     path: '/c/:_id'
     data: ->
-      card: Cards.findOne(@params._id)
+      doc: Cards.findOne(@params._id)
       elements: Elements.find { parent_id: @params._id },
                   sort: { position: 1 }
     waitOn: -> [

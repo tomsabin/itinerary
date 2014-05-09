@@ -1,6 +1,7 @@
 @Itineraries = new Meteor.Collection('itineraries')
 
 Itineraries.before.insert (userId, doc) ->
+  doc.document_type = defaults.itinerary.document_type
   doc.user_id = userId
   doc.created_on = new Date().getTime()
 

@@ -4,16 +4,16 @@
     date: 'dddd Do MMMM'
     time: 'h:mm a'
   itinerary:
-    valid_insert_attributes: ['_id', 'user_id', 'created_on']
-    type: 'itinerary'
+    valid_insert_attributes: ['_id', 'user_id', 'document_type', 'created_on']
+    document_type: 'itinerary'
     title: 'Itinerary title'
   card:
-    valid_insert_attributes: ['_id', 'user_id', 'parent_id', 'type']
-    type: 'card'
+    valid_insert_attributes: ['_id', 'user_id', 'document_type', 'parent_id', 'type']
+    document_type: 'card'
     title: 'Card title'
     types: ['accommodation', 'travel', 'event']
   element:
-    valid_insert_attributes: ['_id', 'user_id', 'parent_id', 'type',
+    valid_insert_attributes: ['_id', 'user_id', 'type', 'parent_id',
                               'belongs_to', 'body', 'editable', 'position',
                               'initalElement', 'finalElement']
     valid_editable_attributes: ['body', 'second_body', 'original_body', 'position', 'editable',

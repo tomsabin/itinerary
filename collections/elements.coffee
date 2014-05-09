@@ -33,12 +33,12 @@ Elements.allow
     type: 'title'
     body: parent.title
     parent_id: parentId
-    belongs_to: parent.type
+    belongs_to: parent.document_type
     header_element: true
   Elements.insert
     type: 'description'
     parent_id: parentId
-    belongs_to: parent.type
+    belongs_to: parent.document_type
     header_element: true
 
 @resetHeaderElements = (parentId, parent) ->

@@ -1,6 +1,7 @@
 @Cards = new Meteor.Collection('cards')
 
 Cards.before.insert (userId, doc) ->
+  doc.document_type = defaults.card.document_type
   doc.user_id = userId
 
 Cards.allow
