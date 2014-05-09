@@ -1,12 +1,3 @@
-mustBeLoggedIn = ->
-  if Meteor.user()
-    return
-  else if Meteor.loggingIn()
-    @render('loading')
-  else
-    Router.go('landingPage')
-
-Router.onBeforeAction(mustBeLoggedIn, except: 'landingPage')
 Router.configure
   layoutTemplate: 'layout'
   loadingTemplate: 'loading'
@@ -22,6 +13,13 @@ Router.map ->
       Meteor.subscribe('itineraries')
       Meteor.subscribe('headerElements')
     ]
+    onBeforeAction: ->
+      if Meteor.user()
+        return
+      else if Meteor.loggingIn()
+        @render('loading')
+      else
+        Router.go('landingPage')
 
   @route 'landingPage', path: '/'
 
