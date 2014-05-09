@@ -1,5 +1,5 @@
-Meteor.publish 'itineraries', -> Itineraries.find()
-Meteor.publish 'headerElements', -> Elements.find(header_element: { $exists: true })
+Meteor.publish 'itineraries', -> Itineraries.find(user_id: @userId)
+Meteor.publish 'headerElements', -> Elements.find(user_id: @userId, header_element: { $exists: true })
 
 Meteor.publish 'siblingElement', (id) -> id and Elements.find(body: id, type: 'card')
 Meteor.publish 'itinerary', (id) -> id and Itineraries.find(id)
