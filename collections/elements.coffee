@@ -2,9 +2,6 @@
   transform: (doc) ->
     _.extend(new Element(doc), Element.prototype, defaults.element[doc.type].prototype)
 
-Elements.before.update (userId, doc) ->
-  validateElement(userId, doc)
-
 Elements.before.insert (userId, doc) ->
   doc.body = defaults.element[doc.type].body unless doc.body?
   doc.user_id = userId
@@ -28,7 +25,7 @@ Elements.allow
   remove: (userId, doc) -> userId and doc.user_id is userId
   update: (userId, doc, fields, modifier) ->
     isOwner = userId and doc.user_id is userId
-    hasValidFields = not _.difference(fields, defaults.element.valid_attributes).length
+    hasValidFields = not _.difference(fields, defaults.element.valid_editable_attributes).length
     hasValidFields and isOwner
 
 @createHeaderElements = (parentId, parent) ->

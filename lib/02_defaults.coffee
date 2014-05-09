@@ -16,10 +16,7 @@
     valid_insert_attributes: ['_id', 'user_id', 'parent_id', 'type',
                               'belongs_to', 'body', 'editable', 'position',
                               'initalElement', 'finalElement']
-    valid_attributes: ['user_id', 'parent_id', 'body', 'second_body',
-                       'original_body', 'type', 'position', 'belongs_to',
-                       'header_element', 'editable', 'card_type', 'card_title',
-                       'card_description']
+    valid_editable_attributes: ['body', 'second_body', 'original_body', 'position', 'editable']
     types: ['datetime-local', 'description', 'divider', 'title',
             'photo', 'text', 'link', 'date', 'time', 'card', 'map']
     'datetime-local':
