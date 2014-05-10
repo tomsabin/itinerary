@@ -219,9 +219,19 @@ helpers =
   uneditableElement: -> helpers.createFinalDescriptionElement @, editable: false
 
 @DividerElement.prototype =
-  initalElement: -> helpers.wrapElement(@, null)
+  initalElement: ->
+    helpers.wrapElement @, null,
+      isRemovable: true,
+      isSortable: true,
+      isEditable: false,
+      isHeaderElement: false
   finalElement: -> @initalElement()
-  uneditableElement: -> helpers.wrapElement(@, null, false, false)
+  uneditableElement: ->
+    helpers.wrapElement @, null,
+      isRemovable: false,
+      isSortable: false,
+      isEditable: false,
+      isHeaderElement: false
 
 @TextElement.prototype =
   finalElement: -> helpers.createFinalTextElement @, editable: true
