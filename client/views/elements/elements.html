@@ -9,7 +9,9 @@
           {{{finalElement}}}
         {{/if}}
       {{else}}
-        {{{uneditableElement}}}
+        {{#unless editable}}
+          {{{uneditableElement}}}
+        {{/unless}}
       {{/if}}
     {{/each}}
   </div>
