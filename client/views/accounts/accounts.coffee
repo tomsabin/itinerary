@@ -2,7 +2,7 @@
 
 Meteor.autorun ->
   resetFormError()
-  if Meteor.user() and Router.current().route.name is 'landingPage'
+  if Meteor.user() and Router.current() and Router.current().route.name is 'landingPage'
     Router.go('itineraries')
 
 Template.accounts.events
@@ -17,6 +17,11 @@ Template.accounts.rendered = ->
   $('#window, .home-title').click ->
     resetFormError()
     showFormOpeners()
+  if Session.get('openRegistrationForm') is true
+    Session.set('openRegistrationForm', '')
+    Session.set('formType', 'registration')
+    openForm()
+    $('#username').focus()
 
 Template.logout.events
   'click #logoutUser': -> Meteor.logout()

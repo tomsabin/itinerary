@@ -12,4 +12,10 @@
       {{> manager}}
     {{/if}}
   {{/with}}
+
+  {{#unless documentOwner doc}}
+    <a href="{{pathFor 'signUp'}}" class="sign-up-link-container">
+      <p class="sign-up-link">Create your own itinera</p>
+    </a>
+  {{/unless}}
 </template>

@@ -27,7 +27,8 @@ a, a:visited {
 .description-entry,
 .error-message,
 .signed-in-as,
-.home-text {
+.home-text,
+.sign-up-link {
   font-family: $secondary-font;
 }
 .home-title {
@@ -167,3 +168,23 @@ a, a:visited {
   text-align: center;
   color: $page-not-found-colour;
 }
+.sign-up-link-container {
+  border-top: 1px solid $home-icon-colour;
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px 0;
+  color: $sign-up-link-colour;
+
+  &:hover {
+    border-top: 1px solid $home-icon-colour;
+    color: $sign-up-link-hover-colour;
+
+    .sign-up-link:after {
+      content: '.re';
+    }
+  }
+  .sign-up-link:after {
+    content: 'ry';
+  }
+}
+

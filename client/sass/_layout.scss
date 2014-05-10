@@ -6,7 +6,8 @@ body {
   padding: 0 8px;
 }
 .layout-main,
-.buttons-table {
+.buttons-table,
+.sign-up-link-container {
   @include span-columns(6);
 }
 .two-buttons {

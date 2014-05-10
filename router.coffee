@@ -23,6 +23,12 @@ Router.map ->
 
   @route 'landingPage', path: '/'
 
+  @route 'signUp',
+    path: 'sign-up'
+    action: ->
+      Session.set('openRegistrationForm', true)
+      Router.go('itineraries')
+
   @route 'itinerary',
     path: '/i/:_id'
     data: ->
