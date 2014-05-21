@@ -5,7 +5,10 @@
 Elements.before.insert (userId, doc) ->
   doc.body = defaults.element[doc.type].body unless doc.body?
   doc.user_id = userId
-  doc.editable = if doc.type is 'divider' then false else true
+  if doc.type is 'divider' or doc.type is 'card'
+    doc.editable = false
+  else
+    doc.editable = true
   highestElement = Elements.findOne({ parent_id: doc.parent_id },
                      sort: { position: -1 }
                      limit: 1
