@@ -50,4 +50,27 @@
   &[data-tooltip-position="bottom"]:hover:after {
     top: 115%;
   }
+
+  &[data-tooltip-position="left"]:after,
+  &[data-tooltip-position="right"]:after {
+    -webkit-transform: translateY(-45%);
+    -ms-transform: translateY(-45%);
+    -o-transform: translateY(-45%);
+    transform: translateY(-45%);
+
+    margin-top: 2px;
+    top: 45%;
+  }
+  &[data-tooltip-position="right"]:after{
+    left: 115%;
+  }
+  &[data-tooltip-position="right"]:hover:after {
+    left: 105%;
+  }
+  &[data-tooltip-position="left"]:after {
+    right: 115%;
+  }
+  &[data-tooltip-position="left"]:hover:after {
+    right: 105%;
+  }
 }
