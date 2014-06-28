@@ -42,8 +42,9 @@ Template.elements.events
   'keydown': (e) -> if e.which is 13 and e.target.localName is 'input'
     updateElementWithEvent(e)
   'keyup': (e) -> if e.which is 27 and e.target.localName is 'input'
-    parent = e.target.parentElement.parentElement
-    Elements.remove(parent.getAttribute('data-element-id')) unless parent.getAttribute('data-deletable')
+    unless !!e.target.value
+      parent = e.target.parentElement.parentElement
+      Elements.remove(parent.getAttribute('data-element-id')) unless parent.getAttribute('data-deletable')
   'focusout': (e) -> updateElementWithEvent(e)
 
 Template.elements.rendered = ->
