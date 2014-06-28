@@ -1,0 +1,26 @@
+.github-wrapper {
+  text-align: center;
+  margin-bottom: 15px;
+
+  @media screen and (min-width: 640px) {
+    margin-bottom: 0;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .github-link {
+    &:before {
+      @include icon-font-and-colour;
+      font-size: 1.6em;
+      content: '\f09b';
+    }
+
+    &:hover {
+      &:before {
+        color: $icon-hover-colour;
+      }
+    }
+  }
+}
+
