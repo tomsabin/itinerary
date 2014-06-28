@@ -76,6 +76,7 @@ helpers =
   createFinalLinkElement: (doc, opts = {}) ->
     element = document.createElement('a')
     element.setAttribute('class', 'item-link')
+    element.setAttribute('target', '_blank')
     element.setAttribute('href', doc.body)
     element.textContent = doc.second_body
     helpers.wrapElement doc, element,

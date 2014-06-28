@@ -66,7 +66,7 @@ Elements.allow
         attributes.second_body = markdownLink[1]
       else
         attributes.body = body
-        attributes.second_body = 'A link to the interwebs'
+        attributes.second_body = body
     when 'datetime-local'
       if body.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?/)
         attributes.body = moment(body).format(defaults.dateformats.date)
