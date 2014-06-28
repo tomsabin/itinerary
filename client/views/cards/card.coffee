@@ -9,8 +9,10 @@ Template.card.types = ->
 
 Template.card.type = ->
   divElement = document.createElement('div')
-  divElement.setAttribute('class', 'buttons-cell')
+  divElement.setAttribute('class', 'buttons-cell tooltip')
   divElement.setAttribute('data-card-type', @type)
+  divElement.setAttribute('data-tooltip', @type.capitalise())
+  divElement.setAttribute('data-tooltip-position', 'top')
   divElement.setAttribute('data-selected', true) if @selected
   divElement.outerHTML
 

@@ -24,3 +24,6 @@
 @openForm = ->
   $('#formOpeners').hide()
   $('#form').show()
+
+String.prototype.capitalise = ->
+    @charAt(0).toUpperCase() + @slice(1);
