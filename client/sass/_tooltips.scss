@@ -1,0 +1,53 @@
+// h5bp.github.io/Effeckt.css/tooltips.html
+.tooltip[data-tooltip] {
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    border-radius: 3px;
+    background: $tooltip-background;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 0.45rem 0.8rem;
+    color: $tooltip-colour;
+
+    font-family: $primary-font;
+    font-size: 90%;
+
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    left: 50%;
+
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+  }
+
+  &:hover {
+    &:after {
+      -webkit-transition: 0.2s 0.3s;
+      -o-transition: 0.2s 0.3s;
+      transition: 0.2s 0.3s;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &[data-tooltip-position="top"]:after{
+    bottom: 125%;
+  }
+  &[data-tooltip-position="top"]:hover:after {
+    bottom: 115%;
+  }
+  &[data-tooltip-position="bottom"]:after{
+    top: 125%;
+  }
+  &[data-tooltip-position="bottom"]:hover:after {
+    top: 115%;
+  }
+}
