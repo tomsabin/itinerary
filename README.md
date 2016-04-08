@@ -1,4 +1,4 @@
-[itinera.re](http://itinera.re/)
+[itinera.re](https://itinera-re.herokuapp.com/)
 =========
 
 Plan your days out.
@@ -7,7 +7,7 @@ Plan your days out.
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/2217931/itinera-re-screenshot.png)
 
-Screenshot shows an example [itinerary for a cat](http://itinera.re/i/3XX3TSoD8QiamsXyu). How about [creating your own?](http://itinera.re/sign-up)
+Screenshot shows an example [itinerary for a cat](http://itinera.re/i/3XX3TSoD8QiamsXyu). How about [creating your own?](https://itinera-re.herokuapp.com//sign-up)
 
 ---
 
